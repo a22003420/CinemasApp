@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/dashboard_title"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/navigation_movie_presentation"
+        android:icon="@drawable/baseline_movie_24"
+        android:title="@string/movie_presentation_title"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/navigation_movie_register"
+        android:icon="@drawable/baseline_app_registration_24"
+        android:title="@string/movie_register_title"
+        app:showAsAction="ifRoom" />
+
+</menu>
