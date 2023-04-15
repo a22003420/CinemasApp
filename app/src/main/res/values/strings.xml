@@ -1,16 +1,19 @@
 <resources>
     <string name="app_name">CINEMASOFONA</string>
-    <string name="observacoes_maximo_200_caracteres">Observações (máximo 200 caracteres)</string>
+    <string name="observacoes_maximo_200_caracteres">Observações (opcional) - máximo 200 caracteres</string>
     <string name="adicionar_fotos">Adicionar fotos</string>
-    <string name="fotografias">Fotografias</string>
+    <string name="fotografias">Fotografias tiradas com a câmera - (opcional)</string>
     <string name="dd_mm_yyyy">dd/mm/yyyy</string>
     <string name="data_dd_mm_yyyy">Data (dd/mm/yyyy)</string>
     <string name="avaliacao_1_10">Avaliação (1-10)</string>
-    <string name="cinema_onde_foi_visto">Cinema onde foi visto</string>
+    <string name="cinema_onde_foi_visto">Cinema onde foi visualizado o filme</string>
     <string name="nome_do_filme">Nome do filme</string>
     <string name="dashboard">hello</string>
     <string name="dashboard_title">Dashboard</string>
-    <string name="movie_register_title">Registo</string>
-    <string name="movie_presentation_title">Cinemas</string>
-
+    <string name="movie_register_title">Registo de Filmes</string>
+    <string name="movie_presentation_title">Filmes</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">test1</string>
+    <string name="hello_blank_fragment2">test2</string>
+    <string name="guardar">Guardar</string>
 </resources>

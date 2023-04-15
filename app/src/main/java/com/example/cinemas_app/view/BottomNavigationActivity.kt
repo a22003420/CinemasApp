@@ -1,9 +1,10 @@
-package View
+package com.example.cinemas_app.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.cinemas_app.R
+import com.example.cinemas_app.view.fragments.RegistoFilmesFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class BottomNavigationActivity : AppCompatActivity() {
@@ -13,10 +14,10 @@ class BottomNavigationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_navigation)
 
-        val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
 
-        bottomNav.setOnItemSelectedListener { menuItem ->
-            when (menuItem.itemId) {
+        bottomNav.setOnItemSelectedListener { item ->
+            when (item.itemId) {
                 R.id.navigation_dashboard -> {
                     Toast.makeText(this, "Dashboard", Toast.LENGTH_SHORT).show()
                     true
@@ -26,7 +27,10 @@ class BottomNavigationActivity : AppCompatActivity() {
                     true
                 }
                 R.id.navigation_movie_register -> {
-                    Toast.makeText(this, "Registo", Toast.LENGTH_SHORT).show()
+                    val fragment = RegistoFilmesFragment()
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragment_container, fragment)
+                        .commit()
                     true
                 }
                 else -> false
@@ -34,5 +38,5 @@ class BottomNavigationActivity : AppCompatActivity() {
         }
 
     }
-
 }
+
