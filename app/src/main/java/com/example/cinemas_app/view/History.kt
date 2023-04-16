@@ -10,7 +10,7 @@ object History {
     val filme1 = Filmes(
         "1",
         "A Luz do Diabo",
-        "Cinemas NOS",
+        "Colombo",
         5,
         data1,
         "FOTO",
