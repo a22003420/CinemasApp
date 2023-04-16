@@ -1,5 +1,7 @@
 package com.example.cinemas_app.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -34,14 +36,23 @@ class FilmesDetailFragment : Fragment() {
             val operation = History.getOperationById(uuid)
             operation?.let { placeData(it) }
         }
+        binding.movieImdbLink.setOnClickListener { // LINK IMDB associado ao botão
+            openIMDBLink(it)
+        }
     }
 
     private fun placeData(ui: Filmes) {
-    //  binding.tvExpression.text = ui.expression
-    //  binding.tvResult.text = ui.result
-    //  binding.tvTimestamp.text = ui.timestamp.toString()
-    //  binding.tvUuid.text = ui.uuid
+        binding.apply {
+            movieTitle.text = ui.nome
+            movieGenro.text = "Terror"
+            //classificacaoFilme.text = ui.classificacao.toString()
+            //anoFilme.text = ui.ano.toString()
+            //enderecoFilme.text = ui.endereco
+            //
+        }
     }
+
+
 
     companion object {
 
@@ -52,6 +63,12 @@ class FilmesDetailFragment : Fragment() {
                     putString(ARG_OPERATION_UUID, uuid)
                 }
             }
+    }
+
+    fun openIMDBLink(view: View) { // LINK IMDB
+        val imdbLink = "https://www.imdb.com/"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(imdbLink))
+        startActivity(intent)
     }
 
 }

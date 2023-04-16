@@ -1,29 +1,47 @@
 package com.example.cinemas_app.view
 
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 object History {
     //create list of history items
-    val historyItems = mutableListOf<Filmes>(
-        Filmes(
-            "1",
-            "Aves de Rapina",
-            "Cinemas NOS",
-            4,
-            "2020",
-            0,
-            "Filme muito bom, recomendo"
-        ),
-        Filmes(
-            "2",
-            "Aves de Rapina",
-            "Cinemas NOS",
-            4,
-            "2020",
-            0,
-            "Filme muito bom, recomendo"
-        ),
+    val data1 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/12/12")
+    val filme1 = Filmes(
+        "1",
+        "A Luz do Diabo",
+        "Cinemas NOS",
+        5,
+        data1,
+        "FOTO",
+        "Filme de Terror muito bom, recomendo"
     )
+
+    val data2 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/04/15")
+    val filme2 = Filmes(
+        "2",
+        "Troll",
+        "Strada",
+        6,
+        data2,
+        "FOTO",
+        "Filme de Acção, recomendo"
+    )
+
+    val data3 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
+    val filme3 = Filmes(
+        "3",
+        "Emancipation",
+        "UBBO",
+        7,
+        data3,
+        "FOTO",
+        "Filme de Acção"
+    )
+
+    val historyItems = mutableListOf(filme1, filme2, filme3)
+
+
 
     fun getOperationById(uuid: String): Filmes? {
         return historyItems.find { it.id == uuid }

@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.FilmesDetailFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/movie_poster"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="centerCrop"
+            android:src="@drawable/luzdodiabo" />
+
+        <TextView
+            android:id="@+id/movie_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nome_do_movie"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/movie_genro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/genero"
+            android:textColor="@color/grey"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/movie_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sinopse"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/movie_release_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/data_de_lancamento_2022_01_01"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/movie_imdb_rating"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/avalia_o_do_imdb_7_5_10_2000_votos"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/movie_imdb_link"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/ver_no_imdb"
+            android:textColor="@color/white"
+            android:background="@color/blue"
+            android:textSize="16sp"
+            android:onClick="openIMDBLink"/>
+
+    </LinearLayout>
+
+</ScrollView>

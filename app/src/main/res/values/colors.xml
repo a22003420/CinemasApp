@@ -10,5 +10,11 @@
     <color name="red">#FF0000</color>
     <color name="bottom_navigation_item_color">#FFFFFF</color>
     <color name="bottom_navigation_item_color_selected">#FFFFFFFF</color>
+    // color grey
+    <color name="grey">#FF808080</color>
+    // color blue
+    <color name="blue">#FF0000FF</color>
+    <color name="dark_red">#C20000</color>
+    <color name="gray">#9E9E9E</color>
 
 </resources>

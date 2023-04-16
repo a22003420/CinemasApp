@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="RedCalendar" parent="@android:style/Theme.Material.Light.Dialog">
+        <item name="android:colorBackground">@color/white</item>
+        <item name="android:colorForeground">@color/gray</item>
+        <item name="android:colorAccent">@color/red</item>
+        <item name="android:colorPrimary">@color/red</item>
+        <item name="android:colorPrimaryDark">@color/dark_red</item>
+    </style>
+
+
+
+
+
+
+
+
+</resources>

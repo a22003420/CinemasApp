@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinemas_app.databinding.ItemdalistadefilmesBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 class FilmesAdapter(
     private val onClick: (String) -> Unit,
@@ -22,9 +24,16 @@ class FilmesAdapter(
 
     override fun onBindViewHolder(holder: HistoryViewHolder, position: Int) {
         holder.itemView.setOnClickListener { onClick(items[position].id) }
-        holder.binding.filmeTitulo.text = items[position].nome
-        holder.binding.filmeClassificacao.text = items[position].observacoes
+        val item = items[position]
+        val dateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
+        holder.binding.apply {
+            nomeFilme.text = item.nome
+            cinemaFilme.text = item.cinema
+            classificacaoFilme.text = item.classificacao.toString()
+            anoFilme.text = item.ano?.let { dateFormat.format(it) }
+        }
     }
+
 
     override fun getItemCount() = items.size
 
