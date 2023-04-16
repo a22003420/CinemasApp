@@ -29,4 +29,6 @@
     <string name="classificao">Classificação</string>
     <string name="titulo_do_filme">Título do Filme</string>
     <string name="observacoes" />
+    <string name="search_hint" />
+    <string name="detalhes">Detalhes</string>
 </resources>
