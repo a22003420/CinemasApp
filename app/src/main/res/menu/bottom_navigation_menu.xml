@@ -6,19 +6,22 @@
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/baseline_home_24"
         android:title="@string/dashboard_title"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checked="true"/>
 
 
     <item
         android:id="@+id/navigation_movie_presentation"
         android:icon="@drawable/baseline_movie_24"
         android:title="@string/movie_presentation_title"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checked="true"/>
 
     <item
         android:id="@+id/navigation_movie_register"
         android:icon="@drawable/baseline_app_registration_24"
         android:title="@string/movie_register_title"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom"
+        android:checked="true"/>
 
 </menu>

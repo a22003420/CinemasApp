@@ -1,14 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragments.DashboardFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
+    <!-- Header -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:text="@string/cinemas"
+        android:textSize="24sp"
+        android:padding="16dp"/>
 
-</FrameLayout>
+    <!-- Movies currently showing -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filmes_em_exibi_o"
+        android:textSize="20sp"
+        android:padding="16dp"/>
+
+    <!-- Movie list view for currently showing -->
+    <ListView
+        android:id="@+id/listViewFilmesExibicao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp"/>
+
+    <!-- Movies coming soon -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/filmes_a_estrear_em_breve"
+        android:textSize="20sp"
+        android:padding="16dp"/>
+
+    <!-- Movie list view for coming soon -->
+    <ListView
+        android:id="@+id/listViewFilmesProximos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        android:dividerHeight="0dp"/>
+
+</LinearLayout>

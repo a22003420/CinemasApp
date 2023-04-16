@@ -14,7 +14,7 @@ class BottomNavigationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_navigation)
 
-        bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomNav = findViewById(R.id.bottom_navigation_view)
 
         bottomNav.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -31,6 +31,7 @@ class BottomNavigationActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragment_container, fragment)
                         .commit()
+
                     true
                 }
                 else -> false

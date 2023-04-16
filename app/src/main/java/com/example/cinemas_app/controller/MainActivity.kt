@@ -16,10 +16,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        // Se o ecrã rodar, não vai para o CalculatorFragment (permanece no
-        // Fragmento onde estava anteriormente.
 
-            NavigationManager.goToDashboardFragment(supportFragmentManager)
+        NavigationManager.goToDashboardFragment(supportFragmentManager)
     }
 
     override fun onStart() {
