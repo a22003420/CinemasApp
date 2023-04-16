@@ -1,10 +1,11 @@
 package com.example.cinemas_app.controller
 
+import com.example.cinemas_app.view.FilmesFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.cinemas_app.R
+import com.example.cinemas_app.view.FilmesDetailFragment
 import com.example.cinemas_app.view.fragments.DashboardFragment
-import com.example.cinemas_app.view.fragments.FilmesFragment
 import com.example.cinemas_app.view.fragments.RegistoFilmesFragment
 
 object NavigationManager {
@@ -26,6 +27,10 @@ object NavigationManager {
 
     fun goToRegistoFragment(fm: FragmentManager) {
         placeFragment(fm, RegistoFilmesFragment())
+    }
+
+    fun goToFilmesDetailFragment(fm: FragmentManager, id: String) {
+        placeFragment(fm, FilmesDetailFragment.newInstance(id))
     }
 
 

@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
+import com.example.cinemas_app.view.Filmes
+import com.example.cinemas_app.view.History
+import java.util.*
 
 class RegistoFilmesFragment : Fragment() {
 
@@ -18,6 +21,24 @@ class RegistoFilmesFragment : Fragment() {
         binding = FragmentRegistoFilmesBinding.bind(view)
         return binding.root
     }
+
+    override fun onStart() {
+        super.onStart()
+
+        binding.buttonGuardar.setOnClickListener {
+            val filme = Filmes(UUID.randomUUID().toString(),
+                binding.editTextNomeFilme.text.toString(),
+                binding.editTextCinema.text.toString(),
+                binding.seekBarAvaliacao.progress,
+                binding.editTextData.text.toString(),
+                0,
+                binding.editTextObservacoes.text.toString())
+
+            History.historyItems.add(filme)
+        }
+    }
+
+
 
 
 
