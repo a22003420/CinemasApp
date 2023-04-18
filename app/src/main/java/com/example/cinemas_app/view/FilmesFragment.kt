@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.controller.NavigationManager
 import com.example.cinemas_app.databinding.FragmentFilmesBinding
-import com.example.cinemas_app.view.FilmesAdapter
-import com.example.cinemas_app.view.History
+
 
 class FilmesFragment : Fragment() {
 

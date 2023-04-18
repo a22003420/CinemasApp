@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentFilmesDetailBinding
+import java.text.SimpleDateFormat
+import java.util.*
 
 private const val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
 
@@ -44,11 +46,22 @@ class FilmesDetailFragment : Fragment() {
     private fun placeData(ui: Filmes) {
         binding.apply {
             movieTitle.text = ui.nome
-            movieGenro.text = "Terror"
-            //classificacaoFilme.text = ui.classificacao.toString()
-            //anoFilme.text = ui.ano.toString()
-            //enderecoFilme.text = ui.endereco
-            //
+            movieGenero.text = "Terror"
+            movieSynopsis.text = "Um filme de terror" // synopse
+            movieReleaseDate.text = "2022" // ano
+            // Popula do ecrã de Registo de Filmes aqui nos details
+            cinemaName.text=ui.cinema
+            avaResult.text=ui.classificacao.toString()
+            val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
+            val formattedDate = ui.ano?.let { dateFormat.format(it) }
+            dateViewResult.text = formattedDate
+            // imagem
+            observacoesResult.text=ui.observacoes
+
+
+
+
+
         }
     }
 

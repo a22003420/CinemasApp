@@ -1,50 +1,56 @@
-package com.example.cinemas_app.view
-
+import com.example.cinemas_app.view.Filmes
 import java.text.SimpleDateFormat
 import java.util.*
 
 
-object History {
-    //create list of history items
-    val data1 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/12/12")
-    val filme1 = Filmes(
-        "1",
-        "A Luz do Diabo",
-        "Colombo",
-        5,
-        data1,
-        "FOTO",
-        "Filme de Terror muito bom, recomendo"
-    )
 
-    val data2 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/04/15")
-    val filme2 = Filmes(
-        "2",
-        "Troll",
-        "Strada",
-        6,
-        data2,
-        "FOTO",
-        "Filme de Acção, recomendo"
-    )
+    object History {
 
-    val data3 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
-    val filme3 = Filmes(
-        "3",
-        "Emancipation",
-        "UBBO",
-        7,
-        data3,
-        "FOTO",
-        "Filme de Acção"
-    )
+        //private lateinit var imagem: Drawable
 
-    val historyItems = mutableListOf(filme1, filme2, filme3)
+        //create list of history items
+        val data1 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/12/12")
+        //imagem = ContextCompat.getDrawable(context, R.drawable.luzdodiabo)!!
+        val filme1 = Filmes(
+            "1",
+            "A Luz do Diabo",
+            "Colombo",
+            5,
+            data1,
+            "FOTO",
+            "Filme de Terror muito bom, recomendo"
+        )
+
+        val data2 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/04/15")
+       // imagem = ContextCompat.getDrawable(context, R.drawable.troll)!!
+        val filme2 = Filmes(
+            "2",
+            "Troll",
+            "Strada",
+            6,
+            data2,
+            "FOTO",
+            "Filme de Acção, recomendo"
+        )
+
+        val data3 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
+        //imagem = ContextCompat.getDrawable(context, R.drawable.emancipation)!!
+        val filme3 = Filmes(
+            "3",
+            "Emancipation",
+            "UBBO",
+            7,
+            data3,
+            "FOTO",
+            "Filme de Acção"
+        )
+
+        val historyItems = mutableListOf(filme1, filme2, filme3)
 
 
 
-    fun getOperationById(uuid: String): Filmes? {
-        return historyItems.find { it.id == uuid }
+        fun getOperationById(uuid: String): Filmes? {
+            return historyItems.find { it.id == uuid }
+        }
+
     }
-
-}

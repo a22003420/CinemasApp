@@ -12,14 +12,15 @@
     <string name="dashboard_title">Dashboard</string>
     <string name="movie_register_title">Registo de Filmes</string>
     <string name="movie_presentation_title">Filmes</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
+
     <string name="guardar">Guardar o meu registo </string>
     <string name="filmes_a_estrear_em_breve">Filmes a estrear em breve</string>
     <string name="filmes_em_exibicao">Filmes em exibição</string>
     <string name="cinemas">Cinemas</string>
     <string name="ver_no_imdb">Ver no IMDB</string>
-    <string name="avalia_o_do_imdb_7_5_10_2000_votos">Avaliação do IMDB: 7.5/10 (2000 votos)</string>
-    <string name="data_de_lancamento_2022_01_01">Data de lançamento: 2022/01/01</string>
+    <string name="avaliacao_do_imdb">Avaliação do IMDB: 7.5/10 (2000 votos)</string>
+    <string name="data_de_lancamento">Data de lançamento: 2023/01/31</string>
     <string name="sinopse">Sinopse</string>
     <string name="genero">Género</string>
     <string name="nome_do_movie">Nome do Movie</string>
@@ -31,4 +32,5 @@
     <string name="observacoes" />
     <string name="search_hint" />
     <string name="detalhes">Detalhes</string>
+    <string name="a_sua_opiniao_sobre_o_filme">A sua opinião sobre o filme</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.cinemas_app.view
 
+import android.graphics.drawable.Drawable
 import java.util.*
 
 data class Filmes(

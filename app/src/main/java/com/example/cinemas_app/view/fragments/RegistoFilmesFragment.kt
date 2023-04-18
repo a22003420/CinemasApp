@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
 import com.example.cinemas_app.view.Filmes
-import com.example.cinemas_app.view.History
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

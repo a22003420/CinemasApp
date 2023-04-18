@@ -31,8 +31,19 @@ class FilmesAdapter(
             cinemaFilme.text = item.cinema
             classificacaoFilme.text = item.classificacao.toString()
             anoFilme.text = item.ano?.let { dateFormat.format(it) }
+            //obterAnoDoFilme(item.nome)
+
         }
     }
+
+    fun obterAnoDoFilme(nomeDoFilme: String): String {
+        return when (nomeDoFilme) {
+            "Emancipation" -> "2021"
+            "Troll" -> "2022"
+            else -> "2023"
+        }
+    }
+
 
 
     override fun getItemCount() = items.size
