@@ -9,44 +9,35 @@ import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
-    private val TAG = MainActivity::class.java.simpleName
+  private lateinit var binding: ActivityMainBinding
+  private val TAG = MainActivity::class.java.simpleName
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+  override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    binding = ActivityMainBinding.inflate(layoutInflater)
+    setContentView(binding.root)
 
-        NavigationManager.goToDashboardFragment(supportFragmentManager)
+    NavigationManager.goToDashboardFragment(supportFragmentManager)
+  }
+
+  override fun onStart() {
+    super.onStart()
+    setupBottomMenu()
+  }
+
+  private fun setupBottomMenu() {
+    binding.bottomNavigationView.setOnNavigationItemSelectedListener{
+      onClickNavigationItem(it)
     }
+  }
 
-    override fun onStart() {
-        super.onStart()
-        setupBottomMenu()
+  private fun onClickNavigationItem(item: MenuItem): Boolean {
+    when(item.itemId) {
+      R.id.navigation_dashboard -> NavigationManager.goToDashboardFragment(supportFragmentManager)
+      R.id.navigation_movie_presentation -> NavigationManager.goToFilmesFragment(supportFragmentManager)
+      R.id.navigation_movie_register -> NavigationManager.goToRegistoFragment(supportFragmentManager)
     }
+    return true
 
-
-    private fun setupBottomMenu() {
-
-
-        binding.bottomNavigationView.setOnNavigationItemSelectedListener{
-            onClickNavigationItem(it)
-        }
-    }
-
-    private fun onClickNavigationItem(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.navigation_dashboard -> NavigationManager.goToDashboardFragment(supportFragmentManager)
-            R.id.navigation_movie_presentation -> NavigationManager.goToFilmesFragment(supportFragmentManager)
-            R.id.navigation_movie_register -> NavigationManager.goToRegistoFragment(supportFragmentManager)
-        }
-        return true
-
-    }
-
-
-
-
-    //comment
-
+  }
 }
