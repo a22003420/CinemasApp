@@ -10,28 +10,26 @@ import com.example.cinemas_app.view.fragments.RegistoFilmesFragment
 
 object NavigationManager {
 
-    private fun placeFragment(fm: FragmentManager, fragment: Fragment) {
-        val transition = fm.beginTransaction()
-        transition.replace(R.id.main_layout, fragment)
-        transition.addToBackStack(null)
-        transition.commit()
-    }
+  private fun placeFragment(fm: FragmentManager, fragment: Fragment) {
+    val transition = fm.beginTransaction()
+    transition.replace(R.id.fragment_container, fragment)
+    transition.addToBackStack(null)
+    transition.commit()
+  }
 
-    fun goToDashboardFragment(fm: FragmentManager) {
-        placeFragment(fm, DashboardFragment())
-    }
+  fun goToDashboardFragment(fm: FragmentManager) {
+    placeFragment(fm, DashboardFragment())
+  }
 
-    fun goToFilmesFragment(fm: FragmentManager) {
-        placeFragment(fm, FilmesFragment())
-    }
+  fun goToFilmesFragment(fm: FragmentManager) {
+    placeFragment(fm, FilmesFragment())
+  }
 
-    fun goToRegistoFragment(fm: FragmentManager) {
-        placeFragment(fm, RegistoFilmesFragment())
-    }
+  fun goToRegistoFragment(fm: FragmentManager) {
+    placeFragment(fm, RegistoFilmesFragment())
+  }
 
-    fun goToFilmesDetailFragment(fm: FragmentManager, id: String) {
-        placeFragment(fm, FilmesDetailFragment.newInstance(id))
-    }
-
-
+  fun goToFilmesDetailFragment(fm: FragmentManager, id: String) {
+    placeFragment(fm, FilmesDetailFragment.newInstance(id))
+  }
 }
