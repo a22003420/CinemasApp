@@ -12,7 +12,7 @@ object NavigationManager {
 
   private fun placeFragment(fm: FragmentManager, fragment: Fragment) {
     val transition = fm.beginTransaction()
-    transition.replace(R.id.main_layout, fragment)
+    transition.replace(R.id.fragment_container, fragment)
     transition.addToBackStack(null)
     transition.commit()
   }

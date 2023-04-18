@@ -3,7 +3,7 @@ package com.example.cinemas_app.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cinemas_app.databinding.ItemdalistadefilmesBinding
+import com.example.cinemas_app.databinding.MovieListItemBinding
 import com.example.cinemas_app.model.Filme
 import java.text.SimpleDateFormat
 import java.util.*
@@ -13,11 +13,11 @@ class FilmesAdapter(
   private var items: List<Filme> = listOf()
 ) : RecyclerView.Adapter<FilmesAdapter.HistoryViewHolder>() {
 
-  class HistoryViewHolder(val binding: ItemdalistadefilmesBinding) : RecyclerView.ViewHolder(binding.root)
+  class HistoryViewHolder(val binding: MovieListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HistoryViewHolder {
     return HistoryViewHolder(
-      ItemdalistadefilmesBinding.inflate(
+      MovieListItemBinding.inflate(
         LayoutInflater.from(parent.context),
         parent, false
       ))

@@ -12,5 +12,6 @@ data class Filme(
   //val imagem: Drawable?, // falta implementar
   val imagem: String,
   val observacoes: String,
+) {
 
-  )
+}
