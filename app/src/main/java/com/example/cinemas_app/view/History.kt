@@ -55,6 +55,6 @@ object History {
   }
 
   private fun genDate(srcDate : String) : Date {
-    return SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
+    return SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(srcDate)
   }
 }
