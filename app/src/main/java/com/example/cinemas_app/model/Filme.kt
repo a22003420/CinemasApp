@@ -7,7 +7,8 @@ data class Filme(
   val nome: String,
   val cinema: String,
   val classificacao: Int,
-  val ano: Date,
+  val ano: Int,
+  val visto: Date,
   val observacoes: String,
 ) {
 

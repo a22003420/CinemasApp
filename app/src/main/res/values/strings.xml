@@ -13,10 +13,12 @@
     <string name="movie_register_title">Registo de Filmes</string>
     <string name="movie_presentation_title">Filmes</string>
 
-
     <string name="guardar">Guardar o meu registo </string>
-    <string name="filmes_a_estrear_em_breve">Filmes a estrear em breve</string>
-    <string name="filmes_em_exibicao">Filmes em exibição</string>
+
+    <string name="best_movies">Top 5 Filmes</string>
+    <string name="recent_movies">Filmes Recentes</string>
+    <string name="last_seen_movies">Últimos Vistos</string>
+
     <string name="cinemas">Cinemas</string>
     <string name="ver_no_imdb">Ver no IMDB</string>
     <string name="avaliacao_do_imdb">Avaliação do IMDB: 7.5/10 (2000 votos)</string>

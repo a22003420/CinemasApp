@@ -9,6 +9,19 @@ object History {
   fun getOperationById(uuid: String): Filme? {
     return movieList.find { it.id == uuid }
   }
+
+  fun top5RatedMovies(): List<Filme> {
+    return movieList.sortedByDescending { it.classificacao }.take(5)
+  }
+
+  fun top5RecentMovies(): List<Filme> {
+    return movieList.sortedByDescending { it.ano }.take(5)
+  }
+
+  fun top5LastSeenMovies(): List<Filme> {
+    return movieList.sortedByDescending { it.visto }.take(5)
+  }
+
   private fun generateInitialMovieList() : MutableList<Filme> {
     return mutableListOf(
       Filme(
@@ -16,6 +29,7 @@ object History {
         "A Luz do Diabo",
         "Colombo",
         5,
+        2022,
         genDate("2022/12/12"),
         "Filme de Terror muito bom, recomendo"
       ),
@@ -24,6 +38,7 @@ object History {
         "Troll",
         "Strada",
         6,
+        2022,
         genDate("2022/04/15"),
         "Filme de Acção, recomendo"
       ),
@@ -32,6 +47,7 @@ object History {
         "Emancipation",
         "UBBO",
         7,
+        2021,
         genDate("2022/08/22"),
         "Filme de Acção"
       )

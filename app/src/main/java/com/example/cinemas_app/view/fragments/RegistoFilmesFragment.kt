@@ -59,9 +59,9 @@ class RegistoFilmesFragment : Fragment() {
         //val imagem = resources.getDrawable(R.drawable.null_image)
         val imagem = binding.editTextObservacoes.text.toString()
         val observacoes = binding.editTextObservacoes.text.toString()
-
+        val ano = binding.editTextAno.text.toString().toInt()
         val data = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(dataString)
-        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, data, observacoes)
+        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, ano, data, observacoes)
 
         val confirmDialog = AlertDialog.Builder(requireContext())
           .setTitle("Confirmar")
