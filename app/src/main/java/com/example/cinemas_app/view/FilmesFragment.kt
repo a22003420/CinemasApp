@@ -13,7 +13,7 @@ import com.example.cinemas_app.databinding.FragmentFilmesBinding
 
 class FilmesFragment : Fragment() {
 
-  private val adapter = FilmesAdapter(::onOperationClick, History.historyItems)
+  private val adapter = FilmesAdapter(::onOperationClick, History.movieList)
   private lateinit var binding: FragmentFilmesBinding
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

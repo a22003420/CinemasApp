@@ -5,49 +5,43 @@ import java.util.*
 
 
 object History {
-
-  //private lateinit var imagem: Drawable
-
-  //create list of history items
-  val data1 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/12/12")
-  //imagem = ContextCompat.getDrawable(context, R.drawable.luzdodiabo)!!
-  val filme1 = Filme(
-    "1",
-    "A Luz do Diabo",
-    "Colombo",
-    5,
-    data1,
-    "FOTO",
-    "Filme de Terror muito bom, recomendo"
-  )
-
-  val data2 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/04/15")
- // imagem = ContextCompat.getDrawable(context, R.drawable.troll)!!
-  val filme2 = Filme(
-    "2",
-    "Troll",
-    "Strada",
-    6,
-    data2,
-    "FOTO",
-    "Filme de Acção, recomendo"
-  )
-
-  val data3 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
-  //imagem = ContextCompat.getDrawable(context, R.drawable.emancipation)!!
-  val filme3 = Filme(
-    "3",
-    "Emancipation",
-    "UBBO",
-    7,
-    data3,
-    "FOTO",
-    "Filme de Acção"
-  )
-
-  val historyItems = mutableListOf(filme1, filme2, filme3)
-
+  val movieList = generateInitialMovieList()
   fun getOperationById(uuid: String): Filme? {
-    return historyItems.find { it.id == uuid }
+    return movieList.find { it.id == uuid }
+  }
+  private fun generateInitialMovieList() : MutableList<Filme> {
+    return mutableListOf(
+      Filme(
+        "1",
+        "A Luz do Diabo",
+        "Colombo",
+        5,
+        genDate("2022/12/12"),
+        "FOTO",
+        "Filme de Terror muito bom, recomendo"
+      ),
+      Filme(
+        "2",
+        "Troll",
+        "Strada",
+        6,
+        genDate("2022/04/15"),
+        "FOTO",
+        "Filme de Acção, recomendo"
+      ),
+      Filme(
+        "3",
+        "Emancipation",
+        "UBBO",
+        7,
+        genDate("2022/08/22"),
+        "FOTO",
+        "Filme de Acção"
+      )
+    )
+  }
+
+  private fun genDate(srcDate : String) : Date {
+    return SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
   }
 }
