@@ -31,20 +31,11 @@ class FilmesAdapter(
       nomeFilme.text = item.nome
       cinemaFilme.text = item.cinema
       classificacaoFilme.text = item.classificacao.toString()
-      anoFilme.text = item.ano?.let { dateFormat.format(it) }
-      //obterAnoDoFilme(item.nome)
+      anoFilme.text = item.ano.toString()
 
     }
   }
-
-  fun obterAnoDoFilme(nomeDoFilme: String): String {
-    return when (nomeDoFilme) {
-      "Emancipation" -> "2021"
-      "Troll" -> "2022"
-      else -> "2023"
-    }
-  }
-
+  
   override fun getItemCount() = items.size
 
   fun updateItems(items: List<Filme>) {

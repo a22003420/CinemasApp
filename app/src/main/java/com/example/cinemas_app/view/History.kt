@@ -5,49 +5,56 @@ import java.util.*
 
 
 object History {
-
-  //private lateinit var imagem: Drawable
-
-  //create list of history items
-  val data1 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/12/12")
-  //imagem = ContextCompat.getDrawable(context, R.drawable.luzdodiabo)!!
-  val filme1 = Filme(
-    "1",
-    "A Luz do Diabo",
-    "Colombo",
-    5,
-    data1,
-    "FOTO",
-    "Filme de Terror muito bom, recomendo"
-  )
-
-  val data2 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/04/15")
- // imagem = ContextCompat.getDrawable(context, R.drawable.troll)!!
-  val filme2 = Filme(
-    "2",
-    "Troll",
-    "Strada",
-    6,
-    data2,
-    "FOTO",
-    "Filme de Acção, recomendo"
-  )
-
-  val data3 = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
-  //imagem = ContextCompat.getDrawable(context, R.drawable.emancipation)!!
-  val filme3 = Filme(
-    "3",
-    "Emancipation",
-    "UBBO",
-    7,
-    data3,
-    "FOTO",
-    "Filme de Acção"
-  )
-
-  val historyItems = mutableListOf(filme1, filme2, filme3)
-
+  val movieList = generateInitialMovieList()
   fun getOperationById(uuid: String): Filme? {
-    return historyItems.find { it.id == uuid }
+    return movieList.find { it.id == uuid }
+  }
+
+  fun top5RatedMovies(): List<Filme> {
+    return movieList.sortedByDescending { it.classificacao }.take(5)
+  }
+
+  fun top5RecentMovies(): List<Filme> {
+    return movieList.sortedByDescending { it.ano }.take(5)
+  }
+
+  fun top5LastSeenMovies(): List<Filme> {
+    return movieList.sortedByDescending { it.visto }.take(5)
+  }
+
+  private fun generateInitialMovieList() : MutableList<Filme> {
+    return mutableListOf(
+      Filme(
+        "1",
+        "A Luz do Diabo",
+        "Colombo",
+        5,
+        2022,
+        genDate("2022/12/12"),
+        "Filme de Terror muito bom, recomendo"
+      ),
+      Filme(
+        "2",
+        "Troll",
+        "Strada",
+        6,
+        2022,
+        genDate("2022/04/15"),
+        "Filme de Acção, recomendo"
+      ),
+      Filme(
+        "3",
+        "Emancipation",
+        "UBBO",
+        7,
+        2021,
+        genDate("2022/08/22"),
+        "Filme de Acção"
+      )
+    )
+  }
+
+  private fun genDate(srcDate : String) : Date {
+    return SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse("2022/08/22")
   }
 }
