@@ -61,13 +61,13 @@ class RegistoFilmesFragment : Fragment() {
         val observacoes = binding.editTextObservacoes.text.toString()
 
         val data = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(dataString)
-        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, data, imagem, observacoes)
+        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, data, observacoes)
 
         val confirmDialog = AlertDialog.Builder(requireContext())
           .setTitle("Confirmar")
           .setMessage("Deseja guardar o filme $nome?")
           .setPositiveButton("Guardar") { _, _ ->
-            History.historyItems.add(filme)
+            History.movieList.add(filme)
             contador++ // Incrementa o contador, para substituir
             // o UUID.randomUUID().toString(),
             println("Já tem $contador Filmes na Lista de Filmes")

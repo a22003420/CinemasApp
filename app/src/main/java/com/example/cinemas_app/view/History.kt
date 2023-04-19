@@ -17,7 +17,6 @@ object History {
         "Colombo",
         5,
         genDate("2022/12/12"),
-        "FOTO",
         "Filme de Terror muito bom, recomendo"
       ),
       Filme(
@@ -26,7 +25,6 @@ object History {
         "Strada",
         6,
         genDate("2022/04/15"),
-        "FOTO",
         "Filme de Acção, recomendo"
       ),
       Filme(
@@ -35,7 +33,6 @@ object History {
         "UBBO",
         7,
         genDate("2022/08/22"),
-        "FOTO",
         "Filme de Acção"
       )
     )
