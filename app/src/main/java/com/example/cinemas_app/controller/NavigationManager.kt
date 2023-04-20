@@ -1,6 +1,6 @@
 package com.example.cinemas_app.controller
 
-import com.example.cinemas_app.view.adapters.FilmesFragment
+import com.example.cinemas_app.view.FilmesFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.cinemas_app.R

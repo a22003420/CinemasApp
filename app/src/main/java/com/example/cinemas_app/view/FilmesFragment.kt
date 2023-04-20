@@ -1,4 +1,4 @@
-package com.example.cinemas_app.view.adapters
+package com.example.cinemas_app.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.controller.NavigationManager
 import com.example.cinemas_app.databinding.FragmentFilmesBinding
-import com.example.cinemas_app.view.FilmesAdapter
+import com.example.cinemas_app.view.adapters.FilmesAdapter
 
 
 class FilmesFragment : Fragment() {

@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.cinemas_app.R
 import com.example.cinemas_app.controller.NavigationManager
 import com.example.cinemas_app.databinding.FragmentDashboardBinding
-import com.example.cinemas_app.view.FilmesAdapter
+import com.example.cinemas_app.view.adapters.FilmesAdapter
 
 class DashboardFragment : Fragment() {
 
