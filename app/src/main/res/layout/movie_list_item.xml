@@ -15,6 +15,13 @@
         android:orientation="horizontal"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/filme_imagem"
+            android:layout_width="72dp"
+            android:layout_height="96dp"
+            android:scaleType="centerCrop"/>
+
+
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -29,13 +36,6 @@
                 android:text="@string/titulo_do_filme"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/cinema_filme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/cinema"
-                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"

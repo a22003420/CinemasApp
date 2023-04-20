@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentFilmesDetailBinding
 import com.example.cinemas_app.model.Filme
+import com.example.cinemas_app.model.History
+import com.example.cinemas_app.model.Movie
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -19,6 +21,7 @@ class FilmesDetailFragment : Fragment() {
 
   private lateinit var binding: FragmentFilmesDetailBinding
   private var operationUuid: String? = null
+  private var movie: Movie? = null
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -30,27 +33,33 @@ class FilmesDetailFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_filmes_detail, container, false)
     binding = FragmentFilmesDetailBinding.bind(view)
+    val movieList = History.loadMovies(requireContext())
+    movie = History.getMovieById(movieList, operationUuid)
     return binding.root
   }
 
   override fun onStart() {
     super.onStart()
-    operationUuid?.let { uuid ->
-      val operation = History.getOperationById(uuid)
-      operation?.let { placeData(it) }
-    }
-    binding.movieImdbLink.setOnClickListener { // LINK IMDB associado ao botão
-      openIMDBLink(it)
+    placeData()
+    binding.movieImdbLink.setOnClickListener {
+      openIMDBLink()
     }
   }
 
-  private fun placeData(ui: Filme) {
+  private fun placeData() {
     binding.apply {
-      movieTitle.text = ui.nome
-      movieGenero.text = "Terror"
-      movieSynopsis.text = "Um filme de terror" // synopse
-      movieReleaseDate.text = ui.ano.toString() // ano
-      // Popula do ecrã de Registo de Filmes aqui no ecrã de details do filme em questão
+      movieTitle.text = movie?.getName()
+      movieGenero.text = movie?.getGenre()
+      movieSynopsis.text = movie?.getSynopsis()
+      movieReleaseDate.text = movie?.getReleaseDateString()
+      movieImdbRating.text = "IMDB: ${movie?.getImdbRating().toString()}"
+
+      val resourceId = context?.resources?.getIdentifier(movie?.getPhoto(), "drawable",  context?.packageName)
+      if (resourceId != null) {
+        movieImage.setImageResource(resourceId)
+      }
+
+      /*
       cinemaName.text = ui.cinema
       avaResult.text = ui.classificacao.toString()
       val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
@@ -58,6 +67,7 @@ class FilmesDetailFragment : Fragment() {
       dateViewResult.text = formattedDate
       // imagem
       observacoesResult.text=ui.observacoes
+      */
     }
   }
 
@@ -72,8 +82,8 @@ class FilmesDetailFragment : Fragment() {
       }
   }
 
-  fun openIMDBLink(view: View) { // LINK IMDB
-    val imdbLink = "https://www.imdb.com/"
+  fun openIMDBLink() { // LINK IMDB
+    val imdbLink = movie?.getImdbLink()
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(imdbLink))
     startActivity(intent)
   }

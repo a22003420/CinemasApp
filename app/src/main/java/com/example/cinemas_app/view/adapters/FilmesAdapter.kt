@@ -29,7 +29,6 @@ class FilmesAdapter(
     val dateFormat = SimpleDateFormat("yyyy", Locale.getDefault())
     holder.binding.apply {
       nomeFilme.text = item.nome
-      cinemaFilme.text = item.cinema
       classificacaoFilme.text = item.classificacao.toString()
       anoFilme.text = item.ano.toString()
 

@@ -22,10 +22,10 @@
     <string name="cinemas">Cinemas</string>
     <string name="ver_no_imdb">Ver no IMDB</string>
     <string name="avaliacao_do_imdb">Avaliação do IMDB: 7.5/10 (2000 votos)</string>
-    <string name="data_de_lancamento">Data de lançamento: 2023/01/31</string>
+    <string name="data_de_lancamento">2023/01/31</string>
     <string name="sinopse">Sinopse</string>
     <string name="genero">Género</string>
-    <string name="nome_do_movie">Nome do Movie</string>
+    <string name="movie_name">Nome do Movie</string>
     <string name="observa_es">Observações</string>
     <string name="ano">Ano</string>
     <string name="cinema">Cinema</string>

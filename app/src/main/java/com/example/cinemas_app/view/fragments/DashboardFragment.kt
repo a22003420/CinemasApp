@@ -1,6 +1,6 @@
 package com.example.cinemas_app.view.fragments
 
-import History
+import com.example.cinemas_app.model.History
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
