@@ -49,12 +49,12 @@ class FilmesDetailFragment : Fragment() {
       movieTitle.text = ui.nome
       movieGenero.text = "Terror"
       movieSynopsis.text = "Um filme de terror" // synopse
-      movieReleaseDate.text = "2022" // ano
-      // Popula do ecrã de Registo de Filmes aqui nos details
+      movieReleaseDate.text = ui.ano.toString() // ano
+      // Popula do ecrã de Registo de Filmes aqui no ecrã de details do filme em questão
       cinemaName.text = ui.cinema
       avaResult.text = ui.classificacao.toString()
       val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-      val formattedDate = ui.ano?.let { dateFormat.format(it) }
+      val formattedDate = ui.visto?.let { dateFormat.format(it) }
       dateViewResult.text = formattedDate
       // imagem
       observacoesResult.text=ui.observacoes

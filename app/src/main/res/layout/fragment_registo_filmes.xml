@@ -63,10 +63,21 @@
             android:id="@+id/seekBarAvaliacao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:max="9"
+            android:max="10"
             android:progress="0"
             android:progressTint="#000000"
             android:thumbTint="#000000" />
+
+        <TextView
+            android:id="@+id/textViewAvaliacaoError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"/>
+
 
         <TextView
             android:id="@+id/textViewData"

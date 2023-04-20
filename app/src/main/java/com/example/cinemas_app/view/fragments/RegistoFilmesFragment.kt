@@ -60,8 +60,8 @@ class RegistoFilmesFragment : Fragment() {
         val imagem = binding.editTextObservacoes.text.toString()
         val observacoes = binding.editTextObservacoes.text.toString()
         val ano = binding.editTextAno.text.toString().toInt()
-        val data = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(dataString)
-        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, ano, data, observacoes)
+        val visto = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(dataString)
+        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, ano, visto, observacoes)
 
         val confirmDialog = AlertDialog.Builder(requireContext())
           .setTitle("Confirmar")
@@ -87,12 +87,14 @@ class RegistoFilmesFragment : Fragment() {
   }
 
 
+  @SuppressLint("SetTextI18n")
   private fun validateInputs(): Boolean {
     var isValid = true
     val nome = binding.editTextNomeFilme.text.toString()
     val cinema = binding.editTextCinema.text.toString()
     val classificacao = binding.seekBarAvaliacao.progress
-    val data = binding.editTextData.text.toString()
+    val ano = binding.editTextAno.text.toString().toIntOrNull()
+    val visto = binding.editTextData.text.toString()
     //val imagem = resources.getDrawable(R.drawable.null_image)
     val imagem = binding.editTextObservacoes.text.toString()
     val observacoes = binding.editTextObservacoes.text.toString()
@@ -101,30 +103,44 @@ class RegistoFilmesFragment : Fragment() {
       binding.editTextNomeFilme.error = "Campo obrigatório"
       isValid = false
     }
+    if (ano==null){
+      binding.editTextAno.error = "Campo obrigatório"
+      isValid = false
+    } else {
+      if (ano < 1900 || ano > Calendar.getInstance().get(Calendar.YEAR)) {
+        binding.editTextAno.error = "Ano inválido"
+        isValid = false
+      }
+    }
     if (cinema.isBlank()) {
       binding.editTextCinema.error = "Campo obrigatório"
       isValid = false
     }
-    if (data.isBlank()) {
+    if (classificacao == 0) {
+      binding.textViewAvaliacaoError.text = "Selecione uma avaliação de 1 a 10"
+      isValid = false
+    } else {
+      binding.textViewAvaliacaoError.text = "" // limpa a String
+    }
+
+
+    if (visto.isBlank()) {
       binding.editTextData.error = "Campo obrigatório"
       isValid = false
     } else {
       try {
-        SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(data)
+        SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(visto)
         if (selectedDate.after(Calendar.getInstance())) {
           binding.editTextData.error = "Data inválida"
           isValid = false
+        } else {
+          binding.editTextData.error = null // remove a mensagem de erro que estava a aparecer
         }
       } catch (e: ParseException) {
         binding.editTextData.error = "Data inválida"
         isValid = false
       }
 
-    }
-
-    if (observacoes.isBlank()) {
-      binding.editTextObservacoes.error = "Campo obrigatório"
-      isValid = false
     }
 
     return isValid

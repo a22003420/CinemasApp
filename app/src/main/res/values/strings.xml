@@ -5,7 +5,7 @@
     <string name="fotografias">Fotografias tiradas com a câmera - (opcional)</string>
     <string name="dd_mm_yyyy">dd/mm/yyyy</string>
     <string name="data_dd_mm_yyyy">Data (dd/mm/yyyy)</string>
-    <string name="avaliacao_1_10">Avaliação (1–10)</string>
+    <string name="avaliacao_1_10">Avaliação (0–10)</string>
     <string name="cinema_onde_foi_visto">Cinema onde foi visualizado o filme</string>
     <string name="nome_do_filme">Nome do filme</string>
     <string name="dashboard">hello</string>
