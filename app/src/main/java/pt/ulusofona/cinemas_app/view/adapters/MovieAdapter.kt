@@ -1,12 +1,10 @@
-package com.example.cinemas_app.view.adapters
+package pt.ulusofona.cinemas_app.view.adapters
 
-import android.graphics.BitmapFactory
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.MovieListItemBinding
-import com.example.cinemas_app.model.Movie
+import pt.ulusofona.cinemas_app.model.Movie
 
 class MovieAdapter(
   private val onClick: (String) -> Unit,

@@ -1,4 +1,4 @@
-package com.example.cinemas_app.view.fragments
+package pt.ulusofona.cinemas_app.view.fragments
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -11,8 +11,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
-import com.example.cinemas_app.model.Filme
-import com.example.cinemas_app.model.History
+import pt.ulusofona.cinemas_app.model.Filme
+import pt.ulusofona.cinemas_app.model.History
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

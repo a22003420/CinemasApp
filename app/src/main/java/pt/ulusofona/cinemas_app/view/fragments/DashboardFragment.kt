@@ -1,6 +1,6 @@
-package com.example.cinemas_app.view.fragments
+package pt.ulusofona.cinemas_app.view.fragments
 
-import com.example.cinemas_app.model.History
+import pt.ulusofona.cinemas_app.model.History
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinemas_app.R
-import com.example.cinemas_app.controller.NavigationManager
+import pt.ulusofona.cinemas_app.controller.NavigationManager
 import com.example.cinemas_app.databinding.FragmentDashboardBinding
-import com.example.cinemas_app.view.adapters.FilmesAdapter
+import pt.ulusofona.cinemas_app.view.adapters.FilmesAdapter
 
 class DashboardFragment : Fragment() {
 

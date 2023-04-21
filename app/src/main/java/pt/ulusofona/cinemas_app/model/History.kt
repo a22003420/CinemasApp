@@ -1,10 +1,8 @@
-package com.example.cinemas_app.model
+package pt.ulusofona.cinemas_app.model
 
 import android.content.Context
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import java.util.*
-
 
 
 object History {

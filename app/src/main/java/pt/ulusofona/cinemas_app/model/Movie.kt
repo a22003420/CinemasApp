@@ -1,4 +1,4 @@
-package com.example.cinemas_app.model
+package pt.ulusofona.cinemas_app.model
 
 import com.google.gson.annotations.SerializedName
 import java.util.*

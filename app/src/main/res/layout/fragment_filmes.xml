@@ -5,6 +5,6 @@
     android:id="@+id/rv_history"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.FilmesFragment">
+    tools:context="pt.ulusofona.cinemas_app.view.FilmesFragment">
 
 </androidx.recyclerview.widget.RecyclerView>

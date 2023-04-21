@@ -1,4 +1,4 @@
-package com.example.cinemas_app.view
+package pt.ulusofona.cinemas_app.view
 
 import android.content.Intent
 import android.net.Uri
@@ -9,11 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentFilmesDetailBinding
-import com.example.cinemas_app.model.Filme
-import com.example.cinemas_app.model.History
-import com.example.cinemas_app.model.Movie
-import java.text.SimpleDateFormat
-import java.util.*
+import pt.ulusofona.cinemas_app.model.History
+import pt.ulusofona.cinemas_app.model.Movie
 
 private const val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
 

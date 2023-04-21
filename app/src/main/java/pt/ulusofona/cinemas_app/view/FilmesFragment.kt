@@ -1,4 +1,4 @@
-package com.example.cinemas_app.view
+package pt.ulusofona.cinemas_app.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
-import com.example.cinemas_app.controller.NavigationManager
+import pt.ulusofona.cinemas_app.controller.NavigationManager
 import com.example.cinemas_app.databinding.FragmentFilmesBinding
-import com.example.cinemas_app.model.History
-import com.example.cinemas_app.model.Movie
-import com.example.cinemas_app.view.adapters.FilmesAdapter
-import com.example.cinemas_app.view.adapters.MovieAdapter
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import pt.ulusofona.cinemas_app.model.History
+import pt.ulusofona.cinemas_app.model.Movie
+import pt.ulusofona.cinemas_app.view.adapters.MovieAdapter
 
 
 class FilmesFragment : Fragment() {

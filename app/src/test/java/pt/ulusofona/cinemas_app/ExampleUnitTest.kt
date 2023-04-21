@@ -1,4 +1,4 @@
-package com.example.cinemas_app
+package pt.ulusofona.cinemas_app
 
 import org.junit.Test
 
