@@ -1,23 +1,26 @@
 package pt.ulusofona.cinemas_app.view.fragments
 
 import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.SeekBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
-import pt.ulusofona.cinemas_app.model.Filme
+import pt.ulusofona.cinemas_app.controller.NavigationManager
 import pt.ulusofona.cinemas_app.model.History
 import pt.ulusofona.cinemas_app.model.Movie
 import pt.ulusofona.cinemas_app.model.MovieRegistry
+import pt.ulusofona.cinemas_app.view.adapters.ImagesAdapter
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -28,34 +31,69 @@ class RegistoFilmesFragment : Fragment() {
   private var movieRegistry: MovieRegistry = MovieRegistry()
   private var movieList: List<Movie> = listOf()
   private var movie: Movie? = null
+  private val REQUEST_PICK_IMAGE = 100
+  private var selectedImages = mutableListOf<Uri>()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    // Inflate the layout for this fragment
     val view = inflater.inflate(R.layout.fragment_registo_filmes, container, false)
     binding = FragmentRegistoFilmesBinding.bind(view)
     movieList = History.loadMovies(requireContext())
     pickDateClickEvent()
     saveClickEvent()
+    photosClickEvent()
     return binding.root
   }
 
   private fun pickDateClickEvent() {
     binding.registryPickDate.setOnClickListener {
-      // Get the current date
       val calendar = Calendar.getInstance()
       val year = calendar.get(Calendar.YEAR)
       val month = calendar.get(Calendar.MONTH)
       val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-      // Show the date picker dialog
       val datePicker = DatePickerDialog(requireContext(), R.style.RedCalendar,
         { _, year, month, day ->
-        // Handle the selected date
         val selectedDate = "$day/${month + 1}/$year"
-        // Do something with the selected date, e.g. update a TextView
+
         binding.registryPickDate.text = selectedDate
       }, year, month, day)
       datePicker.show()
+    }
+  }
+
+  private fun photosClickEvent() {
+    binding.registryPhotosAdd.setOnClickListener {
+      // Create an intent to pick an image from the device
+      val intent = Intent(Intent.ACTION_GET_CONTENT)
+      intent.type = "image/*"
+      intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
+      // Launch the intent and wait for a result
+      startActivityForResult(intent, REQUEST_PICK_IMAGE)
+    }
+  }
+
+  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+
+    if (requestCode == REQUEST_PICK_IMAGE && resultCode == RESULT_OK) {
+      val clipData = data?.clipData
+
+      if (clipData != null) {
+        for (i in 0 until clipData.itemCount) {
+          val imageUri = clipData.getItemAt(i).uri
+          if (imageUri != null) {
+            selectedImages.add(imageUri)
+          }
+        }
+      } else {
+        val imageUri = data?.data
+        if (imageUri != null) {
+          selectedImages.add(imageUri)
+        }
+      }
+
+      binding.registryPhotosList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+      binding.registryPhotosList.adapter = ImagesAdapter(selectedImages)
     }
   }
 
@@ -68,7 +106,7 @@ class RegistoFilmesFragment : Fragment() {
         val seenDate = binding.registryPickDate.text.toString()
         val observations = binding.registryObservations.text.toString()
 
-        movieRegistry = MovieRegistry(movieId, cinema, rate, seenDate, observations)
+        movieRegistry = MovieRegistry(movieId, cinema, rate, seenDate, observations, selectedImages)
         displayConfirm()
       } else {
         Toast.makeText(requireContext(), getString(R.string.registry_error), Toast.LENGTH_SHORT).show()

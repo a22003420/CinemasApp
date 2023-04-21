@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">CINEMASOFONA</string>
-    <string name="registry_observations_label">Observações (opcional) - max. 200 caracteres</string>
+    <string name="registry_observations_label">Observações (opcional)</string>
     <string name="registry_observations_hint"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</i></string>
     <string name="registry_photos_add">Adicionar fotos</string>
     <string name="registry_pick_date">Escolha uma data</string>
-    <string name="registry_photos_label">Fotografias tiradas com a câmera - (opcional)</string>
+    <string name="registry_photos_label">Fotografias (opcional)</string>
     <string name="dd_mm_yyyy">dd/mm/yyyy</string>
     <string name="seen_date_label">Data</string>
     <string name="registry_rate_label">Avaliação (0–10)</string>

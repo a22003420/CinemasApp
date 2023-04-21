@@ -1,5 +1,6 @@
 package pt.ulusofona.cinemas_app.model
 
+import android.net.Uri
 import java.util.*
 
 data class MovieRegistry(
@@ -8,7 +9,7 @@ data class MovieRegistry(
     private val rate : Int = 0,
     private val seen: String = "",
     private val observations: String = "",
-    private val images: List<String> = listOf()) {
+    private val images: List<Uri> = listOf()) {
 
     fun getMovieId(): Int {
         return movieId
@@ -30,7 +31,7 @@ data class MovieRegistry(
         return seen
     }
 
-    fun getImages(): List<String> {
+    fun getImages(): List<Uri> {
         return images
     }
 
