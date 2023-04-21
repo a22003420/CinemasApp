@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:fillViewport="true">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -20,7 +20,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/best_movies"
+                android:text="@string/top_5_imdb"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -32,6 +32,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/best_rated_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -41,7 +42,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/recent_movies"
+                android:text="@string/best_rated_movies"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -53,6 +54,7 @@
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/last_seen_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"

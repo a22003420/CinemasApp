@@ -35,19 +35,25 @@ object History {
     registryList.add(registry)
   }
 
-  fun getOperationById(uuid: String): Filme? {
-    return null
+  fun top5ImdbMovies(movieList: List<Movie>): List<Movie> {
+    return movieList.sortedByDescending { it.getImdbRating() }.take(5)
   }
 
-  fun top5RatedMovies(): List<Filme> {
-    return listOf()
+  fun top5BestRatedMovies(movieList: List<Movie>): List<Movie> {
+    val sortedMovies = registryList
+      .sortedByDescending { it.getRate() }
+      .map { getMovieById(movieList, it.getMovieId().toString()) }
+      .take(5)
+
+    return sortedMovies.filterNotNull()
   }
 
-  fun top5RecentMovies(): List<Filme> {
-    return listOf()
-  }
+  fun top5LastSeenMovies(movieList: List<Movie>): List<Movie> {
+    val sortedMovies = registryList
+      .sortedByDescending { it.getSeenDate() }
+      .map { getMovieById(movieList, it.getMovieId().toString()) }
+      .take(5)
 
-  fun top5LastSeenMovies(): List<Filme> {
-    return listOf()
+    return sortedMovies.filterNotNull()
   }
 }

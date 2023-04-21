@@ -32,8 +32,8 @@
     <string name="error_invalid_rate">"Selecione uma avaliação de 1 a 10"</string>
     <string name="error_invalid_movie">Este filme não existe</string>
 
-    <string name="best_movies">Top 5 Filmes</string>
-    <string name="recent_movies">Filmes Recentes</string>
+    <string name="top_5_imdb">Top 5 IMDB</string>
+    <string name="best_rated_movies">Melhores avaliados</string>
     <string name="last_seen_movies">Últimos Vistos</string>
 
     <string name="cinemas">Cinemas</string>

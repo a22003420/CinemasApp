@@ -15,8 +15,6 @@ import pt.ulusofona.cinemas_app.view.adapters.MovieAdapter
 
 
 class FilmesFragment : Fragment() {
-
-  // private val adapter = FilmesAdapter(::onOperationClick, com.example.cinemas_app.model.History.movieList)
   private lateinit var adapter : MovieAdapter
   private lateinit var binding: FragmentFilmesBinding
   private lateinit var myMovieList: List<Movie>
