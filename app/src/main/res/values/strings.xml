@@ -1,19 +1,36 @@
 <resources>
     <string name="app_name">CINEMASOFONA</string>
-    <string name="observacoes_maximo_200_caracteres">Observações (opcional) - max. 200 caracteres</string>
-    <string name="adicionar_fotos">Adicionar fotos</string>
-    <string name="fotografias">Fotografias tiradas com a câmera - (opcional)</string>
+    <string name="registry_observations_label">Observações (opcional) - max. 200 caracteres</string>
+    <string name="registry_observations_hint"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</i></string>
+    <string name="registry_photos_add">Adicionar fotos</string>
+    <string name="registry_pick_date">Escolha uma data</string>
+    <string name="registry_photos_label">Fotografias tiradas com a câmera - (opcional)</string>
     <string name="dd_mm_yyyy">dd/mm/yyyy</string>
-    <string name="data_dd_mm_yyyy">Data (dd/mm/yyyy)</string>
-    <string name="avaliacao_1_10">Avaliação (0–10)</string>
-    <string name="cinema_onde_foi_visto">Cinema onde foi visualizado o filme</string>
-    <string name="nome_do_filme">Nome do filme</string>
+    <string name="seen_date_label">Data</string>
+    <string name="registry_rate_label">Avaliação (0–10)</string>
+    <string name="registry_cinema_label">Cinema</string>
+    <string name="registry_cinema_hint"><i>Colombo</i></string>
+    <string name="registry_movie_name_label">Nome do filme</string>
+    <string name="registry_movie_name_hint"><i>The Godfather</i></string>
     <string name="dashboard">hello</string>
     <string name="dashboard_title">Dashboard</string>
     <string name="movie_register_title">Registo de Filmes</string>
     <string name="movie_presentation_title">Filmes</string>
+    <string name="registry_save_button">Guardar o meu registo </string>
 
-    <string name="guardar">Guardar o meu registo </string>
+    <string name="registry_dialog_message">Deseja avaliar o filme %1$s com a nota %2$s?</string>
+    <string name="dialog_confirm">Confirmar</string>
+    <string name="dialog_save">Guardar</string>
+    <string name="dialog_cancel">Cancelar</string>
+
+    <string name="registry_success">Registo guardado com sucesso</string>
+    <string name="registry_error">Preencha todos os campos corretamente</string>
+
+    <string name="error_field_required">Campo Obrigatório</string>
+    <string name="error_date_in_future">A data deve ser no passado</string>
+    <string name="error_invalid_date">Data inválida</string>
+    <string name="error_invalid_rate">"Selecione uma avaliação de 1 a 10"</string>
+    <string name="error_invalid_movie">Este filme não existe</string>
 
     <string name="best_movies">Top 5 Filmes</string>
     <string name="recent_movies">Filmes Recentes</string>

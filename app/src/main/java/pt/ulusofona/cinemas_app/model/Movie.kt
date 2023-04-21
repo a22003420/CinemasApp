@@ -49,7 +49,7 @@ data class Movie(
   }
 
   fun getReleaseDate(): Date {
-    val date = releaseDate.split("/")
+    val date = getReleaseDateString().split("/")
     return Date(date[0].toInt(), date[1].toInt(), date[2].toInt())
   }
 }

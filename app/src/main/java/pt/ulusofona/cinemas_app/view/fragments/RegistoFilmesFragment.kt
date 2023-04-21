@@ -7,12 +7,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import android.widget.SeekBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
 import pt.ulusofona.cinemas_app.model.Filme
 import pt.ulusofona.cinemas_app.model.History
+import pt.ulusofona.cinemas_app.model.Movie
+import pt.ulusofona.cinemas_app.model.MovieRegistry
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -20,130 +25,137 @@ import java.util.*
 class RegistoFilmesFragment : Fragment() {
 
   private lateinit var binding: FragmentRegistoFilmesBinding
-  private var selectedDate = Calendar.getInstance()
-  var contador = 3
+  private var movieRegistry: MovieRegistry = MovieRegistry()
+  private var movieList: List<Movie> = listOf()
+  private var movie: Movie? = null
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     // Inflate the layout for this fragment
     val view = inflater.inflate(R.layout.fragment_registo_filmes, container, false)
     binding = FragmentRegistoFilmesBinding.bind(view)
+    movieList = History.loadMovies(requireContext())
+    pickDateClickEvent()
+    saveClickEvent()
     return binding.root
   }
 
-  private fun updateDateField() {
-    val dateFormat = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault())
-    binding.editTextData.setText(dateFormat.format(selectedDate.time))
-  }
+  private fun pickDateClickEvent() {
+    binding.registryPickDate.setOnClickListener {
+      // Get the current date
+      val calendar = Calendar.getInstance()
+      val year = calendar.get(Calendar.YEAR)
+      val month = calendar.get(Calendar.MONTH)
+      val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-  @SuppressLint("UseCompatLoadingForDrawables")
-  override fun onStart() {
-    super.onStart()
-
-    binding.editTextData.setOnClickListener {
-      val datePicker = DatePickerDialog(requireContext(),R.style.RedCalendar,
-        { _, year, month, dayOfMonth ->
-          selectedDate.set(year, month, dayOfMonth)
-          updateDateField()
-        },
-        selectedDate.get(Calendar.YEAR),
-        selectedDate.get(Calendar.MONTH),
-        selectedDate.get(Calendar.DAY_OF_MONTH))
+      // Show the date picker dialog
+      val datePicker = DatePickerDialog(requireContext(), R.style.RedCalendar,
+        { _, year, month, day ->
+        // Handle the selected date
+        val selectedDate = "$day/${month + 1}/$year"
+        // Do something with the selected date, e.g. update a TextView
+        binding.registryPickDate.text = selectedDate
+      }, year, month, day)
       datePicker.show()
     }
+  }
 
-    binding.buttonGuardar.setOnClickListener {
-      if (validateInputs()) {
-        val nome = binding.editTextNomeFilme.text.toString()
-        val cinema = binding.editTextCinema.text.toString()
-        val classificacao = binding.seekBarAvaliacao.progress
-        val dataString = binding.editTextData.text.toString()
-        //val imagem = resources.getDrawable(R.drawable.null_image)
-        val imagem = binding.editTextObservacoes.text.toString()
-        val observacoes = binding.editTextObservacoes.text.toString()
-        val ano = binding.editTextAno.text.toString().toInt()
-        val visto = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(dataString)
-        val filme = Filme(UUID.randomUUID().toString(), nome, cinema, classificacao, ano, visto, observacoes)
+  private fun saveClickEvent() {
+    binding.registrySaveButton.setOnClickListener {
+      if (validateInputs() && movie != null) {
+        val movieId = movie!!.getId()
+        val cinema = binding.registryCinema.text.toString()
+        val rate = binding.registryRate.progress
+        val seenDate = binding.registryPickDate.text.toString()
+        val observations = binding.registryObservations.text.toString()
 
-        val confirmDialog = AlertDialog.Builder(requireContext())
-          .setTitle("Confirmar")
-          .setMessage("Deseja guardar o filme $nome?")
-          .setPositiveButton("Guardar") { _, _ ->
-            History.movieList.add(filme)
-            contador++ // Incrementa o contador, para substituir
-            // o UUID.randomUUID().toString(),
-            println("Já tem $contador Filmes na Lista de Filmes")
-            // Exibe mensagem de sucesso
-            Toast.makeText(requireContext(), "Filme guardado com sucesso!",
-              Toast.LENGTH_SHORT).show()
-          }
-          .setNegativeButton("Cancelar", null)
-          .create()
-        confirmDialog.show()
+        movieRegistry = MovieRegistry(movieId, cinema, rate, seenDate, observations)
+        displayConfirm()
       } else {
-        // Exibe mensagem de erro
-        Toast.makeText(requireContext(), "Por favor, preencha todos os campos " +
-                "corretamente.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), getString(R.string.registry_error), Toast.LENGTH_SHORT).show()
       }
     }
   }
 
+  private fun displayConfirm() {
+    val confirmDialog = AlertDialog.Builder(requireContext())
+      .setTitle(getString(R.string.dialog_confirm))
+      .setMessage(getString(R.string.registry_dialog_message, movie?.getName(), movieRegistry.getRate().toString()))
+      .setPositiveButton(getString(R.string.dialog_save)) { _, _ ->
+        History.saveRegistry(movieRegistry)
 
-  @SuppressLint("SetTextI18n")
+        Toast.makeText(requireContext(), getString(R.string.registry_success),
+          Toast.LENGTH_SHORT).show()
+      }
+      .setNegativeButton(getString(R.string.dialog_cancel), null)
+      .create()
+    confirmDialog.show()
+  }
+
   private fun validateInputs(): Boolean {
-    var isValid = true
-    val nome = binding.editTextNomeFilme.text.toString()
-    val cinema = binding.editTextCinema.text.toString()
-    val classificacao = binding.seekBarAvaliacao.progress
-    val ano = binding.editTextAno.text.toString().toIntOrNull()
-    val visto = binding.editTextData.text.toString()
-    //val imagem = resources.getDrawable(R.drawable.null_image)
-    val imagem = binding.editTextObservacoes.text.toString()
-    val observacoes = binding.editTextObservacoes.text.toString()
+    return validateMovieName() &&
+           validateCinema() &&
+           validateRate() &&
+           validateSeenDate()
+  }
 
-    if (nome.isBlank()) {
-      binding.editTextNomeFilme.error = "Campo obrigatório"
-      isValid = false
+  private fun validateMovieName() : Boolean {
+    val movieName = binding.registryMovieName.text.toString()
+
+    if (movieName.isBlank()) {
+      binding.registryCinema.error = getString(R.string.error_field_required)
+      return false
     }
-    if (ano==null){
-      binding.editTextAno.error = "Campo obrigatório"
-      isValid = false
-    } else {
-      if (ano < 1900 || ano > Calendar.getInstance().get(Calendar.YEAR)) {
-        binding.editTextAno.error = "Ano inválido"
-        isValid = false
+
+    movie = History.getMovieByName(movieList, movieName)
+
+    if (movie == null) {
+      binding.registryCinema.error = getString(R.string.error_invalid_movie)
+      return false
+    }
+
+    return true
+  }
+  private fun validateCinema(): Boolean {
+    if (binding.registryCinema.text.toString().isBlank()) {
+      binding.registryCinema.error = getString(R.string.error_field_required)
+      return false
+    }
+    return true
+  }
+
+  private fun validateRate(): Boolean {
+    val rate = binding.registryRate.progress
+
+    if (rate == 0) {
+      binding.avaliacaoError.text = getString(R.string.error_invalid_rate)
+      return false
+    }
+
+    binding.avaliacaoError.text = null
+    return true
+  }
+
+  private fun validateSeenDate(): Boolean {
+    val seenDateStr = binding.registryPickDate.text.toString()
+
+    if (seenDateStr.isBlank()) {
+      binding.pickDateError.text = getString(R.string.error_field_required)
+      return false
+    }
+
+    try {
+      val seenDate = SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(seenDateStr)
+
+      if (seenDate.after(Date())) {
+        binding.pickDateError.text = getString(R.string.error_date_in_future)
+        return false
       }
-    }
-    if (cinema.isBlank()) {
-      binding.editTextCinema.error = "Campo obrigatório"
-      isValid = false
-    }
-    if (classificacao == 0) {
-      binding.textViewAvaliacaoError.text = "Selecione uma avaliação de 1 a 10"
-      isValid = false
-    } else {
-      binding.textViewAvaliacaoError.text = "" // limpa a String
-    }
 
-
-    if (visto.isBlank()) {
-      binding.editTextData.error = "Campo obrigatório"
-      isValid = false
-    } else {
-      try {
-        SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(visto)
-        if (selectedDate.after(Calendar.getInstance())) {
-          binding.editTextData.error = "Data inválida"
-          isValid = false
-        } else {
-          binding.editTextData.error = null // remove a mensagem de erro que estava a aparecer
-        }
-      } catch (e: ParseException) {
-        binding.editTextData.error = "Data inválida"
-        isValid = false
-      }
-
+      binding.pickDateError.text = null
+      return true
+    } catch (e: ParseException) {
+      binding.pickDateError.text = getString(R.string.error_invalid_date)
+      return false
     }
-
-    return isValid
   }
 }
