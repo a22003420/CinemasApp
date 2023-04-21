@@ -31,7 +31,6 @@ class FilmesAdapter(
       nomeFilme.text = item.nome
       classificacaoFilme.text = item.classificacao.toString()
       anoFilme.text = item.ano.toString()
-
     }
   }
   

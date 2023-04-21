@@ -68,13 +68,6 @@
                 android:textSize="14sp" />
 
             <TextView
-                android:id="@+id/observacoes_filme"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/observacoes"
-                android:textSize="14sp" />
-
-            <TextView
                 android:id="@+id/detalhes_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

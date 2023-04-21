@@ -37,19 +37,23 @@
     <string name="last_seen_movies">Últimos Vistos</string>
 
     <string name="cinemas">Cinemas</string>
-    <string name="ver_no_imdb">Ver no IMDB</string>
-    <string name="avaliacao_do_imdb">Avaliação do IMDB: 7.5/10 (2000 votos)</string>
+    <string name="movie_imdb_link_label">Ver no IMDB</string>
+    <string name="movie_imdb_rating">IMDB: %s</string>
     <string name="data_de_lancamento">2023/01/31</string>
-    <string name="sinopse">Sinopse</string>
-    <string name="genero">Género</string>
-    <string name="movie_name">Nome do Movie</string>
+    <string name="movie_sinopse">Sinopse</string>
+    <string name="movie_genre">Género</string>
+    <string name="movie_name">Nome do Filme</string>
     <string name="observa_es">Observações</string>
     <string name="ano">Ano</string>
     <string name="cinema">Cinema</string>
     <string name="classificao">Classificação</string>
     <string name="titulo_do_filme">Título do Filme</string>
-    <string name="observacoes" />
+    <string name="movie_registry_cinema_name">Nome do cinema</string>
+    <string name="movie_registry_rate">Avaliação</string>
+    <string name="movie_registry_seen_date">Data</string>
+    <string name="movie_registry_observations">Observações</string>
+    <string name="movie_registry_photos_label">Fotografias</string>
     <string name="search_hint" />
     <string name="detalhes">Detalhes</string>
-    <string name="a_sua_opiniao_sobre_o_filme">A sua opinião sobre o filme</string>
+    <string name="movie_registry_title">A sua opinião sobre o filme</string>
 </resources>
