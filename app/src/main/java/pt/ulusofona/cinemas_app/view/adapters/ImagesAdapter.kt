@@ -4,15 +4,15 @@ import android.net.Uri
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.cinemas_app.databinding.ImageItemBinding
+import com.example.cinemas_app.databinding.ImageItemWithDeleteBinding
 
 class ImagesAdapter(private val images: MutableList<Uri>) : RecyclerView.Adapter<ImagesAdapter.ImageViewHolder>() {
 
-  class ImageViewHolder(val binding: ImageItemBinding) : RecyclerView.ViewHolder(binding.root)
+  class ImageViewHolder(val binding: ImageItemWithDeleteBinding) : RecyclerView.ViewHolder(binding.root)
 
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
     return ImageViewHolder(
-      ImageItemBinding.inflate(
+      ImageItemWithDeleteBinding.inflate(
         LayoutInflater.from(parent.context),
         parent, false
       )

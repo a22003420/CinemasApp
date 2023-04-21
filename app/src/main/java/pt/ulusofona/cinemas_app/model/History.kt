@@ -6,7 +6,6 @@ import com.google.gson.reflect.TypeToken
 
 
 object History {
-  val movieList : MutableList<Filme> = mutableListOf()
   val registryList : MutableList<MovieRegistry> = mutableListOf()
 
   fun loadMovies(context: Context): List<Movie> {
