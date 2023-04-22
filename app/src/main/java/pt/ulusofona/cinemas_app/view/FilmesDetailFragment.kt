@@ -1,11 +1,13 @@
 package pt.ulusofona.cinemas_app.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
@@ -14,6 +16,7 @@ import pt.ulusofona.cinemas_app.model.History
 import pt.ulusofona.cinemas_app.model.Movie
 import pt.ulusofona.cinemas_app.model.MovieRegistry
 import pt.ulusofona.cinemas_app.view.adapters.ImagesDetailsAdapter
+import java.text.SimpleDateFormat
 
 private const val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
 
@@ -43,6 +46,12 @@ class FilmesDetailFragment : Fragment() {
       openIMDBLink()
     }
 
+    val shareButton = view.findViewById<Button>(R.id.registryShare)
+    shareButton.setOnClickListener {
+      registryShare(it)
+    }
+
+
     return binding.root
   }
 
@@ -61,6 +70,7 @@ class FilmesDetailFragment : Fragment() {
 
       if (registry == null) {
         registryLayout.visibility = View.GONE
+        registryShare.visibility = View.GONE
       } else {
         cinemaName.text = registry?.getCinema()
         registryRate.text = registry?.getRate().toString()
@@ -80,12 +90,14 @@ class FilmesDetailFragment : Fragment() {
           binding.registryPhotosList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
           binding.registryPhotosList.adapter = ImagesDetailsAdapter(registry?.getImages()!!)
         }
+        registryShare.visibility = View.VISIBLE
       }
 
       val resourceId = context?.resources?.getIdentifier(movie?.getPhoto(), "drawable",  context?.packageName)
       if (resourceId != null) {
         movieImage.setImageResource(resourceId)
       }
+
     }
   }
 
@@ -105,4 +117,18 @@ class FilmesDetailFragment : Fragment() {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(imdbLink))
     startActivity(intent)
   }
+
+  @SuppressLint("SimpleDateFormat")
+  fun registryShare(view: View) { //share opinion button
+    val shareText = "Hi,\nI watched ${movie?.getName()} movie on ${registry?.getSeen()} at the cinema " +
+            "${registry?.getCinema()} and gave it a rating of ${registry?.getRate()}.\n\n" +
+            "Here's the link for more information about this movie -> ${movie?.getImdbLink()}\n\n" +
+            "Observations: ${registry?.getObservations()}"
+    val shareIntent = Intent(Intent.ACTION_SEND)
+    shareIntent.type = "text/plain"
+    shareIntent.putExtra(Intent.EXTRA_TEXT, shareText)
+    startActivity(Intent.createChooser(shareIntent, "Share with"))
+  }
+
+
 }

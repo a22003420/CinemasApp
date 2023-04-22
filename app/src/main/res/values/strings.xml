@@ -37,6 +37,7 @@
 
     <string name="cinemas">Cinemas</string>
     <string name="movie_imdb_link_label">View on IMDB</string>
+    <string name="share_button_label">Share with your friends</string>
     <string name="movie_imdb_rating">IMDB: %s</string>
     <string name="data_de_lancamento">2023/01/31</string>
     <string name="movie_sinopse">Synopsis</string>
@@ -56,4 +57,5 @@
     <string name="movie_registry_title">Your opinion about the movie</string>
     <string name="movie_voice_search">Voice Search</string>
     <string name="movie_voice_search_title">Search a movie</string>
+
 </resources>

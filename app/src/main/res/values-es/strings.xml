@@ -36,6 +36,7 @@
 
     <string name="cinemas">Cines</string>
     <string name="movie_imdb_link_label">Ver en IMDB</string>
+    <string name="share_button_label">Comparte con tus amigos</string>
     <string name="movie_imdb_rating">IMDB: %s</string>
     <string name="data_de_lancamento">31/01/2023</string>
     <string name="movie_sinopse">Sinopsis</string>

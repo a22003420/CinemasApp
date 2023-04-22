@@ -72,16 +72,25 @@
             android:textSize="16sp"
             android:layout_marginBottom="12dp" />
 
-        <Button
-            android:id="@+id/movie_imdb_link"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="@string/movie_imdb_link_label"
-            android:textColor="@color/white"
-            android:background="@color/blue"
-            android:textSize="16sp"
-            android:onClick="openIMDBLink"
-            android:layout_marginTop="12dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/movie_imdb_link"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/movie_imdb_link_label"
+                android:textColor="@color/white"
+                android:background="@color/blue"
+                android:textSize="16sp"
+                android:onClick="openIMDBLink"
+                android:layout_marginTop="12dp"/>
+
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/registry_layout"
@@ -186,7 +195,16 @@
                 android:orientation="horizontal" />
         </LinearLayout>
 
-
+        <Button
+            android:id="@+id/registryShare"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/share_button_label"
+            android:textColor="@color/white"
+            android:background="@color/red"
+            android:textSize="16sp"
+            android:onClick="registryShare"
+            android:layout_marginTop="12dp" />
     </LinearLayout>
 
 </ScrollView>
