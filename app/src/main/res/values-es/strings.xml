@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">CINEMASOFONA</string>
+    <string name="registry_observations_label">Observaciones (opcional)</string>
+    <string name="registry_observations_hint"><i>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</i></string>
+    <string name="registry_photos_add">Agregar fotos</string>
+    <string name="registry_pick_date">Elige una fecha</string>
+    <string name="registry_photos_label">Fotos (opcional)</string>
+    <string name="dd_mm_yyyy">dd/mm/aaaa</string>
+    <string name="seen_date_label">Fecha</string>
+    <string name="registry_rate_label">Calificación (0-10)</string>
+    <string name="registry_cinema_label">Cine</string>
+    <string name="registry_cinema_hint"><i>Colombo</i></string>
+    <string name="registry_movie_name_label">Nombre de la película</string>
+    <string name="registry_movie_name_hint"><i>The Godfather</i></string>
+    <string name="dashboard">hola</string>
+    <string name="dashboard_title">Tablero</string>
+    <string name="movie_register_title">Registro de películas</string>
+    <string name="movie_presentation_title">Películas</string>
+    <string name="registry_save_button">Guardar mi registro</string>
+    <string name="registry_dialog_message">¿Quieres calificar la película %1$s con la puntuación %2$s?</string>
+    <string name="dialog_confirm">Confirmar</string>
+    <string name="dialog_save">Guardar</string>
+    <string name="dialog_cancel">Cancelar</string>
+    <string name="registry_success">Registro guardado con éxito</string>
+    <string name="registry_error">Completa todos los campos correctamente</string>
+
+    <string name="error_field_required">Campo obligatorio</string>
+    <string name="error_date_in_future">La fecha debe ser en el pasado</string>
+    <string name="error_invalid_date">Fecha inválida</string>
+    <string name="error_invalid_rate">"Selecciona una calificación de 1 a 10"</string>
+    <string name="error_invalid_movie">Esta película no existe</string>
+
+    <string name="top_5_imdb">Top 5 IMDB</string>
+    <string name="best_rated_movies">Mejores calificadas</string>
+    <string name="last_seen_movies">Vistas recientes</string>
+
+    <string name="cinemas">Cines</string>
+    <string name="movie_imdb_link_label">Ver en IMDB</string>
+    <string name="movie_imdb_rating">IMDB: %s</string>
+    <string name="data_de_lancamento">31/01/2023</string>
+    <string name="movie_sinopse">Sinopsis</string>
+    <string name="movie_genre">Género</string>
+    <string name="movie_name">Nombre de la película</string>
+    <string name="observa_es">Observaciones</string>
+    <string name="ano">Año</string>
+    <string name="cinema">Cine</string>
+    <string name="classificao">Clasificación</string>
+    <string name="titulo_do_filme">Título de la película</string>
+    <string name="movie_registry_cinema_name">Nombre del cine</string>
+    <string name="movie_registry_rate">Calificación</string>
+    <string name="movie_registry_seen_date">Fecha</string>
+    <string name="movie_registry_observations">Observaciones</string>
+    <string name="movie_registry_photos_label">Fotos</string>
+    <string name="search_hint" />
+    <string name="detalhes">Detalles</string>
+    <string name="movie_registry_title">Tu opinión sobre la película</string>
+</resources>

@@ -7,7 +7,7 @@
         android:icon="@drawable/baseline_home_24"
         android:title="@string/dashboard_title"
         app:showAsAction="ifRoom"
-        android:checked="true"/>
+        android:checked="true" />
 
 
     <item
