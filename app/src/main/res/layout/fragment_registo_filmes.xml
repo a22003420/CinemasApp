@@ -11,56 +11,72 @@
         android:layout_height="match_parent"
         android:background="#FFFFFF"
         android:orientation="vertical"
-        android:padding="16dp"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:padding="16dp">
 
-
-        <EditText
-            android:id="@+id/editTextNomeFilme"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="@string/nome_do_filme"
-            android:textColor="#000000"
-            android:textColorHint="#CCCCCC"
-            android:backgroundTint="#000000"
-            android:padding="8dp"
-            android:layout_marginBottom="16dp"/>
-
-        <EditText
-            android:id="@+id/editTextAno"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="Ano de lançamento"
-            android:textColor="#000000"
-            android:textColorHint="#CCCCCC"
-            android:backgroundTint="#000000"
-            android:padding="8dp"
-            android:layout_marginBottom="16dp"
-            android:inputType="number" />
-
-        <EditText
-            android:id="@+id/editTextCinema"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="@string/cinema_onde_foi_visto"
-            android:textColor="#000000"
-            android:textColorHint="#CCCCCC"
-            android:backgroundTint="#000000"
-            android:padding="8dp"
-            android:layout_marginBottom="16dp"/>
-
-
-        <TextView
-            android:id="@+id/textViewAvaliacao"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/avaliacao_1_10"
+            style="@style/FormFieldGroup">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/registry_movie_name_label"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"/>
+
+            <EditText
+                android:id="@+id/registry_movie_name"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:hint="@string/registry_movie_name_hint"
+                android:textColor="#000000"
+                android:textColorHint="#CCCCCC"
+                android:backgroundTint="#000000"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp"/>
+        </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormFieldGroup">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registry_cinema_label"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/registry_cinema"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:hint="@string/registry_cinema_hint"
+            android:textColor="#000000"
+            android:textColorHint="#CCCCCC"
+            android:backgroundTint="#000000"
+            android:padding="8dp"
+            android:layout_marginBottom="16dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormFieldGroup">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registry_rate_label"
             android:textColor="#000000"
             android:textSize="18sp"
             android:layout_marginBottom="10dp"/>
 
         <SeekBar
-            android:id="@+id/seekBarAvaliacao"
+            android:id="@+id/registry_rate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:max="10"
@@ -69,64 +85,91 @@
             android:thumbTint="#000000" />
 
         <TextView
-            android:id="@+id/textViewAvaliacaoError"
+            android:id="@+id/avaliacao_error"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#FF0000"
             android:textSize="12sp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"/>
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/textViewData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/data_dd_mm_yyyy"
-            android:textColor="#000000"
-            android:textSize="18sp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"/>
-
-        <EditText
-            android:id="@+id/editTextData"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:hint="@string/dd_mm_yyyy"
-            android:textColor="#000000"
-            android:textColorHint="#CCCCCC"
-            android:backgroundTint="#FFFFFF"
-            android:padding="8dp"
-            android:layout_marginBottom="16dp"
-            android:inputType="date" />
-
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormFieldGroup">
 
         <TextView
-            android:id="@+id/textViewFotos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fotografias"
+            android:text="@string/seen_date_label"
             android:textColor="#000000"
             android:textSize="18sp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"/>
 
         <Button
-            android:id="@+id/buttonFotos"
+            android:id="@+id/registry_pick_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registry_pick_date" />
+
+        <TextView
+            android:id="@+id/pick_date_error"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#FF0000"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormFieldGroup">
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/adicionar_fotos"
+            android:text="@string/registry_photos_label"
             android:textColor="#000000"
-            android:backgroundTint="#CCCCCC"
-            android:layout_marginBottom="16dp"/>
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/registry_photos_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registry_photos_add" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/registry_photos_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/FormFieldGroup">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/registry_observations_label"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="2dp"/>
 
         <EditText
-            android:id="@+id/editTextObservacoes"
+            android:id="@+id/registry_observations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/observacoes_maximo_200_caracteres"
+            android:hint="@string/registry_observations_hint"
             android:textColor="#000000"
             android:textColorHint="#CCCCCC"
             android:backgroundTint="#000000"
@@ -134,13 +177,13 @@
             android:layout_marginTop="16dp"
             android:maxLength="200"/>
 
+    </LinearLayout>
+
         <Button
-            android:id="@+id/buttonGuardar"
+            android:id="@+id/registry_save_button"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:text="@string/guardar"
-            android:textColor="#CCCCCC"
-            android:backgroundTint="#000000"
-            android:layout_marginTop="80dp"/>
+            android:layout_height="60dp"
+            android:text="@string/registry_save_button"
+            android:layout_marginTop="20dp"/>
     </LinearLayout>
 </ScrollView>

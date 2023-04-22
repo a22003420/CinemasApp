@@ -12,19 +12,19 @@
         android:padding="16dp">
 
         <ImageView
-            android:id="@+id/filme_imagem1"
+            android:id="@+id/movie_image"
             android:layout_width="200dp"
             android:layout_height="300dp"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerCrop"
-            android:src="@drawable/luzdodiabo" />
+            android:layout_marginBottom="20dp"/>
 
 
         <TextView
             android:id="@+id/movie_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/nome_do_movie"
+            android:text="@string/movie_name"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -33,20 +33,9 @@
             android:id="@+id/movie_genero"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/genero"
+            android:text="@string/movie_genre"
             android:textColor="@color/grey"
             android:textSize="18sp" />
-
-        <TextView
-            android:id="@+id/movie_synopsis"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sinopse"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:paddingTop="16dp"
-            android:paddingBottom="8dp" />
 
         <TextView
             android:id="@+id/movie_release_date"
@@ -60,7 +49,25 @@
             android:id="@+id/movie_imdb_rating"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/avaliacao_do_imdb"
+            android:text="@string/movie_imdb_rating"
+            android:textColor="@color/grey"
+            android:textSize="16sp"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/movie_sinopse"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
+
+        <TextView
+            android:id="@+id/movie_synopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:textColor="@color/grey"
             android:textSize="16sp"
             android:layout_marginBottom="12dp" />
@@ -69,7 +76,7 @@
             android:id="@+id/movie_imdb_link"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="@string/ver_no_imdb"
+            android:text="@string/movie_imdb_link_label"
             android:textColor="@color/white"
             android:background="@color/blue"
             android:textSize="16sp"
@@ -77,92 +84,107 @@
             android:layout_marginTop="12dp"/>
 
         <LinearLayout
+            android:id="@+id/registry_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <TextView
-                android:id="@+id/opiniao_title"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/a_sua_opiniao_sobre_o_filme"
-                android:textColor="@color/black"
-                android:textSize="24sp"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movie_registry_title"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:paddingTop="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:id="@+id/cinema_name_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_registry_cinema_name"
+                android:textColor="@color/grey"
+                android:textSize="16sp"
                 android:paddingTop="16dp" />
 
-            <View
+            <TextView
+                android:id="@+id/cinema_name"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"/>
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_registry_rate"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_rate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_registry_seen_date"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_seen_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_observations_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_registry_observations"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_observations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_photos_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/movie_registry_photos_label"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/registry_photos_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
         </LinearLayout>
-
-
-
-        <TextView
-            android:id="@+id/cinema_name_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nome do cinema"
-            android:textColor="@color/grey"
-            android:textSize="16sp"
-            android:paddingTop="16dp" />
-
-        <TextView
-            android:id="@+id/cinema_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/ava_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Avaliação"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/ava_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/date_view_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Data"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/date_view_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/observacoes_label"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Observações"
-            android:textColor="@color/grey"
-            android:textSize="16sp" />
-
-        <TextView
-            android:id="@+id/observacoes_result"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
-
-
-
 
 
     </LinearLayout>

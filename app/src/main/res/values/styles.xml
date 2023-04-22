@@ -7,13 +7,16 @@
         <item name="android:colorAccent">@color/red</item>
         <item name="android:colorPrimary">@color/red</item>
         <item name="android:colorPrimaryDark">@color/dark_red</item>
+        <item name="materialButtonStyle">@style/RedButtonStyle</item>
     </style>
 
+    <style name="RedButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/red</item>
+    </style>
 
-
-
-
-
-
-
+    <style name="FormFieldGroup">
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingBottom">16dp</item>
+    </style>
 </resources>

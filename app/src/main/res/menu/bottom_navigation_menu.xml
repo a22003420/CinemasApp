@@ -7,7 +7,7 @@
         android:icon="@drawable/baseline_home_24"
         android:title="@string/dashboard_title"
         app:showAsAction="ifRoom"
-        android:checked="true"/>
+        android:checked="true" />
 
 
     <item
@@ -21,6 +21,13 @@
         android:id="@+id/navigation_movie_register"
         android:icon="@drawable/baseline_app_registration_24"
         android:title="@string/movie_register_title"
+        app:showAsAction="ifRoom"
+        android:checked="true"/>
+
+    <item
+        android:id="@+id/navigation_microphone"
+        android:icon="@drawable/baseline_mic_24"
+        android:title="@string/movie_voice_search"
         app:showAsAction="ifRoom"
         android:checked="true"/>
 

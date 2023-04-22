@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "The Shawshank Redemption",
+    "photo": "shawshank_redemption",
+    "genre": "Drama",
+    "synopsis": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "release_date": "1994/10/14",
+    "imdb_rating": 9.3,
+    "imdb_link": "https://www.imdb.com/title/tt0111161/"
+  },
+  {
+    "id": 2,
+    "name": "The Godfather",
+    "photo": "godfather",
+    "genre": "Crime, Drama",
+    "synopsis": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "release_date": "1972/03/24",
+    "imdb_rating": 9.2,
+    "imdb_link": "https://www.imdb.com/title/tt0068646/"
+  },
+  {
+    "id": 3,
+    "name": "The Dark Knight",
+    "photo": "dark_knight",
+    "genre": "Action, Crime, Drama",
+    "synopsis": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "release_date": "2008/07/18",
+    "imdb_rating": 9.0,
+    "imdb_link": "https://www.imdb.com/title/tt0468569/"
+  },
+  {
+    "id": 4,
+    "name": "Schindler's List",
+    "photo": "schindlers_list",
+    "genre": "Biography, Drama, History",
+    "synopsis": "In German-occupied Poland during World War II, industrialist Oskar Schindler gradually becomes concerned for his Jewish workforce after witnessing their persecution by the Nazis.",
+    "release_date": "1994/02/04",
+    "imdb_rating": 8.9,
+    "imdb_link": "https://www.imdb.com/title/tt0108052/"
+  },
+  {
+    "id": 5,
+    "name": "The Lord of the Rings: The Return of the King",
+    "photo": "lord_of_the_rings",
+    "genre": "Action, Adventure, Drama",
+    "synopsis": "Gandalf and Aragorn lead the World of Men against Sauron's army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.",
+    "release_date": "2003/12/17",
+    "imdb_rating": 8.9,
+    "imdb_link": "https://www.imdb.com/title/tt0167260/"
+  }
+]
