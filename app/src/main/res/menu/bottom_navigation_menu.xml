@@ -24,4 +24,11 @@
         app:showAsAction="ifRoom"
         android:checked="true"/>
 
+    <item
+        android:id="@+id/navigation_microphone"
+        android:icon="@drawable/baseline_mic_24"
+        android:title="@string/movie_voice_search"
+        app:showAsAction="ifRoom"
+        android:checked="true"/>
+
 </menu>

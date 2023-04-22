@@ -53,7 +53,8 @@
     <string name="movie_registry_seen_date">Data</string>
     <string name="movie_registry_observations">Observações</string>
     <string name="movie_registry_photos_label">Fotografias</string>
-    <string name="search_hint" />
     <string name="detalhes">Detalhes</string>
     <string name="movie_registry_title">A sua opinião sobre o filme</string>
+    <string name="movie_voice_search">Pesquisa</string>
+    <string name="movie_voice_search_title">Pesquise um filme</string>
 </resources>

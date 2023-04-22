@@ -52,7 +52,8 @@
     <string name="movie_registry_seen_date">Date</string>
     <string name="movie_registry_observations">Observations</string>
     <string name="movie_registry_photos_label">Photos</string>
-    <string name="search_hint" />
     <string name="detalhes">Details</string>
     <string name="movie_registry_title">Your opinion about the movie</string>
+    <string name="movie_voice_search">Voice Search</string>
+    <string name="movie_voice_search_title">Search a movie</string>
 </resources>
