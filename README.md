@@ -22,6 +22,7 @@ Número: a22000492<br />
 ### Movie Register Screen (3): <br> <br> <img src="images/Screenshot_register3.png" height="50%" width="50%">
 ### Details Screen (1): <br> <br> <img src="images/Screenshot_details_1.png" height="50%" width="50%">
 ### Details Screen (2): <br> <br> <img src="images/Screenshot_details_2.png" height="50%" width="50%">
+### Details Screen (3): <br> <br> <img src="images/Screenshot_details3.png" height="50%" width="50%">
 ### Share (1): <br> <br> <img src="images/Screenshot_share1.png" height="50%" width="50%">
 ### Share (2): <br> <br> <img src="images/Screenshot_share2.png" height="50%" width="50%">
 ### Voice (1): <br> <br> <img src="images/Screenshot_voice.png" height="50%" width="50%">
@@ -34,7 +35,7 @@ Número: a22000492<br />
 * 5 - The Lord of the Rings: The Return of the King
 
 ## Funcionalidades
-### Table: <br> <br> <img src="images/table.png" height="50%" width="50%">
+### Table: <br> <br> <img src="images/table.png">
 
 here is a table with the functionalities of the app
 
