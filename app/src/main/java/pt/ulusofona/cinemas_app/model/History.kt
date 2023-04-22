@@ -18,7 +18,7 @@ object History {
   }
 
   fun getMovieByName(paramMovieList: List<Movie>, name: String?): Movie? {
-    return paramMovieList.find { it.getName() == name }
+    return paramMovieList.find { it.getName().toLowerCase() == name?.toLowerCase() }
   }
 
   fun getRegistryByMovieId(movieId: Int): MovieRegistry? {

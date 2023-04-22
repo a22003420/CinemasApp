@@ -106,7 +106,8 @@ class RegistoFilmesFragment : Fragment() {
         val seenDate = binding.registryPickDate.text.toString()
         val observations = binding.registryObservations.text.toString()
 
-        movieRegistry = MovieRegistry(movieId, cinema, rate, seenDate, observations, selectedImages)
+        movieRegistry = MovieRegistry(movieId, cinema, rate, seenDate, observations)
+        movieRegistry.setImages(selectedImages)
         displayConfirm()
       } else {
         Toast.makeText(requireContext(), getString(R.string.registry_error), Toast.LENGTH_SHORT).show()
@@ -123,6 +124,8 @@ class RegistoFilmesFragment : Fragment() {
 
         Toast.makeText(requireContext(), getString(R.string.registry_success),
           Toast.LENGTH_SHORT).show()
+
+        clearForm()
       }
       .setNegativeButton(getString(R.string.dialog_cancel), null)
       .create()
@@ -147,7 +150,7 @@ class RegistoFilmesFragment : Fragment() {
     movie = History.getMovieByName(movieList, movieName)
 
     if (movie == null) {
-      binding.registryCinema.error = getString(R.string.error_invalid_movie)
+      binding.registryMovieName.error = getString(R.string.error_invalid_movie)
       return false
     }
 
@@ -195,5 +198,16 @@ class RegistoFilmesFragment : Fragment() {
       binding.pickDateError.text = getString(R.string.error_invalid_date)
       return false
     }
+  }
+
+  private fun clearForm() {
+    binding.registryMovieName.text.clear()
+    binding.registryCinema.text.clear()
+    binding.registryRate.progress = 0
+    binding.registryPickDate.text = getString(R.string.registry_pick_date)
+    binding.registryObservations.text.clear()
+    binding.registryPhotosList.adapter = null
+    selectedImages.clear()
+    photosClickEvent()
   }
 }

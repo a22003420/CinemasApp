@@ -9,7 +9,7 @@ data class MovieRegistry(
     private val rate : Int = 0,
     private val seen: String = "",
     private val observations: String = "",
-    private val images: List<Uri> = listOf()) {
+    private var images: List<Uri> = listOf()) {
 
     fun getMovieId(): Int {
         return movieId
@@ -38,5 +38,9 @@ data class MovieRegistry(
     fun getSeenDate(): Date {
         val date = getSeen().split("/")
         return Date(date[0].toInt(), date[1].toInt(), date[2].toInt())
+    }
+
+    fun setImages(images: List<Uri>) {
+        this.images = images.toList()
     }
 }
