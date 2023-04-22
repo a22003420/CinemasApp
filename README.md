@@ -28,19 +28,16 @@ Número: a22000492<br />
 ### Voice (1): <br> <br> <img src="images/Screenshot_voice.png" height="50%" width="50%">
 
 ## Nomes dos filmes em hardcoded (movies.json)
-* 1 - The Shawshank Redemption
-* 2 - The Godfather
-* 3 - The Dark Knight
-* 4 - Schindler's List
-* 5 - The Lord of the Rings: The Return of the King
+* The Shawshank Redemption
+* The Godfather
+* The Dark Knight
+* Schindler's List
+* The Lord of the Rings: The Return of the King
 
 ## Funcionalidades
 ### Table: <br> <br> <img src="images/table.png">
 
 here is a table with the functionalities of the app
-
-
-## Classes de lógica de negócio
 
 
 ## Idiomas (Multi-language)
