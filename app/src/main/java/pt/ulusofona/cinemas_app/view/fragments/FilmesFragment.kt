@@ -1,4 +1,4 @@
-package pt.ulusofona.cinemas_app.view
+package pt.ulusofona.cinemas_app.view.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,10 +1,10 @@
 package pt.ulusofona.cinemas_app.controller
 
-import pt.ulusofona.cinemas_app.view.FilmesFragment
+import pt.ulusofona.cinemas_app.view.fragments.FilmesFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.cinemas_app.R
-import pt.ulusofona.cinemas_app.view.FilmesDetailFragment
+import pt.ulusofona.cinemas_app.view.fragments.FilmesDetailFragment
 import pt.ulusofona.cinemas_app.view.fragments.DashboardFragment
 import pt.ulusofona.cinemas_app.view.fragments.RegistoFilmesFragment
 

@@ -1,6 +1,5 @@
-package pt.ulusofona.cinemas_app.view
+package pt.ulusofona.cinemas_app.view.fragments
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -16,9 +15,6 @@ import pt.ulusofona.cinemas_app.model.History
 import pt.ulusofona.cinemas_app.model.Movie
 import pt.ulusofona.cinemas_app.model.MovieRegistry
 import pt.ulusofona.cinemas_app.view.adapters.ImagesDetailsAdapter
-import java.text.SimpleDateFormat
-
-private const val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
 
 class FilmesDetailFragment : Fragment() {
 
@@ -26,6 +22,7 @@ class FilmesDetailFragment : Fragment() {
   private var operationUuid: String? = null
   private var movie: Movie? = null
   private var registry: MovieRegistry? = null
+  private val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -87,7 +84,8 @@ class FilmesDetailFragment : Fragment() {
           registryPhotosLabel.visibility = View.GONE
           registryPhotosList.visibility = View.GONE
         } else {
-          binding.registryPhotosList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+          binding.registryPhotosList.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
           binding.registryPhotosList.adapter = ImagesDetailsAdapter(registry?.getImages()!!)
         }
         registryShare.visibility = View.VISIBLE
