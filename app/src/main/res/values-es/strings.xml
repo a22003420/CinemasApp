@@ -56,4 +56,8 @@
     <string name="movie_registry_title">Tu opinión sobre la película</string>
     <string name="movie_voice_search">Búsqueda por voz</string>
     <string name="movie_voice_search_title">Buscar una película</string>
+
+    <string name="share_label">Compartir con</string>
+    <string name="share_body_with_observations">Hola,\nVi la película %1$s en %2$s en el cine %3$s y le di una calificación de %4$s.\n\nAquí está el enlace para obtener más información sobre esta película -&gt; %5$s\n\nObservaciones: %6$s</string>
+    <string name="share_body">Hola,\nVi la película %1$s en %2$s en el cine %3$s y le di una calificación de %4$s.\n\nAquí está el enlace para obtener más información sobre esta película -&gt; %5$s</string>
 </resources>

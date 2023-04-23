@@ -58,4 +58,8 @@
     <string name="movie_registry_title">A sua opinião sobre o filme</string>
     <string name="movie_voice_search">Pesquisa</string>
     <string name="movie_voice_search_title">Pesquise um filme</string>
+
+    <string name="share_label">Compartilhar com</string>
+    <string name="share_body_with_observations">Olá,\nEu vi o filme %1$s em %2$s no cinema %3$s e dei-lhe uma classificação de %4$s.\n\nAqui está o link para obter mais informações sobre este filme -&gt; %5$s\n\nObservações: %6$s</string>
+    <string name="share_body">Olá,\nEu vi o filme %1$s em %2$s no cinema %3$s e dei-lhe uma classificação de %4$s.\n\nAqui está o link para obter mais informações sobre este filme -&gt; %5$s</string>
 </resources>

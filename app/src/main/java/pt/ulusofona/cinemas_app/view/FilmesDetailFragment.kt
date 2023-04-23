@@ -112,23 +112,36 @@ class FilmesDetailFragment : Fragment() {
       }
   }
 
-  fun openIMDBLink() { // LINK IMDB
+  fun openIMDBLink() {
     val imdbLink = movie?.getImdbLink()
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(imdbLink))
     startActivity(intent)
   }
 
-  @SuppressLint("SimpleDateFormat")
-  fun registryShare(view: View) { //share opinion button
-    val shareText = "Hi,\nI watched ${movie?.getName()} movie on ${registry?.getSeen()} at the cinema " +
-            "${registry?.getCinema()} and gave it a rating of ${registry?.getRate()}.\n\n" +
-            "Here's the link for more information about this movie -> ${movie?.getImdbLink()}\n\n" +
-            "Observations: ${registry?.getObservations()}"
+  private fun registryShare(view: View) {
+    val shareText = if(registry?.getObservations() == null || registry?.getObservations()!!.isBlank()) {
+      getString(
+        R.string.share_body,
+        movie?.getName(),
+        registry?.getSeen(),
+        registry?.getCinema(),
+        registry?.getRate().toString(),
+        movie?.getImdbLink()
+      )
+    } else {
+      getString(
+        R.string.share_body_with_observations,
+        movie?.getName(),
+        registry?.getSeen(),
+        registry?.getCinema(),
+        registry?.getRate().toString(),
+        movie?.getImdbLink(),
+        registry?.getObservations())
+    }
+
     val shareIntent = Intent(Intent.ACTION_SEND)
     shareIntent.type = "text/plain"
     shareIntent.putExtra(Intent.EXTRA_TEXT, shareText)
-    startActivity(Intent.createChooser(shareIntent, "Share with"))
+    startActivity(Intent.createChooser(shareIntent, getString(R.string.share_label)))
   }
-
-
 }

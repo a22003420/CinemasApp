@@ -58,4 +58,7 @@
     <string name="movie_voice_search">Voice Search</string>
     <string name="movie_voice_search_title">Search a movie</string>
 
+    <string name="share_label">Share with</string>
+    <string name="share_body_with_observations">Hi,\nI watched %1$s movie on %2$s at the cinema %3$s and gave it a rating of %4$s.\n\nHere\'s the link for more information about this movie -&gt; %5$s\n\nObservations: %6$s</string>
+    <string name="share_body">Hi,\nI watched %1$s movie on %2$s at the cinema %3$s and gave it a rating of %4$s.\n\nHere\'s the link for more information about this movie -&gt; %5$s</string>
 </resources>
