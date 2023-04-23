@@ -1,4 +1,4 @@
-# Cinemas_app
+# Cinemasofona
 1. Aplicação móvel desenvolvida em Android Nativo na linguagem Kotlin para a disciplina de 
 Computação móvel, com o .apk testado no Pixel 6 Pro API 23.
 2. Esta aplicação foi desenvolvida e teve por base o nosso protótipo desenvolvido na disciplina de
