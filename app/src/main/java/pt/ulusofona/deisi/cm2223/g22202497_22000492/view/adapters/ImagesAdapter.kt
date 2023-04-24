@@ -1,4 +1,4 @@
-package pt.ulusofona.cinemas_app.view.adapters
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters
 
 import android.net.Uri
 import android.view.LayoutInflater

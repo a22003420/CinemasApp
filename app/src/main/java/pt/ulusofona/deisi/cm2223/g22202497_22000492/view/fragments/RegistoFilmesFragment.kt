@@ -1,6 +1,5 @@
-package pt.ulusofona.cinemas_app.view.fragments
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments
 
-import android.annotation.SuppressLint
 import android.app.Activity.RESULT_OK
 import android.app.AlertDialog
 import android.app.DatePickerDialog
@@ -12,15 +11,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
-import pt.ulusofona.cinemas_app.controller.NavigationManager
-import pt.ulusofona.cinemas_app.model.History
-import pt.ulusofona.cinemas_app.model.Movie
-import pt.ulusofona.cinemas_app.model.MovieRegistry
-import pt.ulusofona.cinemas_app.view.adapters.ImagesAdapter
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.ImagesAdapter
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*

@@ -1,10 +1,10 @@
-package pt.ulusofona.cinemas_app.view.adapters
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinemas_app.databinding.MovieListItemBinding
-import pt.ulusofona.cinemas_app.model.Movie
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 
 class MovieAdapter(
   private val onClick: (String) -> Unit,

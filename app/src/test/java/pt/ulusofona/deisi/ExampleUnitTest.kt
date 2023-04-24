@@ -1,4 +1,4 @@
-package pt.ulusofona.cinemas_app
+package pt.ulusofona.deisi
 
 import org.junit.Test
 

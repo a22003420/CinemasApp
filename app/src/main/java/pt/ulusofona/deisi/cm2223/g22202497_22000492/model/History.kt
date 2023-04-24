@@ -1,4 +1,4 @@
-package pt.ulusofona.cinemas_app.model
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.model
 
 import android.content.Context
 import com.google.gson.Gson

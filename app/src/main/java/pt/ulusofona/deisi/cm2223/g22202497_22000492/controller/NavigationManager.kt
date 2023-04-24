@@ -1,12 +1,12 @@
-package pt.ulusofona.cinemas_app.controller
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.controller
 
-import pt.ulusofona.cinemas_app.view.fragments.FilmesFragment
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments.FilmesFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.cinemas_app.R
-import pt.ulusofona.cinemas_app.view.fragments.FilmesDetailFragment
-import pt.ulusofona.cinemas_app.view.fragments.DashboardFragment
-import pt.ulusofona.cinemas_app.view.fragments.RegistoFilmesFragment
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments.FilmesDetailFragment
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments.DashboardFragment
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments.RegistoFilmesFragment
 
 object NavigationManager {
 

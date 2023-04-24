@@ -1,4 +1,4 @@
-package pt.ulusofona.cinemas_app.view.fragments
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentFilmesDetailBinding
-import pt.ulusofona.cinemas_app.model.History
-import pt.ulusofona.cinemas_app.model.Movie
-import pt.ulusofona.cinemas_app.model.MovieRegistry
-import pt.ulusofona.cinemas_app.view.adapters.ImagesDetailsAdapter
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.ImagesDetailsAdapter
 
 class FilmesDetailFragment : Fragment() {
 

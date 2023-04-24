@@ -18,7 +18,7 @@
             android:name=".view.RegistoFilmesActivity"
             android:exported="false" />
         <activity
-            android:name="pt.ulusofona.cinemas_app.controller.MainActivity"
+            android:name="pt.ulusofona.deisi.cm2223.g22202497_22000492.controller.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

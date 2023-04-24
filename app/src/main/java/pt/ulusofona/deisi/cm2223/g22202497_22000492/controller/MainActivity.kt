@@ -1,4 +1,4 @@
-package pt.ulusofona.cinemas_app.controller
+package pt.ulusofona.deisi.cm2223.g22202497_22000492.controller
 
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
