@@ -36,7 +36,7 @@ class FilmesDetailFragment : Fragment() {
     binding = FragmentFilmesDetailBinding.bind(view)
     val movieList = History.loadMovies(requireContext())
     movie = History.getMovieById(movieList, operationUuid)
-    registry = History.getRegistryByMovieId(movie!!.getId())
+    registry = History.getRegistryByMovieId(movie!!.id.toInt())
 
     placeData()
     binding.movieImdbLink.setOnClickListener {
@@ -59,11 +59,11 @@ class FilmesDetailFragment : Fragment() {
 
   private fun placeData() {
     binding.apply {
-      movieTitle.text = movie?.getName()
-      movieGenero.text = movie?.getGenre()
-      movieSynopsis.text = movie?.getSynopsis()
-      movieReleaseDate.text = movie?.getReleaseDateString()
-      movieImdbRating.text = getString(R.string.movie_imdb_rating,movie?.getImdbRating().toString())
+      movieTitle.text = movie?.name
+      movieGenero.text = movie?.genre
+      movieSynopsis.text = movie?.synopsis
+      movieReleaseDate.text = movie?.releaseDate.toString()
+      movieImdbRating.text = getString(R.string.movie_imdb_rating,movie?.imdbRating.toString())
 
       if (registry == null) {
         registryLayout.visibility = View.GONE
@@ -91,7 +91,7 @@ class FilmesDetailFragment : Fragment() {
         registryShare.visibility = View.VISIBLE
       }
 
-      val resourceId = context?.resources?.getIdentifier(movie?.getPhoto(), "drawable",  context?.packageName)
+      val resourceId = context?.resources?.getIdentifier(movie?.photo, "drawable",  context?.packageName)
       if (resourceId != null) {
         movieImage.setImageResource(resourceId)
       }
@@ -111,7 +111,7 @@ class FilmesDetailFragment : Fragment() {
   }
 
   fun openIMDBLink() {
-    val imdbLink = movie?.getImdbLink()
+    val imdbLink = movie?.imdbLink
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(imdbLink))
     startActivity(intent)
   }
@@ -120,20 +120,20 @@ class FilmesDetailFragment : Fragment() {
     val shareText = if(registry?.getObservations() == null || registry?.getObservations()!!.isBlank()) {
       getString(
         R.string.share_body,
-        movie?.getName(),
+        movie?.name,
         registry?.getSeen(),
         registry?.getCinema(),
         registry?.getRate().toString(),
-        movie?.getImdbLink()
+        movie?.imdbLink
       )
     } else {
       getString(
         R.string.share_body_with_observations,
-        movie?.getName(),
+        movie?.name,
         registry?.getSeen(),
         registry?.getCinema(),
         registry?.getRate().toString(),
-        movie?.getImdbLink(),
+        movie?.imdbLink,
         registry?.getObservations())
     }
 

@@ -22,15 +22,15 @@ class MovieAdapter(
   }
 
   override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
-    holder.itemView.setOnClickListener { onClick(items[position].getId().toString()) }
+    holder.itemView.setOnClickListener { onClick(items[position].id.toString()) }
     val item = items[position]
 
     holder.binding.apply {
-      nomeFilme.text = item.getName()
-      classificacaoFilme.text = item.getImdbRating().toString()
-      anoFilme.text = item.getReleaseDateString()
+      nomeFilme.text = item.name
+      classificacaoFilme.text = item.imdbRating.toString()
+      anoFilme.text = item.releaseDate.toString()
 
-      val resourceId = holder.itemView.context.resources.getIdentifier(item.getPhoto(), "drawable",  holder.itemView.context.packageName)
+      val resourceId = holder.itemView.context.resources.getIdentifier(item.photo, "drawable",  holder.itemView.context.packageName)
       filmeImagem.setImageResource(resourceId)
     }
   }

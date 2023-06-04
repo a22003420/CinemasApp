@@ -22,14 +22,16 @@ class DashboardSlidersAdapter(
   }
 
   override fun onBindViewHolder(holder: DashboardSlidersHolder, position: Int) {
-    holder.itemView.setOnClickListener { onClick(items[position].getId().toString()) }
+    holder.itemView.setOnClickListener { onClick(items[position].id.toString()) }
     val item = items[position]
 
     holder.binding.apply {
-      val resourceId = holder.itemView.context.resources.getIdentifier(item.getPhoto(), "drawable",  holder.itemView.context.packageName)
+      val resourceId = holder.itemView.context.resources.getIdentifier(item.photo, "drawable",  holder.itemView.context.packageName)
       sliderItem.setImageResource(resourceId)
     }
   }
 
   override fun getItemCount() = items.size
 }
+
+

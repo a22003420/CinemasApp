@@ -97,13 +97,13 @@ class RegistoFilmesFragment : Fragment() {
   private fun saveClickEvent() {
     binding.registrySaveButton.setOnClickListener {
       if (validateInputs() && movie != null) {
-        val movieId = movie!!.getId()
+        val movieId = movie!!.id
         val cinema = binding.registryCinema.text.toString()
         val rate = binding.registryRate.progress
         val seenDate = binding.registryPickDate.text.toString()
         val observations = binding.registryObservations.text.toString()
 
-        movieRegistry = MovieRegistry(movieId, cinema, rate, seenDate, observations)
+        movieRegistry = MovieRegistry(movieId.toInt(), cinema, rate, seenDate, observations)
         movieRegistry.setImages(selectedImages)
         displayConfirm()
       } else {
@@ -115,7 +115,7 @@ class RegistoFilmesFragment : Fragment() {
   private fun displayConfirm() {
     val confirmDialog = AlertDialog.Builder(requireContext())
       .setTitle(getString(R.string.dialog_confirm))
-      .setMessage(getString(R.string.registry_dialog_message, movie?.getName(), movieRegistry.getRate().toString()))
+      .setMessage(getString(R.string.registry_dialog_message, movie?.name, movieRegistry.getRate().toString()))
       .setPositiveButton(getString(R.string.dialog_save)) { _, _ ->
         History.saveRegistry(movieRegistry)
 

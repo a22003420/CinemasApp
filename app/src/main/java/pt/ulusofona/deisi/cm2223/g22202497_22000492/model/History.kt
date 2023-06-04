@@ -14,11 +14,11 @@ object History {
   }
 
   fun getMovieById(paramMovieList: List<Movie>, uuid: String?): Movie? {
-    return paramMovieList.find { it.getId().toString() == uuid }
+    return paramMovieList.find { it.id.toString() == uuid }
   }
 
   fun getMovieByName(paramMovieList: List<Movie>, name: String?): Movie? {
-    return paramMovieList.find { it.getName().toLowerCase() == name?.toLowerCase() }
+    return paramMovieList.find { it.name.equals(name, ignoreCase = true) }
   }
 
   fun getRegistryByMovieId(movieId: Int): MovieRegistry? {
@@ -36,7 +36,7 @@ object History {
   }
 
   fun top5ImdbMovies(movieList: List<Movie>): List<Movie> {
-    return movieList.sortedByDescending { it.getImdbRating() }.take(5)
+    return movieList.sortedByDescending { it.imdbRating }.take(5)
   }
 
   fun top5BestRatedMovies(movieList: List<Movie>): List<Movie> {
