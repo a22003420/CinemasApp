@@ -13,6 +13,11 @@ object History {
     return Gson().fromJson(jsonString, object : TypeToken<List<Movie>>() {}.type)
   }
 
+  fun loadCinemas(context: Context): List<Cinema> {
+    val jsonString = context.assets.open("cinemas.json").bufferedReader().use { it.readText() }
+    return Gson().fromJson(jsonString, object : TypeToken<List<Cinema>>() {}.type)
+  }
+
   fun getMovieById(paramMovieList: List<Movie>, uuid: String?): Movie? {
     return paramMovieList.find { it.id.toString() == uuid }
   }

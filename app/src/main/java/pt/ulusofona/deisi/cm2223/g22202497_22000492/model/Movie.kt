@@ -32,40 +32,8 @@ data class Movie(
 
 
 {
-  // fun getId(): Int {
-    // return id
-    // }
-
-    // fun getName(): String {
-    // return name
-    // }
-
-    // fun getGenre(): String {
-    //   return genre
-    // }
-
-    //  fun getSynopsis(): String {
-    //   return synopsis
-    //  }
-
-    // fun getImdbLink(): String {
-    //   return imdbLink
-    //  }
-
-    // fun getPhoto(): String {
-    //  return photo
-    //  }
-
-    // fun getImdbRating(): Double {
-    //   return imdbRating
-    // }
-
-    // fun getReleaseDateString(): String {
-    //   return releaseDate
-    //  }
-
-    // fun getReleaseDate(): Date {
-    //  val date = getReleaseDateString().split("/")
-    //  return Date(date[0].toInt(), date[1].toInt(), date[2].toInt())
-    // }
+    fun getReleaseDate(): Date {
+     val date = releaseDate.split("/")
+     return Date(date[0].toInt(), date[1].toInt(), date[2].toInt())
+    }
 }
