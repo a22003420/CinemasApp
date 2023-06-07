@@ -11,27 +11,21 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieDB
 @Dao
 interface MovieOperations {
 
-    @Insert
-    fun insertMovie(character: MovieDB)
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  fun insertMovie(character: MovieDB)
 
+  @Query("SELECT * FROM movies")
+  fun getAllMovies(): List<MovieDB>
 
-    @Query("SELECT * FROM movies")
-    fun getAllMovies(): List<MovieDB>
+  @Query("SELECT * FROM movies WHERE id = :id")
+  fun getMovieById(id: Int): MovieDB
 
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  fun insertMovieAll(characters: List<MovieDB>)
 
+  @Delete
+  fun deleteMovie(characters: List<MovieDB>)
 
-    @Query("SELECT * FROM movies WHERE id = :id")
-    fun getMovieById(id: Int): MovieDB
-
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovieAll(characters: List<MovieDB>)
-
-    @Delete
-    fun deleteMovie(characters: List<MovieDB>)
-
-    @Query("DELETE FROM movies")
-    fun deleteAllMovies()
-
-
+  @Query("DELETE FROM movies")
+  fun deleteAllMovies()
 }

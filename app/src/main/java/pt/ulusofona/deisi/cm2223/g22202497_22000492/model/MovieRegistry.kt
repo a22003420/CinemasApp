@@ -4,12 +4,12 @@ import android.net.Uri
 import java.util.*
 
 data class MovieRegistry(
-    private val movieId: Int = 0,
-    private val cinema: String = "",
-    private val rate : Int = 0,
-    private val seen: String = "",
-    private val observations: String = "",
-    private var images: List<Uri> = listOf()) {
+    val movieId: Int = 0,
+    val cinema: String = "",
+    val rate : Int = 0,
+    val seen: String = "",
+    val observations: String = "",
+    var images: List<Uri> = listOf()) {
 
     fun getMovieId(): Int {
         return movieId

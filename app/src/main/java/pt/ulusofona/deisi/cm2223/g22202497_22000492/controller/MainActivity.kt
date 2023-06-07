@@ -12,7 +12,7 @@ import com.example.cinemas_app.databinding.ActivityMainBinding
 import okhttp3.OkHttpClient
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.MovieDBWithRoom
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.MoviesDatabase
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.AppDatabase
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.remote.MoviesServiceOkHttpAndJsonObject
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieSource
 
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     MovieRepository.init(
-      local = MovieDBWithRoom(MoviesDatabase.getInstance(this).movieOperations()),
+      local = MovieDBWithRoom(AppDatabase.getInstance(this).movieOperations()),
       remote = MoviesServiceOkHttpAndJsonObject(client = OkHttpClient()),
       context = this
     )
