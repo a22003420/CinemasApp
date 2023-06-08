@@ -2,6 +2,9 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities
 
 import android.net.Uri
 import androidx.room.*
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Cinema
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
 
 @Entity(
   tableName = "movie_registries",
@@ -26,13 +29,27 @@ import androidx.room.*
 )
 data class MovieRegistryDB(
   @PrimaryKey(autoGenerate = true)
-  val id: Long = 0,
+  var id: Long = 0,
   @ColumnInfo(name = "movie_id")
-  val movieId: Long = 0,
+  var movieId: String = "",
   @ColumnInfo(name = "cinema_id")
-  val cinemaId: Long = 0,
-  val rate : Int = 0,
-  val seen: String = "",
-  val observations: String = "",
-  var images: List<Uri> = listOf()
-)
+  var cinemaId: Long = 0,
+  var rate : Int = 0,
+  var seen: String = "",
+  var observations: String = ""
+) {
+  fun toMovieRegistry(cinema: String, movie: Movie): MovieRegistry {
+    return MovieRegistry(
+      id = this.id,
+      movieId = this.movieId,
+      movieName = movie.name,
+      movieYear = movie.year,
+      cinemaId = this.cinemaId,
+      cinema = cinema,
+      rate = this.rate,
+      seen = this.seen,
+      observations = this.observations
+      // images = registry.images TODO: add images
+    )
+  }
+}

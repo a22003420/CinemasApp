@@ -12,6 +12,8 @@
     <string name="registry_cinema_hint"><i>Colombo</i></string>
     <string name="registry_movie_name_label">Movie name</string>
     <string name="registry_movie_name_hint"><i>The Godfather</i></string>
+    <string name="registry_movie_year_label">Movie year</string>
+    <string name="registry_movie_year_hint"><i>1972</i></string>
     <string name="dashboard">hello</string>
     <string name="dashboard_title">Dashboard</string>
     <string name="movie_register_title">Movie Register</string>
@@ -61,4 +63,10 @@
     <string name="share_label">Share with</string>
     <string name="share_body_with_observations">Hi,\nI watched %1$s movie on %2$s at the cinema %3$s and gave it a rating of %4$s.\n\nHere\'s the link for more information about this movie -&gt; %5$s\n\nObservations: %6$s</string>
     <string name="share_body">Hi,\nI watched %1$s movie on %2$s at the cinema %3$s and gave it a rating of %4$s.\n\nHere\'s the link for more information about this movie -&gt; %5$s</string>
+
+
+
+    <string name="no_internet_connection">Feature unavailable without internet connection</string>
+    <string name="movie_not_found">Movie not found</string>
+    <string name="cinema_not_found">Movie not found</string>
 </resources>

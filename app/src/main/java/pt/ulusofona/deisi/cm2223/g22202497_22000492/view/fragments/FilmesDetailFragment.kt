@@ -69,24 +69,24 @@ class FilmesDetailFragment : Fragment() {
         registryLayout.visibility = View.GONE
         registryShare.visibility = View.GONE
       } else {
-        cinemaName.text = registry?.getCinema()
-        registryRate.text = registry?.getRate().toString()
-        registrySeenDate.text = registry?.getSeen()
+        cinemaName.text = registry?.cinema
+        registryRate.text = registry?.rate.toString()
+        registrySeenDate.text = registry?.seen
 
-        if (registry?.getObservations().toString().isBlank()) {
+        if (registry?.observations.toString().isBlank()) {
           registryObservationsLabel.visibility = View.GONE
           registryObservations.visibility = View.GONE
         } else {
-          registryObservations.text = registry?.getObservations()
+          registryObservations.text = registry?.observations
         }
 
-        if (registry?.getImages() != null && registry?.getImages()!!.isEmpty()) {
+        if (registry?.images != null && registry?.images!!.isEmpty()) {
           registryPhotosLabel.visibility = View.GONE
           registryPhotosList.visibility = View.GONE
         } else {
           binding.registryPhotosList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-          binding.registryPhotosList.adapter = ImagesDetailsAdapter(registry?.getImages()!!)
+          binding.registryPhotosList.adapter = ImagesDetailsAdapter(registry?.images!!)
         }
         registryShare.visibility = View.VISIBLE
       }
@@ -117,24 +117,24 @@ class FilmesDetailFragment : Fragment() {
   }
 
   private fun registryShare(view: View) {
-    val shareText = if(registry?.getObservations() == null || registry?.getObservations()!!.isBlank()) {
+    val shareText = if(registry?.observations == null || registry?.observations!!.isBlank()) {
       getString(
         R.string.share_body,
         movie?.name,
-        registry?.getSeen(),
-        registry?.getCinema(),
-        registry?.getRate().toString(),
+        registry?.seen,
+        registry?.cinema,
+        registry?.rate.toString(),
         movie?.imdbLink
       )
     } else {
       getString(
         R.string.share_body_with_observations,
         movie?.name,
-        registry?.getSeen(),
-        registry?.getCinema(),
-        registry?.getRate().toString(),
+        registry?.seen,
+        registry?.cinema,
+        registry?.rate.toString(),
         movie?.imdbLink,
-        registry?.getObservations())
+        registry?.observations)
     }
 
     val shareIntent = Intent(Intent.ACTION_SEND)

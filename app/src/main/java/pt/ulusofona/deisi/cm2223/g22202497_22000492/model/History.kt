@@ -27,17 +27,18 @@ object History {
   }
 
   fun getRegistryByMovieId(movieId: Int): MovieRegistry? {
-    return registryList.find { it.getMovieId() == movieId }
+    return null
+    //return registryList.find { it.getMovieId() == movieId }
   }
 
   fun saveRegistry(registry: MovieRegistry) {
-    val oldRegistry: MovieRegistry? = getRegistryByMovieId(registry.getMovieId());
+    /*val oldRegistry: MovieRegistry? = getRegistryByMovieId(registry.getMovieId());
 
     if (oldRegistry != null) {
       registryList.remove(oldRegistry)
     }
 
-    registryList.add(registry)
+    registryList.add(registry)*/
   }
 
   fun top5ImdbMovies(movieList: List<Movie>): List<Movie> {
@@ -45,20 +46,22 @@ object History {
   }
 
   fun top5BestRatedMovies(movieList: List<Movie>): List<Movie> {
-    val sortedMovies = registryList
+    return mutableListOf()
+    /* val sortedMovies = registryList
       .sortedByDescending { it.getRate() }
       .map { getMovieById(movieList, it.getMovieId().toString()) }
       .take(5)
 
-    return sortedMovies.filterNotNull()
+    return sortedMovies.filterNotNull() */
   }
 
   fun top5LastSeenMovies(movieList: List<Movie>): List<Movie> {
-    val sortedMovies = registryList
+    return mutableListOf()
+    /*val sortedMovies = registryList
       .sortedByDescending { it.getSeenDate() }
       .map { getMovieById(movieList, it.getMovieId().toString()) }
       .take(5)
 
-    return sortedMovies.filterNotNull()
+    return sortedMovies.filterNotNull()*/
   }
 }

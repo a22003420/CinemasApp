@@ -4,20 +4,33 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 
 @Entity(tableName = "movies")
 data class MovieDB(
-    @PrimaryKey(autoGenerate = false)
-    var id: Int = 0,
-
-    @ColumnInfo(name = "movie_id")
-    val movieId: String, // movieId corresponds to Movie.id
-    val name: String,
-    val photo: String,
-    val genre: String,
-    val synopsis: String,
-    val releaseDate: String,
-    val imdbRating: String,
-    val imdbLink: String
-)
+  @PrimaryKey(autoGenerate = false)
+  var id: String,
+  var name: String,
+  var year: Int,
+  var photo: String,
+  var genre: String,
+  var synopsis: String,
+  var releaseDate: String,
+  var imdbRating: String,
+  var imdbLink: String
+){
+  fun toMovie(): Movie {
+    return Movie(
+      id = this.id,
+      name = this.name,
+      year = this.year,
+      photo = this.photo,
+      genre = this.genre,
+      synopsis = this.synopsis,
+      releaseDate = this.releaseDate,
+      imdbRating = this.imdbRating,
+      imdbLink = this.imdbLink
+    )
+  }
+}
 

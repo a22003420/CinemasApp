@@ -1,4 +1,4 @@
-package pt.ulusofona.deisi.cm2223.g22202497_22000492.data.remote
+package pt.ulusofona.deisi.cm2223.g22202497_22000492
 
 import android.content.Context
 import android.net.ConnectivityManager

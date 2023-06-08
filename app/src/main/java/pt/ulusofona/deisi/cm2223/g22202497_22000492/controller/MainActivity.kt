@@ -11,29 +11,21 @@ import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.ActivityMainBinding
 import okhttp3.OkHttpClient
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.MovieDBWithRoom
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.MovieRoom
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.AppDatabase
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.remote.MoviesServiceOkHttpAndJsonObject
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieSource
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.remote.MoviesOkHttp
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.RemoteOps
 
 class MainActivity : AppCompatActivity() {
   private lateinit var binding: ActivityMainBinding
-  private val TAG = MainActivity::class.java.simpleName
-  private lateinit var model : MovieSource
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    MovieRepository.init(
-      local = MovieDBWithRoom(AppDatabase.getInstance(this).movieOperations()),
-      remote = MoviesServiceOkHttpAndJsonObject(client = OkHttpClient()),
-      context = this
-    )
     Log.i("APP", "Initialized repository")
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
 
     NavigationManager.goToDashboardFragment(supportFragmentManager)
-    model = MovieRepository.getInstance()
   }
 
   override fun onStart() {

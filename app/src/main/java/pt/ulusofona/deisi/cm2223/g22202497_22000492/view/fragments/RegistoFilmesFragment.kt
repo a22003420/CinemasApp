@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
@@ -96,15 +97,43 @@ class RegistoFilmesFragment : Fragment() {
 
   private fun saveClickEvent() {
     binding.registrySaveButton.setOnClickListener {
-      if (validateInputs() && movie != null) {
-        val movieId = movie!!.id
+
+      if (validateInputs()) {
+        val movieName = binding.registryMovieName.text.toString()
+        val movieYear = binding.registryMovieYear.text.toString().toInt()
         val cinema = binding.registryCinema.text.toString()
         val rate = binding.registryRate.progress
         val seenDate = binding.registryPickDate.text.toString()
         val observations = binding.registryObservations.text.toString()
 
-        movieRegistry = MovieRegistry(movieId.toInt(), cinema, rate, seenDate, observations)
-        movieRegistry.setImages(selectedImages)
+        movieRegistry = MovieRegistry(
+          movieName = movieName,
+          movieYear = movieYear,
+          cinema = cinema,
+          rate = rate,
+          seen = seenDate,
+          observations = observations
+        )
+
+        // movieRegistry.images = selectedImages
+
+        MovieRepository.getInstance().saveRegistry(movieRegistry) { result ->
+          if (result.isSuccess) {
+            Toast.makeText(
+              requireContext(), getString(R.string.registry_success),
+              Toast.LENGTH_SHORT
+            ).show()
+            clearForm()
+          } else {
+            val errorMessage = result.exceptionOrNull()?.cause?.message ?: getString(R.string.movie_not_found)
+            Toast.makeText(
+              requireContext(), errorMessage,
+              Toast.LENGTH_SHORT
+            ).show()
+          }
+        }
+
+
         displayConfirm()
       } else {
         Toast.makeText(requireContext(), getString(R.string.registry_error), Toast.LENGTH_SHORT).show()
@@ -115,7 +144,7 @@ class RegistoFilmesFragment : Fragment() {
   private fun displayConfirm() {
     val confirmDialog = AlertDialog.Builder(requireContext())
       .setTitle(getString(R.string.dialog_confirm))
-      .setMessage(getString(R.string.registry_dialog_message, movie?.name, movieRegistry.getRate().toString()))
+      .setMessage(getString(R.string.registry_dialog_message, movie?.name, movieRegistry.rate.toString()))
       .setPositiveButton(getString(R.string.dialog_save)) { _, _ ->
         History.saveRegistry(movieRegistry)
 
@@ -131,6 +160,7 @@ class RegistoFilmesFragment : Fragment() {
 
   private fun validateInputs(): Boolean {
     return validateMovieName() &&
+           validateMovieYear() &&
            validateCinema() &&
            validateRate() &&
            validateSeenDate()
@@ -140,7 +170,7 @@ class RegistoFilmesFragment : Fragment() {
     val movieName = binding.registryMovieName.text.toString()
 
     if (movieName.isBlank()) {
-      binding.registryCinema.error = getString(R.string.error_field_required)
+      binding.registryMovieName.error = getString(R.string.error_field_required)
       return false
     }
 
@@ -153,6 +183,19 @@ class RegistoFilmesFragment : Fragment() {
 
     return true
   }
+
+  private fun validateMovieYear(): Boolean {
+    val movieYear = binding.registryMovieYear.text.toString()
+
+    if (movieYear.isBlank()) {
+      binding.registryMovieYear.error = getString(R.string.error_field_required)
+      return false
+    }
+
+    return true
+  }
+
+
   private fun validateCinema(): Boolean {
     if (binding.registryCinema.text.toString().isBlank()) {
       binding.registryCinema.error = getString(R.string.error_field_required)

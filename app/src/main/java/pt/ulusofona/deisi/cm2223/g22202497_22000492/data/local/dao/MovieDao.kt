@@ -5,27 +5,35 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Update
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieDB
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieRegistryDB
 
 
 @Dao
-interface MovieOperations {
+interface MovieDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun insertMovie(character: MovieDB)
+  fun insertMovie(movie: MovieDB)
+
+  @Update
+  fun updateMovie(movie: MovieDB)
 
   @Query("SELECT * FROM movies")
   fun getAllMovies(): List<MovieDB>
 
-  @Query("SELECT * FROM movies WHERE id = :id")
-  fun getMovieById(id: Int): MovieDB
+  @Query("SELECT * FROM movies WHERE id = :movieId")
+  fun getMovieById(movieId: String): MovieDB?
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun insertMovieAll(characters: List<MovieDB>)
+  fun insertMovieAll(movies: List<MovieDB>)
 
   @Delete
-  fun deleteMovie(characters: List<MovieDB>)
+  fun deleteMovie(movies: List<MovieDB>)
 
   @Query("DELETE FROM movies")
   fun deleteAllMovies()
+
+  @Query("SELECT * FROM movie_registries WHERE movie_id = :movieId")
+  fun getMovieFromRegistry(movieId: String): MovieRegistryDB?
 }
