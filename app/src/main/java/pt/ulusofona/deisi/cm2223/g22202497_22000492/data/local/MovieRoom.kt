@@ -13,10 +13,7 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.dao.MovieRegistry
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.dao.RegistryImageDao
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieRegistryDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.RegistryImageDB
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.LocalOps
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.RegistryImage
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.*
 
 
 class MovieRoom(
@@ -35,7 +32,7 @@ class MovieRoom(
         if (registry !== null) {
           var cinema = cinemaStorage.getCinemaById(registry.cinemaId)
           movie.registry = registry.toMovieRegistry(
-            cinema?.name ?: "",
+            cinema.toCinema(),
             movie
           )
         }
@@ -95,21 +92,43 @@ class MovieRoom(
 
   override fun insertRegistry(registry: MovieRegistry, onFinished: (Result<MovieRegistry>) -> Unit) {
     CoroutineScope(Dispatchers.IO).launch {
-      val cinema = cinemaStorage.getCinemaByName(registry.cinema)
 
-      if (cinema === null) {
-        onFinished(Result.failure(Exception(context.getString(R.string.cinema_not_found))))
-      }
-      else {
-        val registryDB = registry.toMovieRegistryDB()
-        registryDB.cinemaId = cinema.id
+      registry.id = registryStorage.insertRegistry(
+        registry.toMovieRegistryDB()
+      )
 
-        registryStorage.insertRegistry(
-          registry.toMovieRegistryDB()
-        )
+      onFinished(Result.success(registry))
+    }
+  }
 
-        onFinished(Result.success(registry))
-      }
+  override fun insertCinema(cinema: Cinema, onFinished: (Result<Cinema>) -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+      cinemaStorage.insertCinema(
+        cinema.toCinemaDB()
+      )
+      onFinished(Result.success(cinema))
+    }
+  }
+
+  override fun insertRegistryImage(registryImage: RegistryImage, onFinished: (Result<RegistryImage>) -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+      registryImageStorage.insertRegistryImage(
+        registryImage.toRegistryImageDB()
+      )
+      onFinished(Result.success(registryImage))
+    }
+  }
+
+  override fun insertRegistryImages(movieRegistry: MovieRegistry, registryImages: List<RegistryImage>, onFinished: (Result<List<RegistryImage>>) -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+      registryImageStorage.insertRegistryImages(
+        registryImages.map {
+          it.movieRegistryId = movieRegistry.id
+          it.toRegistryImageDB()
+        }
+      )
+
+      onFinished(Result.success(registryImages))
     }
   }
 

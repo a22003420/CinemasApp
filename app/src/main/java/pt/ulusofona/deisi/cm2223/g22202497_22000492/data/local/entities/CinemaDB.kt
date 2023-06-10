@@ -2,6 +2,7 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Cinema
 
 @Entity(tableName = "cinemas")
 data class CinemaDB (
@@ -13,4 +14,16 @@ data class CinemaDB (
   var longitude: Double,
   var address: String,
   var county: String
-)
+) {
+  fun toCinema(): Cinema {
+    return Cinema(
+      id = this.id,
+      name = this.name,
+      provider = this.provider,
+      latitude = this.latitude,
+      longitude = this.longitude,
+      address = this.address,
+      county = this.county
+    )
+  }
+}

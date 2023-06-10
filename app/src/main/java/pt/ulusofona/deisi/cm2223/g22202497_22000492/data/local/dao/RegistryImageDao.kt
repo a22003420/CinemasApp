@@ -11,6 +11,9 @@ interface RegistryImageDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun insertRegistryImage(registryImage: RegistryImageDB)
 
+  @Insert(onConflict = OnConflictStrategy.REPLACE)
+  fun insertRegistryImages(registryImages: List<RegistryImageDB>)
+
   @Delete
   fun deleteRegistryImage(registryImage: RegistryImageDB)
 }

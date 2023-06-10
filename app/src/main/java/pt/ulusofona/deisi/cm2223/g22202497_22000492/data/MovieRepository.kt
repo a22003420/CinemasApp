@@ -5,6 +5,7 @@ import android.content.Context
 import android.util.Log
 import com.example.cinemas_app.R
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.ConnectivityUtil
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.AppDatabase
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.RegistryImageDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.*
 
@@ -13,6 +14,8 @@ class MovieRepository (
   private val remote: RemoteOps,
   private val context: Context
 ) {
+
+  private val appDatabase = AppDatabase.getInstance(context)
 
   fun getMovie(
     id: String,
@@ -70,7 +73,9 @@ class MovieRepository (
     }
   }
 
-  fun saveRegistry(movieRegistry: MovieRegistry, onFinished: (Result<MovieRegistry>) -> Unit) {
+  fun saveRegistry(
+    movieRegistry: MovieRegistry,
+    onFinished: (Result<MovieRegistry>) -> Unit) {
     if (!ConnectivityUtil.isOnline(context)) {
       onFinished(
         Result.failure(
@@ -85,16 +90,23 @@ class MovieRepository (
         result.getOrNull()?.let { movie ->
           local.insertMovie(movie) { result ->
             if (result.isSuccess) {
-              result.getOrNull()?.let { movie ->
-                movieRegistry.movieId = movie.id
-
-                local.insertRegistry(movieRegistry) { result ->
-                  if (result.isSuccess) {
+              movieRegistry.movieId = movie.id
+              local.insertCinema(movieRegistry.cinema) { result ->
+                if (result.isSuccess) {
+                  local.insertRegistry(movieRegistry) { result ->
                     result.getOrNull()?.let { registry ->
-                      onFinished(Result.success(registry))
+                      if (result.isSuccess) {
+                        local.insertRegistryImages(registry, movieRegistry.images) { result ->
+                          if (result.isSuccess) {
+                            result.getOrNull()?.let { images ->
+                              onFinished(Result.success(movieRegistry))
+                            }
+                          }
+                        }
+                      } else {
+                        onFinished(result)
+                      }
                     }
-                  } else {
-                    onFinished(result)
                   }
                 }
               }

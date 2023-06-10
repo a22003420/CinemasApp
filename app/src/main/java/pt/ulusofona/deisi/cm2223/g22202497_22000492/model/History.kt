@@ -2,6 +2,8 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.model
 
 import android.content.Context
 import com.google.gson.Gson
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 
 
@@ -15,7 +17,10 @@ object History {
 
   fun loadCinemas(context: Context): List<Cinema> {
     val jsonString = context.assets.open("cinemas.json").bufferedReader().use { it.readText() }
-    return Gson().fromJson(jsonString, object : TypeToken<List<Cinema>>() {}.type)
+    Gson().fromJson(jsonString, JsonObject::class.java).let {
+      val cinemasJsonArray: JsonArray = it.getAsJsonArray("cinemas")
+      return Gson().fromJson(cinemasJsonArray, object : TypeToken<List<Cinema>>() {}.type)
+    }
   }
 
   fun getMovieById(paramMovieList: List<Movie>, uuid: String?): Movie? {
@@ -24,6 +29,10 @@ object History {
 
   fun getMovieByName(paramMovieList: List<Movie>, name: String?): Movie? {
     return paramMovieList.find { it.name.equals(name, ignoreCase = true) }
+  }
+
+  fun getCinemaByName(paramCinemaList: List<Cinema>, name: String?): Cinema? {
+    return paramCinemaList.find { it.name.equals(name, ignoreCase = true) }
   }
 
   fun getRegistryByMovieId(movieId: Int): MovieRegistry? {

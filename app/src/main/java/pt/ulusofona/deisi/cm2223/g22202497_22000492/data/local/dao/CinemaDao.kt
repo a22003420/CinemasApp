@@ -11,7 +11,7 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.CinemaDB
 interface CinemaDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun addCinema(cinema: CinemaDB)
+  fun insertCinema(cinema: CinemaDB)
 
   @Query("SELECT * FROM cinemas")
   fun getAllCinemas(): List<CinemaDB>

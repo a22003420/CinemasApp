@@ -11,12 +11,11 @@ data class MovieRegistry(
   var movieId: String = "",
   var movieName: String = "",
   var movieYear: Int = 0,
-  var cinemaId: Long = 0,
-  var cinema: String = "",
+  var cinema: Cinema = Cinema(),
   var rate : Int = 0,
   var seen: String = "",
   var observations: String = "",
-  var images: List<Uri> = listOf()) : Serializable {
+  var images: List<RegistryImage> = listOf()) : Serializable {
 
   fun getSeenDate(): Date {
     val date = seen.split("/")
@@ -29,6 +28,7 @@ data class MovieRegistry(
       movieId = this.movieId,
       rate = this.rate,
       seen = this.seen,
+      cinemaId = this.cinema.id,
       observations = this.observations
     )
   }

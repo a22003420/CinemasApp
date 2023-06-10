@@ -27,8 +27,8 @@ class MovieAdapter(
 
     holder.binding.apply {
       nomeFilme.text = item.name
-      classificacaoFilme.text = item.imdbRating.toString()
-      anoFilme.text = item.releaseDate.toString()
+      classificacaoFilme.text = item.imdbRating
+      anoFilme.text = item.releaseDate
 
       val resourceId = holder.itemView.context.resources.getIdentifier(item.photo, "drawable",  holder.itemView.context.packageName)
       filmeImagem.setImageResource(resourceId)

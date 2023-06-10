@@ -6,18 +6,19 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SeekBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.*
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.ImagesAdapter
 import java.text.ParseException
 import java.text.SimpleDateFormat
@@ -27,16 +28,17 @@ class RegistoFilmesFragment : Fragment() {
 
   private lateinit var binding: FragmentRegistoFilmesBinding
   private var movieRegistry: MovieRegistry = MovieRegistry()
-  private var movieList: List<Movie> = listOf()
-  private var movie: Movie? = null
+  private var cinemaList: List<Cinema> = listOf()
+  private var cinema: Cinema = Cinema()
   private val REQUEST_PICK_IMAGE = 100
   private var selectedImages = mutableListOf<Uri>()
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_registo_filmes, container, false)
     binding = FragmentRegistoFilmesBinding.bind(view)
-    movieList = History.loadMovies(requireContext())
+    cinemaList = History.loadCinemas(requireContext())
     pickDateClickEvent()
+    rateChangeEvent()
     saveClickEvent()
     photosClickEvent()
     return binding.root
@@ -70,6 +72,18 @@ class RegistoFilmesFragment : Fragment() {
     }
   }
 
+  private fun rateChangeEvent() {
+    binding.registryRate.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
+      override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
+        binding.registryRateValue.text = progress.toString()
+      }
+
+      override fun onStartTrackingTouch(seekBar: SeekBar?) {}
+
+      override fun onStopTrackingTouch(seekBar: SeekBar?) {}
+    })
+  }
+
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     super.onActivityResult(requestCode, resultCode, data)
 
@@ -101,10 +115,10 @@ class RegistoFilmesFragment : Fragment() {
       if (validateInputs()) {
         val movieName = binding.registryMovieName.text.toString()
         val movieYear = binding.registryMovieYear.text.toString().toInt()
-        val cinema = binding.registryCinema.text.toString()
         val rate = binding.registryRate.progress
         val seenDate = binding.registryPickDate.text.toString()
         val observations = binding.registryObservations.text.toString()
+        val handler = Handler(Looper.getMainLooper())
 
         movieRegistry = MovieRegistry(
           movieName = movieName,
@@ -115,26 +129,29 @@ class RegistoFilmesFragment : Fragment() {
           observations = observations
         )
 
-        // movieRegistry.images = selectedImages
-
-        MovieRepository.getInstance().saveRegistry(movieRegistry) { result ->
-          if (result.isSuccess) {
-            Toast.makeText(
-              requireContext(), getString(R.string.registry_success),
-              Toast.LENGTH_SHORT
-            ).show()
-            clearForm()
-          } else {
-            val errorMessage = result.exceptionOrNull()?.cause?.message ?: getString(R.string.movie_not_found)
-            Toast.makeText(
-              requireContext(), errorMessage,
-              Toast.LENGTH_SHORT
-            ).show()
-          }
+        movieRegistry.images = selectedImages.map {
+          RegistryImage(
+            uri = it.toString(),
+            movieRegistryId = movieRegistry.id
+          )
         }
 
+        MovieRepository.getInstance().saveRegistry(movieRegistry) { result ->
+          val isSuccess = result.isSuccess
+          val errorMessage = if (!isSuccess) {
+            result.exceptionOrNull()?.message
+          } else {
+            null
+          }
 
-        displayConfirm()
+          handler.post {
+            if (isSuccess) {
+              displayConfirm()
+            } else {
+              Toast.makeText(requireContext(), errorMessage.toString(), Toast.LENGTH_SHORT).show()
+            }
+          }
+        }
       } else {
         Toast.makeText(requireContext(), getString(R.string.registry_error), Toast.LENGTH_SHORT).show()
       }
@@ -144,7 +161,7 @@ class RegistoFilmesFragment : Fragment() {
   private fun displayConfirm() {
     val confirmDialog = AlertDialog.Builder(requireContext())
       .setTitle(getString(R.string.dialog_confirm))
-      .setMessage(getString(R.string.registry_dialog_message, movie?.name, movieRegistry.rate.toString()))
+      .setMessage(getString(R.string.registry_dialog_message, movieRegistry.movieName, movieRegistry.rate.toString()))
       .setPositiveButton(getString(R.string.dialog_save)) { _, _ ->
         History.saveRegistry(movieRegistry)
 
@@ -174,13 +191,6 @@ class RegistoFilmesFragment : Fragment() {
       return false
     }
 
-    movie = History.getMovieByName(movieList, movieName)
-
-    if (movie == null) {
-      binding.registryMovieName.error = getString(R.string.error_invalid_movie)
-      return false
-    }
-
     return true
   }
 
@@ -197,10 +207,21 @@ class RegistoFilmesFragment : Fragment() {
 
 
   private fun validateCinema(): Boolean {
-    if (binding.registryCinema.text.toString().isBlank()) {
+    val cinemaName = binding.registryCinema.text.toString()
+
+    if (cinemaName.isBlank()) {
       binding.registryCinema.error = getString(R.string.error_field_required)
       return false
     }
+
+    var historyCinema = History.getCinemaByName(cinemaList, cinemaName)
+
+    if (historyCinema == null) {
+      binding.registryMovieName.error = getString(R.string.cinema_not_found)
+      return false
+    }
+
+    cinema = historyCinema
     return true
   }
 
@@ -242,6 +263,7 @@ class RegistoFilmesFragment : Fragment() {
 
   private fun clearForm() {
     binding.registryMovieName.text.clear()
+    binding.registryMovieYear.text.clear()
     binding.registryCinema.text.clear()
     binding.registryRate.progress = 0
     binding.registryPickDate.text = getString(R.string.registry_pick_date)

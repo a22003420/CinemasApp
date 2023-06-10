@@ -24,7 +24,9 @@
             android:exported="false" />
         <activity
             android:name="pt.ulusofona.deisi.cm2223.g22202497_22000492.controller.MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="sensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

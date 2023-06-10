@@ -1,6 +1,7 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.controller
 
 import android.app.Dialog
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
   override fun onStart() {
     super.onStart()
     setupBottomMenu()
+  }
+
+  override fun onConfigurationChanged(newConfig: Configuration) {
+    super.onConfigurationChanged(newConfig)
   }
 
   private fun setupBottomMenu() {

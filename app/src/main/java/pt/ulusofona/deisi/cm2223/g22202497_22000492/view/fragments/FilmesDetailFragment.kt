@@ -69,7 +69,7 @@ class FilmesDetailFragment : Fragment() {
         registryLayout.visibility = View.GONE
         registryShare.visibility = View.GONE
       } else {
-        cinemaName.text = registry?.cinema
+        cinemaName.text = registry?.cinema?.name
         registryRate.text = registry?.rate.toString()
         registrySeenDate.text = registry?.seen
 
@@ -86,7 +86,7 @@ class FilmesDetailFragment : Fragment() {
         } else {
           binding.registryPhotosList.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-          binding.registryPhotosList.adapter = ImagesDetailsAdapter(registry?.images!!)
+          binding.registryPhotosList.adapter = ImagesDetailsAdapter(registry?.images!!.map { it.toUri() })
         }
         registryShare.visibility = View.VISIBLE
       }

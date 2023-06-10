@@ -38,13 +38,12 @@ data class MovieRegistryDB(
   var seen: String = "",
   var observations: String = ""
 ) {
-  fun toMovieRegistry(cinema: String, movie: Movie): MovieRegistry {
+  fun toMovieRegistry(cinema: Cinema, movie: Movie): MovieRegistry {
     return MovieRegistry(
       id = this.id,
       movieId = this.movieId,
       movieName = movie.name,
       movieYear = movie.year,
-      cinemaId = this.cinemaId,
       cinema = cinema,
       rate = this.rate,
       seen = this.seen,

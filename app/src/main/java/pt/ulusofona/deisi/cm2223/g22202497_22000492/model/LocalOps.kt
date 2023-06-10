@@ -11,4 +11,7 @@ abstract class LocalOps {
   abstract fun clearAllMovies(onFinished: () -> Unit)
   abstract fun deleteRegistryImage(registryImage: RegistryImage, onFinished: () -> Unit)
   abstract fun insertRegistry(registry: MovieRegistry, onFinished: (Result<MovieRegistry>) -> Unit)
+  abstract fun insertCinema(cinema: Cinema, onFinished: (Result<Cinema>) -> Unit)
+  abstract fun insertRegistryImage(registryImage: RegistryImage, onFinished: (Result<RegistryImage>) -> Unit)
+  abstract fun insertRegistryImages(movieRegistry: MovieRegistry, registryImages: List<RegistryImage>, onFinished: (Result<List<RegistryImage>>) -> Unit)
 }

@@ -9,12 +9,13 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.CinemaDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieRegistryDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.RegistryImageDB
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 
 @Dao
 interface MovieRegistryDao {
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
-  fun insertRegistry(registry: MovieRegistryDB)
+  fun insertRegistry(registry: MovieRegistryDB): Long
 
   @Query("SELECT * FROM movie_registries")
   fun getAllRegistries(): List<MovieRegistryDB>

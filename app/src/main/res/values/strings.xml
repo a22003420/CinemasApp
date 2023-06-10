@@ -9,7 +9,7 @@
     <string name="seen_date_label">Date</string>
     <string name="registry_rate_label">Rating (0–10)</string>
     <string name="registry_cinema_label">Cinema</string>
-    <string name="registry_cinema_hint"><i>Colombo</i></string>
+    <string name="registry_cinema_hint"><i>Cinema do Parque</i></string>
     <string name="registry_movie_name_label">Movie name</string>
     <string name="registry_movie_name_hint"><i>The Godfather</i></string>
     <string name="registry_movie_year_label">Movie year</string>
@@ -68,5 +68,5 @@
 
     <string name="no_internet_connection">Feature unavailable without internet connection</string>
     <string name="movie_not_found">Movie not found</string>
-    <string name="cinema_not_found">Movie not found</string>
+    <string name="cinema_not_found">Cinema not found</string>
 </resources>
