@@ -38,17 +38,15 @@ data class MovieRegistryDB(
   var seen: String = "",
   var observations: String = ""
 ) {
-  fun toMovieRegistry(cinema: Cinema, movie: Movie): MovieRegistry {
+  fun toMovieRegistry(cinema: Cinema, movie: Movie, images: List<RegistryImageDB>): MovieRegistry {
     return MovieRegistry(
       id = this.id,
-      movieId = this.movieId,
-      movieName = movie.name,
-      movieYear = movie.year,
+      movie= movie,
       cinema = cinema,
       rate = this.rate,
       seen = this.seen,
-      observations = this.observations
-      // images = registry.images TODO: add images
+      observations = this.observations,
+      images = images.map { it.toRegistryImage() }
     )
   }
 }

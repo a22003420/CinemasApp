@@ -27,9 +27,6 @@ interface MovieRegistryDao {
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun addAllRegitries(registries: List<MovieRegistryDB>)
 
-  @Query("SELECT * FROM registry_images WHERE movie_registry_id = :registryId")
-  fun getImagesForRegistry(registryId: Long): List<RegistryImageDB>
-
   @Query("SELECT * FROM cinemas WHERE id = :cinemaId")
   fun getCinemaFromRegistry(cinemaId: Long): CinemaDB
 

@@ -6,16 +6,15 @@ import java.io.Serializable
 import java.util.*
 
 data class Movie(
-  var id: String,
-  var name: String,
-  var year: Int,
-  var photo: String,
-  var genre: String,
-  var synopsis: String,
-  var releaseDate: String,
-  var imdbRating: String,
-  var imdbLink: String,
-  var registry : MovieRegistry? = null
+  var id: String = "",
+  var name: String = "",
+  var year: Int = 0,
+  var photo: String = "",
+  var genre: String = "",
+  var synopsis: String = "",
+  var releaseDate: String = "",
+  var imdbRating: String = "",
+  var imdbLink: String = ""
 ) : Serializable {
   fun getReleaseDate(): Date {
     val date = releaseDate.split("/")

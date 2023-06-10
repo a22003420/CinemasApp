@@ -8,9 +8,7 @@ import java.util.*
 
 data class MovieRegistry(
   var id: Long = 0,
-  var movieId: String = "",
-  var movieName: String = "",
-  var movieYear: Int = 0,
+  var movie: Movie = Movie(),
   var cinema: Cinema = Cinema(),
   var rate : Int = 0,
   var seen: String = "",
@@ -25,7 +23,7 @@ data class MovieRegistry(
   fun toMovieRegistryDB(): MovieRegistryDB {
     return MovieRegistryDB(
       id = this.id,
-      movieId = this.movieId,
+      movieId = this.movie.id,
       rate = this.rate,
       seen = this.seen,
       cinemaId = this.cinema.id,

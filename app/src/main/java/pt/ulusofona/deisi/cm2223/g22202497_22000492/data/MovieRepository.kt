@@ -51,11 +51,11 @@ class MovieRepository (
   }
 
   fun getMoviesList(
-    onFinished: (Result<List<Movie>>) -> Unit) {
-    local.getMovies() { result ->
+    onFinished: (Result<List<MovieRegistry>>) -> Unit) {
+    local.getMovieList() { result ->
       if (result.isSuccess) {
-        result.getOrNull()?.let { movies ->
-          onFinished(Result.success(movies))
+        result.getOrNull()?.let { registries ->
+          onFinished(Result.success(registries))
         }
       } else {
         onFinished(result)
@@ -85,12 +85,12 @@ class MovieRepository (
       return
     }
 
-    remote.searchMovie(movieRegistry.movieName, movieRegistry.movieYear) { result ->
+    remote.searchMovie(movieRegistry.movie.name, movieRegistry.movie.year) { result ->
       if (result.isSuccess) {
         result.getOrNull()?.let { movie ->
           local.insertMovie(movie) { result ->
             if (result.isSuccess) {
-              movieRegistry.movieId = movie.id
+              movieRegistry.movie = movie
               local.insertCinema(movieRegistry.cinema) { result ->
                 if (result.isSuccess) {
                   local.insertRegistry(movieRegistry) { result ->

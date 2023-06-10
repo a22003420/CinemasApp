@@ -121,13 +121,14 @@ class RegistoFilmesFragment : Fragment() {
         val handler = Handler(Looper.getMainLooper())
 
         movieRegistry = MovieRegistry(
-          movieName = movieName,
-          movieYear = movieYear,
           cinema = cinema,
           rate = rate,
           seen = seenDate,
           observations = observations
         )
+
+        movieRegistry.movie.name = movieName
+        movieRegistry.movie.year = movieYear
 
         movieRegistry.images = selectedImages.map {
           RegistryImage(
@@ -161,7 +162,7 @@ class RegistoFilmesFragment : Fragment() {
   private fun displayConfirm() {
     val confirmDialog = AlertDialog.Builder(requireContext())
       .setTitle(getString(R.string.dialog_confirm))
-      .setMessage(getString(R.string.registry_dialog_message, movieRegistry.movieName, movieRegistry.rate.toString()))
+      .setMessage(getString(R.string.registry_dialog_message, movieRegistry.movie.name, movieRegistry.rate.toString()))
       .setPositiveButton(getString(R.string.dialog_save)) { _, _ ->
         History.saveRegistry(movieRegistry)
 

@@ -23,23 +23,22 @@ class MovieRoom(
   private val cinemaStorage : CinemaDao,
   private val context: Context
 ): LocalOps() {
-  override fun getMovies(onFinished: (Result<List<Movie>>) -> Unit) {
+  override fun getMovieList(onFinished: (Result<List<MovieRegistry>>) -> Unit) {
     CoroutineScope(Dispatchers.IO).launch {
-      val movies = movieStorage.getAllMovies().map {
-        var registry = movieStorage.getMovieFromRegistry(it.id)
-        var movie = it.toMovie()
+      val registries = registryStorage.getAllRegistries().map{
+        var movie = movieStorage.getMovieById(it.movieId)
+        var cinema = cinemaStorage.getCinemaById(it.cinemaId)
+        var images = registryImageStorage.getImagesForRegistry(it.id)
 
-        if (registry !== null) {
-          var cinema = cinemaStorage.getCinemaById(registry.cinemaId)
-          movie.registry = registry.toMovieRegistry(
-            cinema.toCinema(),
-            movie
-          )
-        }
-
-        movie
+        var registry = it.toMovieRegistry(
+          cinema.toCinema(),
+          movie?.toMovie() ?: Movie(),
+          images
+        )
+        registry
       }
-      onFinished(Result.success(movies))
+
+      onFinished(Result.success(registries))
     }
   }
 

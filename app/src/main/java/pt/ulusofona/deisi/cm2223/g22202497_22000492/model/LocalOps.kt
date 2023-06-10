@@ -3,7 +3,7 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.model
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieRegistryDB
 
 abstract class LocalOps {
-  abstract fun getMovies(onFinished: (Result<List<Movie>>) -> Unit)
+  abstract fun getMovieList(onFinished: (Result<List<MovieRegistry>>) -> Unit)
   abstract fun updateMovie(movie: Movie, onFinished: () -> Unit)
   abstract fun getMovieById(id: String, onFinished: (Result<Movie>) -> Unit)
   abstract fun insertMovies(movies: List<Movie>, onFinished: () -> Unit)
