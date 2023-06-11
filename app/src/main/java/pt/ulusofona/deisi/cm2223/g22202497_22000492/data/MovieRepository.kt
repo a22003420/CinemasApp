@@ -56,7 +56,25 @@ class MovieRepository (
     local.getRegistryById(id) { result ->
       if (result.isSuccess) {
         result.getOrNull()?.let { registry ->
-          onFinished(Result.success(registry))
+          if (ConnectivityUtil.isOnline(context)) {
+            remote.getMovie(registry.movie.id) { result ->
+              if (result.isSuccess) {
+                result.getOrNull()?.let { movie ->
+                  local.updateMovie(movie) {
+                    local.getMovieById(movie.id) { result ->
+                      result.getOrNull()?.let { movie ->
+                        registry.movie = movie
+                        onFinished(Result.success(registry))
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          else {
+            onFinished(Result.success(registry))
+          }
         }
       } else {
         onFinished(result)
