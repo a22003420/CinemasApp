@@ -71,4 +71,7 @@
     <string name="cinema_not_found">Cinema not found</string>
     <string name="registry_not_found">Movie registry not found</string>
     <string name="invalid_registry">Invalid movie registry</string>
+
+    <string name="movies_tab_list">List</string>
+    <string name="movies_tab_map">Map</string>
 </resources>

@@ -5,43 +5,36 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewpager2.widget.ViewPager2
 import com.example.cinemas_app.R
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.controller.NavigationManager
+import com.example.cinemas_app.databinding.FragmentDashboardBinding
 import com.example.cinemas_app.databinding.FragmentFilmesBinding
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.MovieAdapter
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.TabAdapter
 
 
 class FilmesFragment : Fragment() {
-  private lateinit var adapter : MovieAdapter
   private lateinit var binding: FragmentFilmesBinding
-  private lateinit var myMovieList: List<MovieRegistry>
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-    myMovieList = emptyList()
-    adapter = MovieAdapter(::onOperationClick, myMovieList)
-
-    MovieRepository.getInstance().getMoviesList { result ->
-      result.getOrNull().let {
-        if (it != null) {
-          myMovieList = it
-          adapter.setMovieList(myMovieList)
-        }
-      }
-    }
-
     val view = inflater.inflate(R.layout.fragment_filmes, container, false)
     binding = FragmentFilmesBinding.bind(view)
-    binding.rvHistory.layoutManager = LinearLayoutManager(requireContext())
-    binding.rvHistory.adapter = adapter
-    return binding.root
-  }
+    val tabLayout: TabLayout = binding.tabLayout
+    val viewPager: ViewPager2 = binding.viewPager
 
-  private fun onOperationClick(uuid: String) {
-    NavigationManager.goToFilmesDetailFragment(parentFragmentManager, uuid)
+    val tabAdapter = TabAdapter(childFragmentManager, lifecycle, parentFragmentManager)
+    viewPager.adapter = tabAdapter
+    TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+      tab.text = when (position) {
+        0 -> getString(R.string.movies_tab_list)
+        1 -> getString(R.string.movies_tab_map)
+        else -> throw IllegalArgumentException("Invalid tab position")
+      }
+    }.attach()
+
+    return view
   }
 }
