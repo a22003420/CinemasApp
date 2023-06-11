@@ -164,8 +164,6 @@ class RegistoFilmesFragment : Fragment() {
       .setTitle(getString(R.string.dialog_confirm))
       .setMessage(getString(R.string.registry_dialog_message, movieRegistry.movie.name, movieRegistry.rate.toString()))
       .setPositiveButton(getString(R.string.dialog_save)) { _, _ ->
-        History.saveRegistry(movieRegistry)
-
         Toast.makeText(requireContext(), getString(R.string.registry_success),
           Toast.LENGTH_SHORT).show()
 

@@ -40,7 +40,6 @@ class FilmesDetailFragment : Fragment() {
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
     val view = inflater.inflate(R.layout.fragment_filmes_detail, container, false)
     binding = FragmentFilmesDetailBinding.bind(view)
-    val movieList = History.loadMovies(requireContext())
 
     operationUuid?.let {
       MovieRepository.getInstance().getMovieRegistry(it.toLong()) { result ->

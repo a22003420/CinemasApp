@@ -27,9 +27,7 @@ class DashboardFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        myMovieList = History.loadMovies(requireContext())
-
-
+        myMovieList = emptyList()
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
         binding = FragmentDashboardBinding.bind(view)
