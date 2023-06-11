@@ -3,14 +3,19 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentFilmesDetailBinding
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Cinema
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
@@ -22,6 +27,7 @@ class FilmesDetailFragment : Fragment() {
   private var operationUuid: String? = null
   private var movie: Movie? = null
   private var registry: MovieRegistry? = null
+  private var cinema: Cinema? = null
   private val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,10 +41,21 @@ class FilmesDetailFragment : Fragment() {
     val view = inflater.inflate(R.layout.fragment_filmes_detail, container, false)
     binding = FragmentFilmesDetailBinding.bind(view)
     val movieList = History.loadMovies(requireContext())
-    movie = History.getMovieById(movieList, operationUuid)
-    registry = History.getRegistryByMovieId(movie!!.id.toInt())
 
-    placeData()
+    operationUuid?.let {
+      MovieRepository.getInstance().getMovieRegistry(it.toLong()) { result ->
+        result.getOrNull().let {
+          registry = it
+          movie = registry?.movie
+          cinema = registry?.cinema
+
+          Handler(Looper.getMainLooper()).post {
+            placeData()
+          }
+        }
+      }
+    }
+
     binding.movieImdbLink.setOnClickListener {
       openIMDBLink()
     }
@@ -91,10 +108,9 @@ class FilmesDetailFragment : Fragment() {
         registryShare.visibility = View.VISIBLE
       }
 
-      val resourceId = context?.resources?.getIdentifier(movie?.photo, "drawable",  context?.packageName)
-      if (resourceId != null) {
-        movieImage.setImageResource(resourceId)
-      }
+      Glide.with(requireContext())
+        .load(movie?.photo)
+        .into(movieImage)
 
     }
   }

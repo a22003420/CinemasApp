@@ -50,6 +50,20 @@ class MovieRepository (
     }
   }
 
+  fun getMovieRegistry(
+    id: Long,
+    onFinished: (Result<MovieRegistry>) -> Unit) {
+    local.getRegistryById(id) { result ->
+      if (result.isSuccess) {
+        result.getOrNull()?.let { registry ->
+          onFinished(Result.success(registry))
+        }
+      } else {
+        onFinished(result)
+      }
+    }
+  }
+
   fun getMoviesList(
     onFinished: (Result<List<MovieRegistry>>) -> Unit) {
     local.getMovieList() { result ->

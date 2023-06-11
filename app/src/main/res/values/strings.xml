@@ -69,5 +69,6 @@
     <string name="no_internet_connection">Feature unavailable without internet connection</string>
     <string name="movie_not_found">Movie not found</string>
     <string name="cinema_not_found">Cinema not found</string>
+    <string name="registry_not_found">Movie registry not found</string>
     <string name="invalid_registry">Invalid movie registry</string>
 </resources>

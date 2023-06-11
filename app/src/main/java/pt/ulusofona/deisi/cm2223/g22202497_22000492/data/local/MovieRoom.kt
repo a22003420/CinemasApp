@@ -100,6 +100,31 @@ class MovieRoom(
     }
   }
 
+  override fun getRegistryById(id: Long, onFinished: (Result<MovieRegistry>) -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+      val registry = registryStorage.getRegistryById(id)
+
+      if (registry === null) {
+        onFinished(Result.failure(Exception(context.getString(R.string.registry_not_found))))
+      }
+      else {
+        var movie = movieStorage.getMovieById(registry.movieId)
+        var cinema = cinemaStorage.getCinemaById(registry.cinemaId)
+        var images = registryImageStorage.getImagesForRegistry(registry.id)
+
+        var registry = registry.toMovieRegistry(
+          cinema.toCinema(),
+          movie?.toMovie() ?: Movie(),
+          images
+        )
+
+        onFinished(Result.success(
+          registry
+        ))
+      }
+    }
+  }
+
   override fun insertCinema(cinema: Cinema, onFinished: (Result<Cinema>) -> Unit) {
     CoroutineScope(Dispatchers.IO).launch {
       cinemaStorage.insertCinema(

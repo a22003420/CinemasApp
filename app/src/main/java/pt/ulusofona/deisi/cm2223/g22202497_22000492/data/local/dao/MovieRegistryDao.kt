@@ -22,7 +22,7 @@ interface MovieRegistryDao {
 
 
   @Query("SELECT * FROM movie_registries WHERE id = :id")
-  fun getRegistryById(id: Int): MovieRegistryDB
+  fun getRegistryById(id: Long): MovieRegistryDB
 
   @Insert(onConflict = OnConflictStrategy.REPLACE)
   fun addAllRegitries(registries: List<MovieRegistryDB>)
