@@ -16,11 +16,6 @@ data class MovieRegistry(
   var observations: String = "",
   var images: List<RegistryImage> = listOf()) : Serializable {
 
-  fun getSeenDate(): Date {
-    val date = seen.split("/")
-    return Date(date[0].toInt(), date[1].toInt(), date[2].toInt())
-  }
-
   fun toMovieRegistryDB(): MovieRegistryDB {
     return MovieRegistryDB(
       id = this.id,

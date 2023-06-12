@@ -15,29 +15,25 @@ Número: a22000492<br />
 
 ## Screenshots dos ecrãs
 
-### Dashboard Screen (1): <br> <br> <img src="images/Screenshot_dashboard.png" height="50%" width="50%">
-### Movies Screen (2): <br> <br> <img src="images/Screenshot_movies.png" height="50%" width="50%">
-### Movie Register Screen (1): <br> <br> <img src="images/Screenshot_register1.png" height="50%" width="50%">
-### Movie Register Screen (2): <br> <br> <img src="images/Screenshot_register2.png" height="50%" width="50%">
-### Movie Register Screen (3): <br> <br> <img src="images/Screenshot_register3.png" height="50%" width="50%">
-### Details Screen (1): <br> <br> <img src="images/Screenshot_details_1.png" height="50%" width="50%">
-### Details Screen (2): <br> <br> <img src="images/Screenshot_details_2.png" height="50%" width="50%">
-### Details Screen (3): <br> <br> <img src="images/Screenshot_details3.png" height="50%" width="50%">
+### Dashboard Screen (1): <br> <br> <img src="https://i.gyazo.com/5b647603adebc48f0e76cc19456639f2.png" height="50%" width="50%">
+### Movies Screen List (2): <br> <br> <img src="https://i.gyazo.com/962280a6bb85cc73bca20fa1f60f6232.png" height="50%" width="50%">
+### Movies Screen Map (2): <br> <br> <img src="https://i.gyazo.com/86b34e641dbcbda3b8691c7f7618f21d.png" height="50%" width="50%">
+### Movie Register Screen (1): <br> <br> <img src="https://i.gyazo.com/c7d09f334bee7e307f115bf8e4031b54.png" height="50%" width="50%">
+### Movie Register Screen (2): <br> <br> <img src="https://i.gyazo.com/9629adcbf961b38760d15f269eec073b.png" height="50%" width="50%">
+### Movie Register Screen (3): <br> <br> <img src="https://i.gyazo.com/d141d17e2262572dff93e88c53fb7421.png" height="50%" width="50%">
+### Details Screen (1): <br> <br> <img src="https://i.gyazo.com/5978ee4970d8c3c86c432658bee97522.png" height="50%" width="50%">
+### Details Screen (2): <br> <br> <img src="https://i.gyazo.com/79d24aaac08638690bd4fe0f009a7ed4.png" height="50%" width="50%">
 ### Share (1): <br> <br> <img src="images/Screenshot_share1.png" height="50%" width="50%">
 ### Share (2): <br> <br> <img src="images/Screenshot_share2.png" height="50%" width="50%">
-### Voice (1): <br> <br> <img src="images/Screenshot_voice.png" height="50%" width="50%">
+### Voice (1): <br> <br> <img src="https://i.gyazo.com/e9f861a44609e16e87173400e69d0419.png" height="50%" width="50%">
+### Voice (2): <br> <br> <img src="https://i.gyazo.com/0756bfb2e5f0d005d0ee50ffcd4e7527.png" height="50%" width="50%">
+### Voice (3): <br> <br> <img src="https://i.gyazo.com/2cf0ecec448a641c7d4e7c4a6b2d7231.png" height="50%" width="50%">
 
-## Nomes dos filmes em hardcoded (movies.json)
-* The Shawshank Redemption
-* The Godfather
-* The Dark Knight
-* Schindler's List
-* The Lord of the Rings: The Return of the King
 
 ## Funcionalidades
-### Table: <br> <br> <img src="images/table.png">
+### Table: <br> <br> <img src="https://i.gyazo.com/ba91986387de490bf292459531a9cca9.png">
 
-Das funcionalidades mencionadas na tabela anterior, foram implementadas todas excepto a rotação da lista de filmes.
+Das funcionalidades mencionadas na tabela anterior, foram implementadas todas excepto o extra.
 
 
 ## Idiomas (Multi-language)
@@ -55,8 +51,9 @@ Nota: 18 valores
 ## Classes e atributos
 **Classe Movie:**
  -Atributos:
-    * id - Int,
+    * id - String,
     * name - String,
+    * year - String,
     * photo - String,
     * genre - String,
     * synopsis - String,
@@ -64,43 +61,52 @@ Nota: 18 valores
     * imdbRating - Double,
     * imdbLink - String;
   -Métodos:
-    * getId() - Int,
-    * getName() - String,
-    * getGenre() - String,
-    * getSynopsis() - String,
-    * getReleaseDateString() - String,
-    * getImdbRating() - Double,
-    * getReleaseDate() - Date,
-    * getImdbLink() - String;
+    * toMovieDB() - MovieDB;
 
 **Classe MovieRegistry:**
   -Atributos:
-    * movieId - Int,
-    * cinema - String,
+    * id - Long,
+    * movie - Movie
+    * cinema - Cinema,
     * rate - Int,
     * seen - String,
     * observations - String,
-    * images - List<Uri>;
+    * images - List<RegistryImage>;
   -Métodos:
-    * getMovieId() - Int,
-    * getCinema() - String,
-    * getRate() - Int,
-    * getSeen() - String,
-    * getObservations() - String,
-    * getImages() - List<Uri>;
+    * toMovieRegistryDB() - MovieRegistryDB,
+    * rateColor() - Float;
 
 **Classe History:**
-  -Atributos:
-    * registryList - List<MovieRegistry>;
   -Métodos:
-    * loadMovies() - List<Movie>,
-    * getMovieById() - Movie?,
-    * getMovieByName() - Movie?,
-    * getRegistryByMovieId() - MovieRegistry?,
-    * saveRegistry() - void,
-    * top5ImdbMovies() - List<Movie>,
-    * top5BestRatedMovies() - List<Movie>,
-    * top5LastSeenMovies() - List<Movie>;
+    * loadCinemas() - List<Cinema>,
+    * getCinemaByName() - Cinema?;
+
+**Classe Cinema:**
+    -Atributos:
+        * id - Long,
+        * name - String,
+        * provider - String,
+        * address - String,
+        * latitude - Double,
+        * longitude - Double,
+        * county - String;
+    -Métodos:
+        * toCinemaDB() - CinemaDB;
+
+**Classe RegistryImage:**
+    -Atributos:
+        * id - Long,
+        * uri - String,
+        * movieRegistryId - Long;
+    -Métodos:
+        * toRegistryImageDB() - RegistryImageDB;
+
+**Class MarkerData:**
+    -Atributos:
+        * marker - Marker,
+        * registryId - Long;
+    -Métodos:
+        * toMarkerDataDB() - MarkerDataDB;
 
 ## Referências
 Para as funcionalidades que não foram dadas em aula utilizámos apenas o ChatGPT. 

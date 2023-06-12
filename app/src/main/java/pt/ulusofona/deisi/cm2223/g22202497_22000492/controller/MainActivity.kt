@@ -10,11 +10,13 @@ import android.widget.TextView
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.ActivityMainBinding
 import android.Manifest
+import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.speech.RecognizerIntent
 import android.view.View
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.fondesa.kpermissions.allGranted
@@ -61,7 +63,7 @@ class MainActivity : AppCompatActivity() {
   }
 
   private fun setupBottomMenu() {
-    binding.bottomNavigationView.setOnNavigationItemSelectedListener{
+    binding.bottomNavigationView.setOnItemSelectedListener{
       onClickNavigationItem(it)
     }
   }
@@ -138,23 +140,22 @@ class MainActivity : AppCompatActivity() {
     return dialog
   }
 
-  private fun startVoiceRecognition(resultTextView: TextView) {
+  private val speechRecognitionLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+    if (result.resultCode == Activity.RESULT_OK && result.data != null) {
+      val data = result.data
+      val results = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+      val spokenText = results?.get(0)
+      resultTextView.text = spokenText
+    }
+  }
+
+  private fun startVoiceRecognition(textView: TextView) {
+    resultTextView = textView
     val speechRecognizerIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
     speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
     speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
     speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, getString(R.string.speak_now))
 
-    val requestCode = 2
-    startActivityForResult(speechRecognizerIntent, requestCode)
-  }
-
-  override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-    super.onActivityResult(requestCode, resultCode, data)
-
-    if (requestCode == 2 && resultCode == RESULT_OK && data != null) {
-      val results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
-      val spokenText = results?.get(0)
-      resultTextView.text = spokenText
-    }
+    speechRecognitionLauncher.launch(speechRecognizerIntent)
   }
 }
