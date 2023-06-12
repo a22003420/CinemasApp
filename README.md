@@ -109,8 +109,6 @@ https://youtu.be/ZMNf1eNuzDY
     -Atributos:
         * marker - Marker,
         * registryId - Long;
-    -Métodos:
-        * toMarkerDataDB() - MarkerDataDB;
 
 ## Idioma
 ![ChatGPT - Portuguese](https://i.gyazo.com/9da4c6ac1f819d7b2d84c43ff531b136.png)
