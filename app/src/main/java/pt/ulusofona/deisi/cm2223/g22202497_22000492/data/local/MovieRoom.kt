@@ -42,6 +42,16 @@ class MovieRoom(
     }
   }
 
+  override fun getCinemaList(onFinished: (Result<List<Cinema>>) -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+      val registries = cinemaStorage.getAllCinemas().map{
+        it.toCinema()
+      }
+
+      onFinished(Result.success(registries))
+    }
+  }
+
   override fun updateMovie(movie: Movie, onFinished: () -> Unit) {
     CoroutineScope(Dispatchers.IO).launch {
       movieStorage.updateMovie(

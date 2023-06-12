@@ -74,4 +74,9 @@
 
     <string name="movies_tab_list">List</string>
     <string name="movies_tab_map">Map</string>
+
+    <string name="dashboard_average_rate">Average Rate</string>
+    <string name="dashboard_highest_score">Highest Score</string>
+    <string name="dashboard_movies_seen">Movies Seen</string>
+    <string name="dashboard_cinemas_visited">Cinemas Visited</string>
 </resources>

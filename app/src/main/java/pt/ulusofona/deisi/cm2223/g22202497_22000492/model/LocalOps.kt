@@ -15,4 +15,5 @@ abstract class LocalOps {
   abstract fun insertRegistryImage(registryImage: RegistryImage, onFinished: (Result<RegistryImage>) -> Unit)
   abstract fun insertRegistryImages(movieRegistry: MovieRegistry, registryImages: List<RegistryImage>, onFinished: (Result<List<RegistryImage>>) -> Unit)
   abstract fun getRegistryById(id: Long, onFinished: (Result<MovieRegistry>) -> Unit)
+  abstract fun getCinemaList(onFinished: (Result<List<Cinema>>) -> Unit)
 }

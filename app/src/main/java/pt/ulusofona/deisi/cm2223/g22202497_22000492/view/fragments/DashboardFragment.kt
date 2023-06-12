@@ -6,71 +6,87 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cinemas_app.R
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.controller.NavigationManager
 import com.example.cinemas_app.databinding.FragmentDashboardBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Cinema
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
+import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.DashboardSlidersAdapter
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 class DashboardFragment : Fragment() {
 
-    private val model = MovieRepository.getInstance()
+  private val model = MovieRepository.getInstance()
 
-    private lateinit var binding: FragmentDashboardBinding
-    private lateinit var myMovieList: List<Movie>
+  private lateinit var binding: FragmentDashboardBinding
+  private lateinit var myRegistryList: List<MovieRegistry>
+  private lateinit var myCinemaList: List<Cinema>
+  private lateinit var mapFragment: MapFragment
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        myMovieList = emptyList()
-        val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+  override fun onCreateView(
+    inflater: LayoutInflater,
+    container: ViewGroup?,
+    savedInstanceState: Bundle?
+  ): View? {
+    myRegistryList = emptyList()
+    myCinemaList = emptyList()
+    mapFragment = MapFragment()
 
-        binding = FragmentDashboardBinding.bind(view)
-        return binding.root
-    }
 
-    override fun onStart() {
-        super.onStart()
+    MovieRepository.getInstance().getMoviesList { result ->
+      if(result.isSuccess) {
+        result.getOrNull().let {
+          if (it != null) {
+            myRegistryList = it
+          }
 
-        val top5BestRatedMovies: List<Movie> = History.top5BestRatedMovies(myMovieList)
-        val top5LastSeen: List<Movie> = History.top5LastSeenMovies(myMovieList)
+          MovieRepository.getInstance().getCinemasList { result ->
+            result.getOrNull().let {
+              if (it != null) {
+                myCinemaList = it
+              }
 
-        val adapterTopImdb =
-            DashboardSlidersAdapter(::onOperationClick, History.top5ImdbMovies(myMovieList))
-        initAdapter(binding.bestMoviesRecyclerView, adapterTopImdb)
-
-        if (top5BestRatedMovies.isEmpty()) {
-            binding.bestRatedLayout.visibility = View.GONE
-        } else {
-            binding.bestRatedLayout.visibility = View.VISIBLE
-            val adapterTopRated = DashboardSlidersAdapter(::onOperationClick, top5BestRatedMovies)
-            initAdapter(binding.recentMoviesRecyclerView, adapterTopRated)
+              CoroutineScope(Dispatchers.Main).launch {
+                setStats()
+              }
+            }
+          }
         }
-
-        if (top5LastSeen.isEmpty()) {
-            binding.lastSeenLayout.visibility = View.GONE
-        } else {
-            binding.lastSeenLayout.visibility = View.VISIBLE
-            val adapterLastSeenMovies = DashboardSlidersAdapter(::onOperationClick, top5LastSeen)
-            initAdapter(binding.lastSeenMoviesRecyclerView, adapterLastSeenMovies)
-        }
+      }
     }
 
-    private fun initAdapter(view: RecyclerView, adapter: DashboardSlidersAdapter) {
-        view.layoutManager = LinearLayoutManager(
-            requireContext(),
-            LinearLayoutManager.HORIZONTAL,
-            false
-        )
-        view.adapter = adapter
-    }
+    val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
+    binding = FragmentDashboardBinding.bind(view)
 
-    private fun onOperationClick(uuid: String) {
-        NavigationManager.goToFilmesDetailFragment(parentFragmentManager, uuid)
-    }
+    val fragmentManager: FragmentManager = childFragmentManager
+    val transaction: FragmentTransaction = fragmentManager.beginTransaction()
+    transaction.replace(R.id.map_container, mapFragment)
+    transaction.commit()
+
+    return binding.root
+  }
+
+  private fun setStats() {
+    val averageRate = BigDecimal( myRegistryList.map { it.rate }.average())
+                        .setScale(2, RoundingMode.HALF_UP).toDouble()
+    val highestRated = myRegistryList.maxByOrNull { it.rate }
+    val totalMovies = myRegistryList.size
+    val totalCinemas = myCinemaList.size
+
+    binding.averageRate.text = averageRate.toString()
+    binding.moviesSeen.text = totalMovies.toString()
+    binding.cinemasVisited.text = totalCinemas.toString()
+    binding.highestScore.text = if (highestRated !== null) highestRated.rate.toString() else "0"
+  }
+
 }

@@ -94,6 +94,19 @@ class MovieRepository (
     }
   }
 
+  fun getCinemasList(
+    onFinished: (Result<List<Cinema>>) -> Unit) {
+    local.getCinemaList() { result ->
+      if (result.isSuccess) {
+        result.getOrNull()?.let { cinemas ->
+          onFinished(Result.success(cinemas))
+        }
+      } else {
+        onFinished(result)
+      }
+    }
+  }
+
   fun deleteRegistryImage(
     registryImage: RegistryImage,
     onFinished: () -> Unit) {

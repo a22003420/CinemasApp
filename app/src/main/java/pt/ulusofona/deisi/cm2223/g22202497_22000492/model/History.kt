@@ -1,10 +1,6 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.model
 
 import android.content.Context
-import com.google.gson.Gson
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
-import com.google.gson.reflect.TypeToken
 import org.json.JSONObject
 
 
@@ -35,29 +31,5 @@ object History {
 
   fun getCinemaByName(paramCinemaList: List<Cinema>, name: String?): Cinema? {
     return paramCinemaList.find { it.name.equals(name, ignoreCase = true) }
-  }
-
-  fun top5ImdbMovies(movieList: List<Movie>): List<Movie> {
-    return movieList.sortedByDescending { it.imdbRating }.take(5)
-  }
-
-  fun top5BestRatedMovies(movieList: List<Movie>): List<Movie> {
-    return mutableListOf()
-    /* val sortedMovies = registryList
-      .sortedByDescending { it.getRate() }
-      .map { getMovieById(movieList, it.getMovieId().toString()) }
-      .take(5)
-
-    return sortedMovies.filterNotNull() */
-  }
-
-  fun top5LastSeenMovies(movieList: List<Movie>): List<Movie> {
-    return mutableListOf()
-    /*val sortedMovies = registryList
-      .sortedByDescending { it.getSeenDate() }
-      .map { getMovieById(movieList, it.getMovieId().toString()) }
-      .take(5)
-
-    return sortedMovies.filterNotNull()*/
   }
 }
