@@ -77,8 +77,13 @@ class DashboardFragment : Fragment() {
   }
 
   private fun setStats() {
-    val averageRate = BigDecimal( myRegistryList.map { it.rate }.average())
-                        .setScale(2, RoundingMode.HALF_UP).toDouble()
+    var averageRate = 0.0
+
+    if (myRegistryList.size > 0) {
+      averageRate = BigDecimal( myRegistryList.map { it.rate }.average())
+        .setScale(2, RoundingMode.HALF_UP).toDouble()
+    }
+
     val highestRated = myRegistryList.maxByOrNull { it.rate }
     val totalMovies = myRegistryList.size
     val totalCinemas = myCinemaList.size

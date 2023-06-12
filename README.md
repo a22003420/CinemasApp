@@ -48,6 +48,9 @@ Das funcionalidades mencionadas na tabela anterior, foram implementadas todas ex
 ## Autoavaliação
 Nota: 18 valores
 
+## Link do vídeo
+https://youtu.be/ZMNf1eNuzDY
+
 ## Classes e atributos
 **Classe Movie:**
  -Atributos:
@@ -108,23 +111,10 @@ Nota: 18 valores
     -Métodos:
         * toMarkerDataDB() - MarkerDataDB;
 
+## Idioma
+![ChatGPT - Portuguese](https://i.gyazo.com/9da4c6ac1f819d7b2d84c43ff531b136.png)
+![ChatGPT - Spanish](https://i.gyazo.com/928ea625fcb1aac07cb6687b5987bfc9.png)
+
+
 ## Referências
 Para as funcionalidades que não foram dadas em aula utilizámos apenas o ChatGPT. 
-
-![ChatGPT - Clear Form](https://i.gyazo.com/73a2b2d49ee2099e9135e74d0aaedb12.png)
-
-![ChatGPT - Diaglo com countdown](https://i.gyazo.com/37c4936af2f9b5a3a33aa750b743a130.png)
-
-![ChatGPT - Params em strings](https://i.gyazo.com/f417b7226169514d0e5fd8407063d1a5.png)
-
-![ChatGPT - Delete de imagens](https://i.gyazo.com/ae55c5adf028689739d7e07f5d806b1d.png)
-
-![ChatGPT - Upload de imagens 1](https://i.gyazo.com/8e6ce940ac26436444c86e919a335b69.png)
-
-![ChatGPT - Upload de imagens 2](https://i.gyazo.com/fe3a2b747457249dac840f44ec9d59ef.png)
-
-![ChatGPT - Upload de imagens 3](https://i.gyazo.com/7fb75ee511a673a5a18041545e1e1575.png)
-
-![ChatGPT - Hint em itálico](https://i.gyazo.com/a6b4624de2e42056f0f681ea632488a7.png)
-
-![ChatGPT - Ler JSON](https://i.gyazo.com/a30d33eeb79c97b4d1440ef531b3b90e.png)
