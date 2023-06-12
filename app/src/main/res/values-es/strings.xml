@@ -9,9 +9,11 @@
     <string name="seen_date_label">Fecha</string>
     <string name="registry_rate_label">Calificación (0-10)</string>
     <string name="registry_cinema_label">Cine</string>
-    <string name="registry_cinema_hint"><i>Colombo</i></string>
+    <string name="registry_cinema_hint"><i>Cinema do Parque</i></string>
     <string name="registry_movie_name_label">Nombre de la película</string>
     <string name="registry_movie_name_hint"><i>The Godfather</i></string>
+    <string name="registry_movie_year_label">Movie year</string>
+    <string name="registry_movie_year_hint"><i>1972</i></string>
     <string name="dashboard">hola</string>
     <string name="dashboard_title">Tablero</string>
     <string name="movie_register_title">Registro de películas</string>
@@ -60,4 +62,24 @@
     <string name="share_label">Compartir con</string>
     <string name="share_body_with_observations">Hola,\nVi la película %1$s en %2$s en el cine %3$s y le di una calificación de %4$s.\n\nAquí está el enlace para obtener más información sobre esta película -&gt; %5$s\n\nObservaciones: %6$s</string>
     <string name="share_body">Hola,\nVi la película %1$s en %2$s en el cine %3$s y le di una calificación de %4$s.\n\nAquí está el enlace para obtener más información sobre esta película -&gt; %5$s</string>
+
+    <string name="no_internet_connection">Función no disponible sin conexión a internet</string>
+    <string name="movie_not_found">Película no encontrada</string>
+    <string name="cinema_not_found">Cine no encontrado</string>
+    <string name="registry_not_found">Registro de película no encontrado</string>
+    <string name="invalid_registry">Registro de película inválido</string>
+
+    <string name="movies_tab_list">Lista</string>
+    <string name="movies_tab_map">Mapa</string>
+
+    <string name="dashboard_average_rate">Promedio de Valoración</string>
+    <string name="dashboard_highest_score">Puntuación más Alta</string>
+    <string name="dashboard_movies_seen">Películas Vistas</string>
+    <string name="dashboard_cinemas_visited">Cines Visitados</string>
+
+    <string name="search_movie">Buscar una película</string>
+    <string name="speak_now">Habla ahora...</string>
+    <string name="start_voice_input">Hablar</string>
+    <string name="search_button">Buscar</string>
+    <string name="search_text_empty">Debes hacer clic en hablar antes de intentar buscar.</string>
 </resources>

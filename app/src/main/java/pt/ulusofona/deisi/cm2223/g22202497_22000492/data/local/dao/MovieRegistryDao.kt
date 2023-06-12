@@ -32,4 +32,7 @@ interface MovieRegistryDao {
 
   @Query("SELECT * FROM movies WHERE id = :movieId")
   fun getMovieFromRegistry(movieId: String): MovieDB
+
+  @Query("SELECT * FROM movie_registries WHERE movie_id = :movieId")
+  fun getRegistryByMovieId(movieId: String): MovieRegistryDB
 }

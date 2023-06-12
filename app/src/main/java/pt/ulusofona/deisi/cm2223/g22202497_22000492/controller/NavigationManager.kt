@@ -55,7 +55,6 @@ object NavigationManager {
     placeFragment(fm, FilmesDetailFragment.newInstance(id))
   }
 
-  @SuppressLint("ResourceAsColor")
   private fun hightLightMenuItem(bottomNavigationView: BottomNavigationView, id: Int, color: Int) {
     val item = bottomNavigationView.findViewById<View>(id)
 

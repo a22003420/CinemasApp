@@ -107,6 +107,20 @@ class MovieRepository (
     }
   }
 
+  fun getRegistryByMovieName(
+    id: String,
+    onFinished: (Result<MovieRegistry>) -> Unit) {
+    local.getRegistryByMovieName(id) { result ->
+      if (result.isSuccess) {
+        result.getOrNull()?.let { registry ->
+          onFinished(Result.success(registry))
+        }
+      } else {
+        onFinished(result)
+      }
+    }
+  }
+
   fun deleteRegistryImage(
     registryImage: RegistryImage,
     onFinished: () -> Unit) {

@@ -79,4 +79,10 @@
     <string name="dashboard_highest_score">Highest Score</string>
     <string name="dashboard_movies_seen">Movies Seen</string>
     <string name="dashboard_cinemas_visited">Cinemas Visited</string>
+
+    <string name="search_movie">Search a movie</string>
+    <string name="speak_now">Speak now...</string>
+    <string name="start_voice_input">Speak</string>
+    <string name="search_button">Search</string>
+    <string name="search_text_empty">You need to click speak before trying to search.</string>
 </resources>
