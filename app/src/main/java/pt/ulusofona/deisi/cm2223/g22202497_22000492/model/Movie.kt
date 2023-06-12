@@ -8,7 +8,7 @@ import java.util.*
 data class Movie(
   var id: String = "",
   var name: String = "",
-  var year: Int = 0,
+  var year: String = "",
   var photo: String = "",
   var genre: String = "",
   var synopsis: String = "",

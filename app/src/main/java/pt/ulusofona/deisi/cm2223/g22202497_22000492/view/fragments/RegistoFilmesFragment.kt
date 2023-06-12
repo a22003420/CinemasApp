@@ -6,8 +6,6 @@ import android.app.DatePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +15,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentRegistoFilmesBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.*
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.ImagesAdapter
@@ -114,11 +115,10 @@ class RegistoFilmesFragment : Fragment() {
 
       if (validateInputs()) {
         val movieName = binding.registryMovieName.text.toString()
-        val movieYear = binding.registryMovieYear.text.toString().toInt()
+        val movieYear = binding.registryMovieYear.text.toString()
         val rate = binding.registryRate.progress
         val seenDate = binding.registryPickDate.text.toString()
         val observations = binding.registryObservations.text.toString()
-        val handler = Handler(Looper.getMainLooper())
 
         movieRegistry = MovieRegistry(
           cinema = cinema,
@@ -145,7 +145,7 @@ class RegistoFilmesFragment : Fragment() {
             null
           }
 
-          handler.post {
+          CoroutineScope(Dispatchers.Main).launch {
             if (isSuccess) {
               displayConfirm()
             } else {

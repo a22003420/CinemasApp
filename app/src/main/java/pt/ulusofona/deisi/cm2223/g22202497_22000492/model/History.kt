@@ -19,6 +19,7 @@ object History {
     for (i in 0 until cinemasJsonArray.length()) {
       val cinemaJsonObject = cinemasJsonArray.getJSONObject(i)
       val cinema = Cinema(
+        id = cinemaJsonObject.getLong("cinema_id"),
         name = cinemaJsonObject.getString("cinema_name"),
         provider = cinemaJsonObject.getString("cinema_provider"),
         latitude = cinemaJsonObject.getDouble("latitude"),

@@ -16,6 +16,7 @@ class MovieApplication  : Application() {
 
   override fun onCreate() {
     super.onCreate()
+    FusedLocation.start(this)
     MovieRepository.init(
       local = MovieRoom(
         AppDatabase.getInstance(this).movieDao(),

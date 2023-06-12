@@ -15,7 +15,7 @@ class MoviesOkHttp (
 
   override fun searchMovie(
     movieName: String,
-    movieYear: Int,
+    movieYear: String,
     onFinished: (Result<Movie>) -> Unit
   ) {
 
@@ -70,7 +70,7 @@ class MoviesOkHttp (
               val movie = Movie(
                 jsonObject.getString("imdbID"),
                 jsonObject.getString("Title"),
-                jsonObject.getInt("Year"),
+                jsonObject.getString("Year"),
                 jsonObject.getString("Poster"),
                 jsonObject.getString("Genre"),
                 jsonObject.getString("Plot"),

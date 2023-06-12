@@ -10,23 +10,29 @@ import android.view.MenuItem
 import android.widget.TextView
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.ActivityMainBinding
-import okhttp3.OkHttpClient
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.MovieRoom
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.AppDatabase
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.remote.MoviesOkHttp
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.RemoteOps
+import android.Manifest
+import com.fondesa.kpermissions.allGranted
+import com.fondesa.kpermissions.extension.permissionsBuilder
+import com.fondesa.kpermissions.extension.send
+
 
 class MainActivity : AppCompatActivity() {
   private lateinit var binding: ActivityMainBinding
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    Log.i("APP", "Initialized repository")
     binding = ActivityMainBinding.inflate(layoutInflater)
     setContentView(binding.root)
 
-    NavigationManager.goToDashboardFragment(supportFragmentManager)
+    permissionsBuilder(
+      Manifest.permission.ACCESS_FINE_LOCATION,
+      Manifest.permission.ACCESS_COARSE_LOCATION).build().send { result ->
+      if (result.allGranted()) {
+        NavigationManager.goToDashboardFragment(supportFragmentManager)
+      } else {
+        finish()
+      }
+    }
   }
 
   override fun onStart() {

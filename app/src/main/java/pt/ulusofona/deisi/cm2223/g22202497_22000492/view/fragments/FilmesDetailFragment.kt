@@ -3,8 +3,6 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,9 +12,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.cinemas_app.R
 import com.example.cinemas_app.databinding.FragmentFilmesDetailBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.MovieRepository
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Cinema
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.History
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters.ImagesDetailsAdapter
@@ -48,7 +48,7 @@ class FilmesDetailFragment : Fragment() {
           movie = registry?.movie
           cinema = registry?.cinema
 
-          Handler(Looper.getMainLooper()).post {
+          CoroutineScope(Dispatchers.Main).launch {
             placeData()
           }
         }

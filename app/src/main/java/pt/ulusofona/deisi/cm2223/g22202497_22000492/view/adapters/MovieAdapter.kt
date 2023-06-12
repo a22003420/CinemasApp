@@ -1,13 +1,14 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.adapters
 
-import android.os.Handler
-import android.os.Looper
+
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.cinemas_app.databinding.MovieListItemBinding
-import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
 
 class MovieAdapter(
@@ -20,7 +21,7 @@ class MovieAdapter(
   fun setMovieList(newMovieList: List<MovieRegistry>) {
     items = newMovieList
 
-    Handler(Looper.getMainLooper()).post {
+    CoroutineScope(Dispatchers.Main).launch {
       notifyDataSetChanged()
     }
   }

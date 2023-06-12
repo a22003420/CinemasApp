@@ -11,7 +11,7 @@ data class MovieDB(
   @PrimaryKey(autoGenerate = false)
   var id: String,
   var name: String,
-  var year: Int,
+  var year: String,
   var photo: String,
   var genre: String,
   var synopsis: String,

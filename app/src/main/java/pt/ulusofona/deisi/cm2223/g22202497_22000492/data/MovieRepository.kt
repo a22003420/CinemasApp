@@ -21,7 +21,6 @@ class MovieRepository (
     id: String,
     onFinished: (Result<Movie>) -> Unit) {
     if (ConnectivityUtil.isOnline(context)) {
-
       remote.getMovie(id) { result ->
         if (result.isSuccess) {
           result.getOrNull()?.let { movie ->
