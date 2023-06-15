@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -65,6 +66,7 @@ class DashboardFragment : Fragment() {
       }
     }
 
+
     val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
     binding = FragmentDashboardBinding.bind(view)
 
@@ -92,6 +94,15 @@ class DashboardFragment : Fragment() {
     binding.moviesSeen.text = totalMovies.toString()
     binding.cinemasVisited.text = totalCinemas.toString()
     binding.highestScore.text = if (highestRated !== null) highestRated.rate.toString() else "0"
+  }
+
+  private fun onResponseReceived (movieList: List<Movie>) {
+    // Processar a lista de filmes recebidos
+
+    val totalMovies = movieList.size
+    val toastMessage = "Foram descarregados $totalMovies filmes"
+    Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show()
+
   }
 
 }

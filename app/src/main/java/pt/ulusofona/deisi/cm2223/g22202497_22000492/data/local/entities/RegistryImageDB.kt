@@ -23,6 +23,7 @@ data class RegistryImageDB(
   @ColumnInfo(name = "movie_registry_id")
   var movieRegistryId: Long,
   var uri: String
+  // var count: Int = 0,
 ) {
   fun toRegistryImage(): RegistryImage {
     return RegistryImage(

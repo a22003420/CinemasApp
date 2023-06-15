@@ -220,6 +220,12 @@
             android:layout_marginTop="16dp"
             android:maxLength="200"/>
 
+        <CheckBox
+            android:id="@+id/checkBoxRevisit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/i_want_to_see_again" />
+
     </LinearLayout>
 
         <Button

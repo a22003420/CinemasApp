@@ -211,4 +211,14 @@ class MovieRoom(
       onFinished()
     }
   }
+
+  override fun updateRegistry(registry: MovieRegistry, onFinished: () -> Unit) {
+    CoroutineScope(Dispatchers.IO).launch {
+      registryStorage.updateRegistry(
+        registry.toMovieRegistryDB()
+      )
+      onFinished()
+    }
+  }
+
 }

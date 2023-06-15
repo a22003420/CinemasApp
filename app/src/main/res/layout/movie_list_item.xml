@@ -10,6 +10,7 @@
     android:backgroundTint="#65F5F5F5">
 
     <LinearLayout
+        android:id="@+id/movie_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -65,6 +66,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/ano"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/pcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/pcode"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/foto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/foto"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/grau_satisfacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:textSize="14sp" />
 
             <TextView

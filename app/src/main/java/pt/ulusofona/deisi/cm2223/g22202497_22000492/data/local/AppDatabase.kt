@@ -13,7 +13,7 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.CinemaDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieRegistryDB
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.RegistryImageDB
 
-@Database(entities = [MovieDB::class, CinemaDB::class, MovieRegistryDB::class, RegistryImageDB::class], version = 2)
+@Database(entities = [MovieDB::class, CinemaDB::class, MovieRegistryDB::class, RegistryImageDB::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
   abstract fun movieDao(): MovieDao
   abstract fun cinemaDao(): CinemaDao

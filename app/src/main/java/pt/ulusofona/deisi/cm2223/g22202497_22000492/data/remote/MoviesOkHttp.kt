@@ -1,5 +1,10 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.data.remote
 
+import android.app.AlertDialog
+import android.provider.Settings.Global.getString
+import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+import com.example.cinemas_app.R
 import okhttp3.*
 import org.json.JSONObject
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
@@ -76,8 +81,12 @@ class MoviesOkHttp (
                 jsonObject.getString("Plot"),
                 jsonObject.getString("Released"),
                 jsonObject.getString("imdbRating"),
-                "https://www.imdb.com/title/${jsonObject.getString("imdbID")}"
+                jsonObject.getString("DVD"),
+                "https://www.imdb.com/title/${jsonObject.getString("imdbID")}",
               )
+
+
+
 
               onFinished(Result.success(movie))
             }
@@ -90,4 +99,7 @@ class MoviesOkHttp (
   private fun urlEncodeString(input: String): String {
     return URLEncoder.encode(input, StandardCharsets.UTF_8.toString())
   }
+
+
+
 }

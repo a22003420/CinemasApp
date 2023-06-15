@@ -85,4 +85,22 @@
     <string name="start_voice_input">Speak</string>
     <string name="search_button">Search</string>
     <string name="search_text_empty">You need to click speak before trying to search.</string>
+    <string name="click_count" translatable="false">Click Count:</string>
+    <string name="number_of_clicks" translatable="false">Number of Clicks</string>
+    <string name="sort_asc" translatable="false">Sort Asc</string>
+    <string name="sort_desc" translatable="false">Sort Desc</string>
+    <string name="movie_imdb_dvd" translatable="false">DVD: %s</string>
+    <string name="i_want_to_see_again" translatable="false">I want to see again</string>
+    <string name="i_would_like_to_see_this_movie_again" translatable="false">I would like to see this movie again</string>
+    <string name="ischecked_s" translatable="false">isChecked: %s</string>
+    <string name="movie_cinema_data" translatable="false" >Cinema data</string>
+    <string name="address" translatable="false">%s</string>
+    <string name="city" translatable="false">City: %s</string>
+    <string name="postal_code" translatable="false">Postal Code: %s</string>
+    <string name="code" translatable="false">Code: %s</string>
+    <string name="code_label" translatable="false" >test</string>
+    <string name="grau_de_satisfa_o" translatable="false">grau de satisfação</string>
+    <string name="by_order_ascending" translatable="false">by order ascending</string>
+    <string name="pcode" translatable="false">postal code: %s</string>
+    <string name="foto" translatable="false" >imagem: %s</string>
 </resources>

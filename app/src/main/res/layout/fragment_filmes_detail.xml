@@ -51,8 +51,14 @@
             android:layout_height="wrap_content"
             android:text="@string/movie_imdb_rating"
             android:textColor="@color/grey"
-            android:textSize="16sp"
-            android:layout_marginBottom="12dp" />
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/movie_imdb_dvd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/movie_imdb_dvd"
+            android:textColor="@color/grey"
+            android:textSize="16sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -86,10 +92,21 @@
                 android:background="@color/blue"
                 android:textSize="16sp"
                 android:onClick="openIMDBLink"
-                android:layout_marginTop="12dp"/>
+                android:layout_marginTop="12dp" />
 
 
         </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/click_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30sp"
+            android:textColor="@color/red"
+            android:layout_marginTop="12dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp" />
 
 
         <LinearLayout
@@ -102,6 +119,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/movie_cinema_data"
+                    android:textColor="@color/black"
+                    android:textSize="24sp"
+                    android:paddingTop="16dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"/>
+
+
+
+                <TextView
+                    android:id="@+id/cinema_morada"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
+
+                <TextView
+                    android:id="@+id/cinema_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+
 
 
                 <TextView
@@ -177,6 +235,22 @@
                 android:id="@+id/registry_observations"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_see_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/i_would_like_to_see_this_movie_again"
+                android:textColor="@color/grey"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/registry_see"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ischecked_s"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 

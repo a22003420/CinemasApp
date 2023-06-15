@@ -1,5 +1,6 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -29,6 +30,8 @@ class FilmesDetailFragment : Fragment() {
   private var registry: MovieRegistry? = null
   private var cinema: Cinema? = null
   private val ARG_OPERATION_UUID = "ARG_OPERATION_UUID"
+
+
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -71,6 +74,7 @@ class FilmesDetailFragment : Fragment() {
   override fun onStart() {
     super.onStart()
 
+
   }
 
   private fun placeData() {
@@ -80,6 +84,15 @@ class FilmesDetailFragment : Fragment() {
       movieSynopsis.text = movie?.synopsis
       movieReleaseDate.text = movie?.releaseDate.toString()
       movieImdbRating.text = getString(R.string.movie_imdb_rating,movie?.imdbRating.toString())
+      movieImdbDvd.text = getString(R.string.movie_imdb_dvd,movie?.dvd.toString())
+      cinemaMorada.text =cinema?.address
+      code.text=cinema?.postcode
+      cinemaCity.text=cinema?.county
+
+
+
+
+
 
       if (registry == null) {
         registryLayout.visibility = View.GONE
@@ -88,6 +101,12 @@ class FilmesDetailFragment : Fragment() {
         cinemaName.text = registry?.cinema?.name
         registryRate.text = registry?.rate.toString()
         registrySeenDate.text = registry?.seen
+        registrySee.text = if (registry?.isChecked == true) {
+          "Sim"
+        } else {
+          "Não"
+        }
+
 
         if (registry?.observations.toString().isBlank()) {
           registryObservationsLabel.visibility = View.GONE
@@ -157,4 +176,12 @@ class FilmesDetailFragment : Fragment() {
     shareIntent.putExtra(Intent.EXTRA_TEXT, shareText)
     startActivity(Intent.createChooser(shareIntent, getString(R.string.share_label)))
   }
+
+
+
+
+
+
+
+
 }

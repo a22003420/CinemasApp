@@ -17,4 +17,6 @@ abstract class LocalOps {
   abstract fun getRegistryById(id: Long, onFinished: (Result<MovieRegistry>) -> Unit)
   abstract fun getCinemaList(onFinished: (Result<List<Cinema>>) -> Unit)
   abstract fun getRegistryByMovieName(movieName: String, onFinished: (Result<MovieRegistry>) -> Unit)
+  abstract fun updateRegistry(registry: MovieRegistry, onFinished: () -> Unit)
+
 }

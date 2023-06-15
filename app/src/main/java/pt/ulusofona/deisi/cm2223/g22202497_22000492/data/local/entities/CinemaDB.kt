@@ -4,17 +4,21 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Cinema
 
+// Entidade CinemaDB para a base de dados local (Room) que representa um cinema na base de dados local (Room)
 @Entity(tableName = "cinemas")
-data class CinemaDB (
-  @PrimaryKey(autoGenerate = false)
-  var id: Long,
-  var name: String,
-  var provider: String,
-  var latitude: Double,
-  var longitude: Double,
-  var address: String,
-  var county: String
+data class CinemaDB(
+    @PrimaryKey(autoGenerate = false)
+    var id: Long,
+    var name: String,
+    var provider: String,
+    var latitude: Double,
+    var longitude: Double,
+    var address: String,
+    var county: String,
+    var postcode: String,
+    val  photos: List<String> = emptyList()
 ) {
+  // Converte um objeto CinemaDB em um objeto Cinema (model)
   fun toCinema(): Cinema {
     return Cinema(
       id = this.id,
@@ -23,7 +27,9 @@ data class CinemaDB (
       latitude = this.latitude,
       longitude = this.longitude,
       address = this.address,
-      county = this.county
+      county = this.county,
+      postcode =this.postcode,
+      photos = this.photos
     )
   }
 }

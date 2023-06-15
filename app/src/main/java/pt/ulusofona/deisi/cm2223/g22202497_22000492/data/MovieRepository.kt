@@ -3,6 +3,7 @@ package pt.ulusofona.deisi.cm2223.g22202497_22000492.data
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
+import android.widget.Toast
 import com.example.cinemas_app.R
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.ConnectivityUtil
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.AppDatabase
@@ -23,6 +24,9 @@ class MovieRepository (
     if (ConnectivityUtil.isOnline(context)) {
       remote.getMovie(id) { result ->
         if (result.isSuccess) {
+          //toast here
+          //val message = "Movie found: $movieName"
+          //Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
           result.getOrNull()?.let { movie ->
 
             local.updateMovie(movie) {
@@ -199,5 +203,16 @@ class MovieRepository (
       return instance as MovieRepository
     }
 
+
   }
+
+  fun updateRegistry(
+    movieRegistry: MovieRegistry,
+    onFinished: () -> Unit) {
+
+    local.updateRegistry(movieRegistry) {
+      onFinished()
+    }
+  }
+
 }

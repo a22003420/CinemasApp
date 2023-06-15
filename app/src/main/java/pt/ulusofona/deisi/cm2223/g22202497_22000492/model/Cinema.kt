@@ -14,7 +14,11 @@ data class Cinema (
   val latitude: Double = 0.0,
   val longitude: Double = 0.0,
   val address: String = "",
-  val county: String = ""
+  val county: String = "",
+  val postcode: String = "",
+  val  photos: List<String> = emptyList()
+
+// array strings
 ) : Serializable
 {
   fun toCinemaDB(): CinemaDB {
@@ -25,7 +29,10 @@ data class Cinema (
       latitude = this.latitude,
       longitude = this.longitude,
       address = this.address,
-      county = this.county
+      county = this.county,
+      postcode = this.postcode,
+      photos = this.photos
+
     )
   }
 }

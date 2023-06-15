@@ -42,6 +42,7 @@ class RegistoFilmesFragment : Fragment() {
     rateChangeEvent()
     saveClickEvent()
     photosClickEvent()
+    setupRevisitCheckBox()
     return binding.root
   }
 
@@ -110,6 +111,13 @@ class RegistoFilmesFragment : Fragment() {
     }
   }
 
+  private fun setupRevisitCheckBox() {
+    binding.checkBoxRevisit.setOnCheckedChangeListener { _, isChecked ->
+      movieRegistry.isChecked = isChecked
+    }
+  }
+
+
   private fun saveClickEvent() {
     binding.registrySaveButton.setOnClickListener {
 
@@ -124,6 +132,7 @@ class RegistoFilmesFragment : Fragment() {
           cinema = cinema,
           rate = rate,
           seen = seenDate,
+          isChecked = binding.checkBoxRevisit.isChecked,
           observations = observations
         )
 
@@ -147,6 +156,9 @@ class RegistoFilmesFragment : Fragment() {
 
           CoroutineScope(Dispatchers.Main).launch {
             if (isSuccess) {
+              val message = "Movie was found: $movieName"
+              Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+              Thread.sleep(5000)
               displayConfirm()
             } else {
               Toast.makeText(requireContext(), errorMessage.toString(), Toast.LENGTH_SHORT).show()

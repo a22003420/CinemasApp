@@ -21,7 +21,9 @@ object History {
         latitude = cinemaJsonObject.getDouble("latitude"),
         longitude = cinemaJsonObject.getDouble("longitude"),
         address = cinemaJsonObject.getString("address"),
-        county = cinemaJsonObject.getString("county")
+        county = cinemaJsonObject.getString("county"),
+        postcode = cinemaJsonObject.getString("postcode"),
+        //photos = cinemasJsonArray.getJSONObject(i).getJSONArray("photos")
       )
       cinemasList.add(cinema)
     }

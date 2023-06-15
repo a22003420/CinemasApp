@@ -7,6 +7,7 @@ data class RegistryImage(
   var id: Long = 0,
   var uri: String,
   var movieRegistryId: Long
+  //var count: Int = 0,
 ) {
   fun toUri(): Uri {
     return Uri.parse(this.uri)

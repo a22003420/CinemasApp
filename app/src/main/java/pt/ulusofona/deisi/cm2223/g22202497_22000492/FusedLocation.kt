@@ -60,4 +60,4 @@ class FusedLocation private constructor(context: Context) : LocationCallback() {
     }
   }
 
-  }
+}

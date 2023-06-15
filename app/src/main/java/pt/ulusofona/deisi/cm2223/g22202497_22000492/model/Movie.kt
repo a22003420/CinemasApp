@@ -5,7 +5,7 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.data.local.entities.MovieDB
 import java.io.Serializable
 import java.util.*
 
-data class Movie(
+data class Movie  (
   var id: String = "",
   var name: String = "",
   var year: String = "",
@@ -14,6 +14,7 @@ data class Movie(
   var synopsis: String = "",
   var releaseDate: String = "",
   var imdbRating: String = "",
+  var dvd: String = "",
   var imdbLink: String = ""
 ) : Serializable {
   fun getReleaseDate(): Date {
@@ -30,8 +31,10 @@ data class Movie(
       genre = this.genre,
       synopsis = this.synopsis,
       releaseDate = this.releaseDate,
+      dvd= this.dvd,
       imdbRating = this.imdbRating,
       imdbLink = this.imdbLink
     )
   }
+
 }

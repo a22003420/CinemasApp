@@ -13,7 +13,9 @@ data class MovieRegistry(
   var cinema: Cinema = Cinema(),
   var rate : Int = 0,
   var seen: String = "",
+  var isChecked: Boolean = false,
   var observations: String = "",
+  var clickCount: Int = 0,  // Count clicks filme
   var images: List<RegistryImage> = listOf()) : Serializable {
 
   fun toMovieRegistryDB(): MovieRegistryDB {
@@ -22,8 +24,10 @@ data class MovieRegistry(
       movieId = this.movie.id,
       rate = this.rate,
       seen = this.seen,
+      isChecked = this.isChecked,
       cinemaId = this.cinema.id,
-      observations = this.observations
+      observations = this.observations,
+      clickCount = this.clickCount
     )
   }
 
