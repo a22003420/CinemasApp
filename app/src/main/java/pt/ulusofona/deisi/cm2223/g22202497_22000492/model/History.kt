@@ -12,6 +12,8 @@ object History {
     val jsonObject = JSONObject(jsonString)
     val cinemasJsonArray = jsonObject.getJSONArray("cinemas")
 
+    // test
+
     val cinemasList = mutableListOf<Cinema>()
     for (i in 0 until cinemasJsonArray.length()) {
       val cinemaJsonObject = cinemasJsonArray.getJSONObject(i)
