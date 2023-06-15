@@ -1,6 +1,7 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.model
 
 import android.content.Context
+import org.json.JSONArray
 import org.json.JSONObject
 
 
@@ -23,7 +24,7 @@ object History {
         address = cinemaJsonObject.getString("address"),
         county = cinemaJsonObject.getString("county"),
         postcode = cinemaJsonObject.getString("postcode"),
-        //photos = cinemasJsonArray.getJSONObject(i).getJSONArray("photos")
+        photos = cinemaJsonObject.optString("photos").split(",")
       )
       cinemasList.add(cinema)
     }

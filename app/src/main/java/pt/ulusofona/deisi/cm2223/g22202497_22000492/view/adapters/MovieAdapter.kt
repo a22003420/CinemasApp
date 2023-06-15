@@ -71,7 +71,7 @@ class MovieAdapter(
       classificacaoFilme.text = item.movie.imdbRating
       anoFilme.text = item.movie.releaseDate
       pcode.text = item.cinema.postcode
-      //foto.text = item.cinema
+      foto.text = item.cinema.photos.size.toString()
 
 
 

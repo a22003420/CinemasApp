@@ -16,7 +16,7 @@ data class CinemaDB(
     var address: String,
     var county: String,
     var postcode: String,
-    val  photos: List<String> = emptyList()
+    val photos: String
 ) {
   // Converte um objeto CinemaDB em um objeto Cinema (model)
   fun toCinema(): Cinema {
@@ -29,7 +29,7 @@ data class CinemaDB(
       address = this.address,
       county = this.county,
       postcode =this.postcode,
-      photos = this.photos
+      photos = this.photos.split(",").toList()
     )
   }
 }

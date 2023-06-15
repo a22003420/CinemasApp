@@ -16,7 +16,7 @@ data class Cinema (
   val address: String = "",
   val county: String = "",
   val postcode: String = "",
-  val  photos: List<String> = emptyList()
+  val photos: List<String> = emptyList()
 
 // array strings
 ) : Serializable
@@ -31,8 +31,7 @@ data class Cinema (
       address = this.address,
       county = this.county,
       postcode = this.postcode,
-      photos = this.photos
-
+      photos = this.photos.joinToString(separator = ",")
     )
   }
 }

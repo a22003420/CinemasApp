@@ -37,4 +37,8 @@ data class Movie  (
     )
   }
 
+  fun isAction(): Boolean {
+    return genre.contains("Action")
+  }
+
 }

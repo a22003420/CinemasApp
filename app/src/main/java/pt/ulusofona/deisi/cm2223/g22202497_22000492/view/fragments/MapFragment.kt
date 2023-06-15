@@ -64,18 +64,20 @@ class MapFragment : Fragment(), OnLocationChangedListener {
 
       myRegistryList.map { registry ->
         val location = LatLng(registry.cinema.latitude, registry.cinema.longitude)
-        val marker = googleMap?.addMarker(
-          MarkerOptions()
-            .position(location)
-            .icon(
-              BitmapDescriptorFactory.defaultMarker(
-                registry.rateColor())
-            )
+        if(registry.movie.isAction()) {
+          val marker = googleMap?.addMarker(
+            MarkerOptions()
+              .position(location)
+              .icon(
+                BitmapDescriptorFactory.defaultMarker(
+                  registry.rateColor())
+              )
 
-            .title(registry.movie.name)
-            .snippet(registry.cinema.name))
+              .title(registry.movie.name)
+              .snippet(registry.cinema.name))
 
-        markers.add(MarkerData(marker, registry.id))
+          markers.add(MarkerData(marker, registry.id))
+        }
         //markers.add(MarkerData(marker, registry))
       }
 

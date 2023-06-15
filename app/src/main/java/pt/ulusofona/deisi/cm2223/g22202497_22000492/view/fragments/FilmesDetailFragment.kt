@@ -26,6 +26,7 @@ class FilmesDetailFragment : Fragment() {
 
   private lateinit var binding: FragmentFilmesDetailBinding
   private var operationUuid: String? = null
+  private var clickSource: String = ""
   private var movie: Movie? = null
   private var registry: MovieRegistry? = null
   private var cinema: Cinema? = null
@@ -84,10 +85,10 @@ class FilmesDetailFragment : Fragment() {
       movieSynopsis.text = movie?.synopsis
       movieReleaseDate.text = movie?.releaseDate.toString()
       movieImdbRating.text = getString(R.string.movie_imdb_rating,movie?.imdbRating.toString())
-      movieImdbDvd.text = getString(R.string.movie_imdb_dvd,movie?.dvd.toString())
       cinemaMorada.text =cinema?.address
       code.text=cinema?.postcode
       cinemaCity.text=cinema?.county
+      detailSource.text = clickSource
 
 
 
