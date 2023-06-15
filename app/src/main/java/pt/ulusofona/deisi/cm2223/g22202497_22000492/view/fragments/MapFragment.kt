@@ -108,7 +108,8 @@ class MapFragment : Fragment(), OnLocationChangedListener {
          //Log.i("MapFragment", "Olá manel")
         NavigationManager.goToFilmesDetailFragment(
           requireActivity().supportFragmentManager,
-          savedMarker?.registryId.toString()
+          savedMarker?.registryId.toString(),
+          "Mapa"
           )
 
           //NavigationManager.goToDashboardFragment(
@@ -159,7 +160,8 @@ if (savedMarker != null)
 {
  NavigationManager.goToFilmesDetailFragment(
    requireActivity().supportFragmentManager,
-   savedMarker?.registryId.toString()
+   savedMarker?.registryId.toString(),
+   "Mapa"
  )
 }
 

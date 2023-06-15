@@ -21,7 +21,7 @@ import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.Movie
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.model.MovieRegistry
 
 class MovieAdapter(
-  private val onClick: (String) -> Unit,
+  private val onClick: (String, String) -> Unit,
   private var items: List<MovieRegistry>
 ) : RecyclerView.Adapter<MovieAdapter.MoviesViewHolder>() {
 
@@ -62,7 +62,7 @@ class MovieAdapter(
       item.clickCount = clickCount
       MovieRepository.getInstance().updateRegistry(item) {
       }
-      onClick(items[position].id.toString())
+      onClick(items[position].id.toString(), "Lista")
 
     }
 

@@ -131,7 +131,7 @@ class MainActivity : AppCompatActivity() {
         MovieRepository.getInstance().getRegistryByMovieName(searchText) { result ->
           if (result.isSuccess) {
             result.getOrNull()?.let { r ->
-              NavigationManager.goToFilmesDetailFragment(fm = supportFragmentManager, r.id.toString())
+              NavigationManager.goToFilmesDetailFragment(fm = supportFragmentManager, r.id.toString(), "Pesquisa de voz")
             }
           }
           else {

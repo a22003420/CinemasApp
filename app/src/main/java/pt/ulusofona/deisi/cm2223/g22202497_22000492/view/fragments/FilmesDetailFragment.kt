@@ -137,10 +137,11 @@ class FilmesDetailFragment : Fragment() {
   companion object {
 
     @JvmStatic
-    fun newInstance(uuid: String) =
+    fun newInstance(uuid: String, source: String) =
       FilmesDetailFragment().apply {
         arguments = Bundle().apply {
           putString(ARG_OPERATION_UUID, uuid)
+          clickSource = source
         }
       }
   }

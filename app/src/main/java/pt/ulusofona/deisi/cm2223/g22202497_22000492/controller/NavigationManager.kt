@@ -1,9 +1,6 @@
 package pt.ulusofona.deisi.cm2223.g22202497_22000492.controller
 
-import android.graphics.drawable.Drawable
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.content.ContextCompat
 import pt.ulusofona.deisi.cm2223.g22202497_22000492.view.fragments.FilmesFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -56,8 +53,8 @@ object NavigationManager {
   }
 
   // Navega para o fragmento de Detalhes de Filmes
-  fun goToFilmesDetailFragment(fm: FragmentManager, id: String) {
-    placeFragment(fm, FilmesDetailFragment.newInstance(id))
+  fun goToFilmesDetailFragment(fm: FragmentManager, id: String, source: String) {
+    placeFragment(fm, FilmesDetailFragment.newInstance(id, source))
   }
 
   // Destaca o item de menu selecionado na BottomNavigationView

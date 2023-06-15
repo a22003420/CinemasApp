@@ -53,7 +53,7 @@ class MovieListFragment(private val topFragmentManager: FragmentManager) : Fragm
 
 
 
-  private fun onOperationClick(uuid: String) {
+  private fun onOperationClick(uuid: String, source: String) {
     //Aqui, primeiro obtemos o índice do filme atual na lista usando indexOfFirst. Em seguida, verificamos se o índice é menor que o tamanho da lista menos um para garantir que ainda haja um próximo filme na lista. Se houver, definimos o próximo índice como currentIndex + 1. Caso contrário, o próximo índice é definido como 0 para ir para o primeiro filme da lista.
 
     //Em seguida, obtemos o próximo filme com base no próximo índice e navegamos para os detalhes desse filme usando NavigationManager.goToFilmesDetailFragment.
@@ -74,7 +74,7 @@ class MovieListFragment(private val topFragmentManager: FragmentManager) : Fragm
 
 
 
-    NavigationManager.goToFilmesDetailFragment(topFragmentManager, uuid)
+    NavigationManager.goToFilmesDetailFragment(topFragmentManager, uuid, source)
   }
 
   private fun clickButtonSort() { //os filmes serão organizados em ordem ascendente, começando do valor mais baixo (1) para o valor mais alto (3).
